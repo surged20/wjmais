@@ -1,0 +1,45 @@
+<ol class="items-list inventory-list">
+  {{#each sections as |section sid|}}
+    <li class="roles-header flexrow">
+      <h3 class="item-name flexrow {{section.role}}">{{localize section.label}}</h3>
+
+      {{#if section.columns}}
+        {{#each section.columns}}
+          <div class="item-detail {{css}}">{{label}}</div>
+        {{/each}}
+      {{/if}}
+    </li>
+
+    <ol class="item-list">
+      {{#each section.items as |item iid|}}
+        <li class="item flexrow" data-item-id="{{item._id}}">
+          <div class="item-name flexrow {{section.role}}">
+            <div class="item-image {{section.role}}" style="background-image: url('{{item.img}}')"></div>
+            <h4 class={{section.role}}>{{item.name}}</h4>
+          </div>
+
+          {{#if section.columns}}
+            {{#each section.columns}}
+              <div class="item-detail {{css}}">
+                {{#with (getProperty item property)}}
+                  {{#if ../editable}}
+                    <input type="text" value="{{this}}" placeholder="&mdash;"
+                                                        data-dtype="{{../editable}}">
+                  {{else}}
+                    {{this}}
+                  {{/if}}
+                {{/with}}
+              </div>
+            {{/each}}
+          {{/if}}
+
+          {{#if ../../owner}}
+            <div class="item-controls flexrow">
+              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ol>
+  {{/each}}
+</ol>

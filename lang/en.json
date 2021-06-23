@@ -1,0 +1,77 @@
+{
+  "SETTINGS.WJMAIS.RoleChangeChatN": "Enable role change chat cards",
+  "SETTINGS.WJMAIS.RoleChangeChatH": "Send a chat card notification when an actor is assigned to a bridge crew role.",
+
+  "WJMAIS.WildjammerSheet": "WJMAiS Wildjammer Sheet",
+  "WJMAIS.Model": "Model",
+  "WJMAIS.Origin": "Origin",
+  "WJMAIS.Class": "Class",
+
+  "WJMAIS.SizeMegaTiny": "Mega Tiny",
+  "WJMAIS.SizeMegaSmall": "Mega Small",
+  "WJMAIS.SizeMegaMedium": "Mega Medium",
+  "WJMAIS.SizeMegaLarge": "Mega Large",
+  "WJMAIS.SizeMegaHuge": "Mega Huge",
+  "WJMAIS.SizeMegaGargantuan": "Mega Gargantuan",
+
+  "WJMAIS.HullPoints": "Hull Points",
+  "WJMAIS.BulwarkPoints": "Bulwark Points",
+
+  "WJMAIS.Speed": "Speed",
+  "WJMAIS.SpeedConfig": "Configure Speed",
+  "WJMAIS.SpeedConfigHint": "Configure the tactical speed and maneuverability attributes of this wildjammer.",
+  "WJMAIS.Tactical": "Tactical",
+  "WJMAIS.Maneuverability": "Maneuverability",
+
+  "WJMAIS.CrewMinMax": "Crew Min/Max",
+  "WJMAIS.CargoHold": "Cargo Hold",
+  "WJMAIS.DaysOfAir": "Days of Air",
+  "WJMAIS.Hardpoints": "Hardpoints",
+
+  "WJMAIS.LandingTypes": "Landing Types",
+  "WJMAIS.LandingLand": "Land",
+  "WJMAIS.LandingWater": "Water",
+  "WJMAIS.LandingSpaceDock": "Space Dock",
+
+  "WJMAIS.BridgeCrewRole": "Bridge Crew Role",
+  "WJMAIS.BridgeCrewRoles": "Bridge Crew Roles",
+  "WJMAIS.RoleBoatswain": "Boatswain",
+  "WJMAIS.RoleCaptain": "Captain",
+  "WJMAIS.RoleFighterHelmsman": "Fighter Helmsman",
+  "WJMAIS.RoleGunner": "Gunner",
+  "WJMAIS.RoleHelmsman": "Helmsman",
+  "WJMAIS.RoleUnassigned": "Unassigned",
+
+  "WJMAIS.ShipHasNoWeapons": " has no available ship mounted weapons.",
+  "WJMAIS.ActorAlreadyAssigned": " is already assigned to the ",
+  "WJMAIS.RoleAlreadyFilled": " role is already filled on the bridge crew.",
+  "WJMAIS.CompendiumActorRole": "Actors cannot be dropped into bridge crew roles from a compendium.",
+  "WJMAIS.FighterHelmsmanMustUseFighter": "Fighter Helmsman can only be assigned on a fighter class ship.",
+  "WJMAIS.FighterOnlyHasFighterHelmsman": "A fighter class ship may only be assigned a Fighter Helmsman.",
+  "WJMAIS.RoleIsAssigned": "joins the bridge crew as ",
+  "WJMAIS.RoleIsUnassigned": "leaves the bridge crew of the ",
+
+  "WJMAIS.ItemTypeModules": "Modules",
+  "WJMAIS.ItemTypeUpgrades": "Upgrades",
+  "WJMAIS.Crew": "Crew",
+  "WJMAIS.Location": "Location",
+
+  "WJMAIS.ShipMountedEquipment": "Ship module or upgrade?",
+  "WJMAIS.ShipMountedWeapon": "Ship mounted weapon?",
+
+  "WJMAIS.EquipmentType": "Type",
+  "WJMAIS.WeaponProperties": "Properties",
+  "WJMAIS.WeaponPropertyBackfire": "Backfire",
+  "WJMAIS.WeaponPropertyCrew": "Crew",
+  "WJMAIS.WeaponPropertyFixed": "Fixed",
+  "WJMAIS.WeaponPropertyOverheat": "Overheat",
+  "WJMAIS.WeaponMount": "Mount",
+  "WJMAIS.WeaponMountSize": "Size",
+  "WJMAIS.WeaponMountLocation": "Location",
+  "WJMAIS.WeaponMountFacing": "Facing",
+
+  "WJMAIS.SelectShipWeapon": "Select ship weapon",
+  "WJMAIS.Apply": "Apply",
+  "WJMAIS.Skip": "Skip"
+
+}

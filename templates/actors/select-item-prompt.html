@@ -1,0 +1,18 @@
+<form>
+  <p class="hint">{{hint}}</p>
+  <ul class="items-list">
+    {{#each templateData.items}}
+      <li class="item flexrow">
+        <div class="item-name flexrow">
+          <div class="item-image" style="background-image:url({{data.img}})" data-item-id="{{id}}"></div>
+          <label class="flexrow">
+            <div class=item-name>{{data.name}}</div>
+            <div class=item-detail>{{lookup ../templateData/config.weaponMountLocation data.flags.wjmais.location}}</div>
+            <div class=item-detail>{{lookup ../templateData/config.weaponMountFacing data.flags.wjmais.facing}}</div>
+            <input type="radio" name="shipWeapon" {{#if default}}checked{{/if}} id="{{id}}" value="{{id}}" />
+          </label>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</form>

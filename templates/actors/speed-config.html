@@ -1,0 +1,14 @@
+<form autocomplete="off">
+  <p class="notes">{{localize "WJMAIS.SpeedConfigHint"}}</p>
+  <div class="form-group">
+    <label>{{localize "WJMAIS.Tactical"}} {{localize "WJMAIS.Speed"}}</label>
+    <input name="flags.wjmais.speed.tactical" type="number" step="1" value="{{speed.tactical}}"/>
+  </div>
+  <div class="form-group">
+    <label>{{localize "WJMAIS.Maneuverability"}}</label>
+    <select class="actor-mnv" name="flags.wjmais.speed.mnv">
+      {{selectOptions config.mnvs selected=speed.mnv}};
+    </select>
+  </div>
+  <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{ localize "Submit"}}</button>
+</form>

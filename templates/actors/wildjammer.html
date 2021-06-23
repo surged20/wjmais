@@ -1,0 +1,175 @@
+{{! vim: set ft=html.handlebars ts=2 sw=2 et : }}
+
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header flexrow">
+    <img class="profile" src="{{actor.img}}" title="{{actor.name}}" alt="{{actor.name}}"
+                                                                    data-edit="img">
+    <section class="header-details flexrow">
+      <h1 class="charnam">
+        <input name="name" type="text" value="{{actor.name}}"
+                                       placeholder="{{localize 'DND5E.Name'}}">
+      </h1>
+      <ul class="summary flexrow">
+        <li>
+          <span>{{lookup config.actorSizes data.traits.size}}</span>
+        </li>
+        <li>
+          <input class="wjmais-class" type="text" name="flags.wjmais.class"
+                                                  value="{{flags.wjmais.class}}"
+                                                  placeholder="{{localize 'WJMAIS.Class'}}">
+        </li>
+        <li>
+          <input class="wjmais-model" type="text" name="flags.wjmais.model"
+                                                  value="{{flags.wjmais.model}}"
+                                                  placeholder="{{localize 'WJMAIS.Model'}}">
+        </li>
+        <li>
+          <input type="text" name="data.details.source"
+                             value="{{data.details.source}}"
+                             placeholder="{{localize 'DND5E.Source'}}">
+        </li>
+      </ul>
+      <ul class="attributes flexrow">
+        <li class="attribute health">
+          <h4 class="attribute-name box-title">{{localize 'WJMAIS.HullPoints'}}</h4>
+          <div class="attribute-value multiple">
+            <input name="data.attributes.hp.value" type="text" placeholder="&mdash;"
+                                                               value="{{data.attributes.hp.value}}" data-dtype="Number">
+            <span class="sep"> &sol; </span>
+            <input name="data.attributes.hp.max" type="text" placeholder="&mdash;"
+                                                             value="{{data.attributes.hp.max}}" data-dtype="Number">
+          </div>
+        </li>
+        <li class="attribute health">
+          <h4 class="attribute-name box-title">{{localize 'WJMAIS.BulwarkPoints'}}</h4>
+          <div class="attribute-value multiple">
+            <input class="temphp" name="data.attributes.hp.temp" type="text" placeholder="&mdash;"
+                                                                             value="{{data.attributes.hp.temp}}" data-dtype="Number">
+            <span class="sep"> &sol; </span>
+            <input class="temphp" name="data.attributes.hp.tempmax" type="text" placeholder="&mdash;"
+                                                                                value="{{data.attributes.hp.tempmax}}" data-dtype="Number">
+          </div>
+        </li>
+        <li class="attribute">
+          <h4 class="attribute-name box-title">{{localize 'DND5E.ArmorClass'}}</h4>
+          <div class="attribute-value">
+            <input name="data.attributes.ac.value" type="text" placeholder="&mdash;"
+                                                               value="{{data.attributes.ac.value}}" data-dtype="Number">
+          </div>
+        </li>
+        <li class="attribute speed">
+          <h4 class="attribute-name box-title">
+            {{ localize "WJMAIS.Speed" }}
+            <a class="speed-config-button" data-action="speed" title="{{localize 'WJMAIS.SpeedConfig'}}"><i class="fas fa-cog"></i></a>
+          </h4>
+          <div class="attribute-value">
+            <span>{{flags.wjmais.speed.tactical}} ({{flags.wjmais.speed.mnv}}&deg;)</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </header>
+
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item active" data-tab="attributes">{{localize 'DND5E.Attributes'}}</a>
+    <a class="item" data-tab="features">{{localize 'DND5E.Features'}}</a>
+    <a class="item" data-tab="cargo">{{localize 'DND5E.VehicleCargoCrew'}}</a>
+    <a class="item" data-tab="biography">{{localize 'DND5E.Description'}}</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
+      <section class="center-pane flexcol">
+        <h4 class="attribute-name box-title">{{localize 'WJMAIS.BridgeCrewRoles'}}</span>
+        {{> 'modules/wjmais/templates/actors/parts/bridge-crew-roles.html' sections=roles}}
+      </section>
+      <section class="center-pane flexcol">
+        <div class="counters">
+          <div class="counter flexrow crew-min-max">
+            <h4>{{localize 'WJMAIS.CrewMinMax'}}</h4>
+            <div class="counter-value">
+              <input class="wjmais-crew-min" type="number"
+                                             placeholder="&mdash;" name="flags.wjmais.crew.min"
+                                                                   data-dtype="Number" value="{{flags.wjmais.crew.min}}">
+              <span class="sep"> &sol; </span>
+              <input class="wjmais-crew-max" type="number"
+                                             placeholder="&mdash;" name="flags.wjmais.crew.max"
+                                                                   data-dtype="Number" value="{{flags.wjmais.crew.max}}">
+            </div>
+          </div>
+          <div class="counter flexrow air">
+            <h4>{{localize 'WJMAIS.DaysOfAir'}}</h4>
+            <div class="counter-value">
+              <input class="wjmais-air" type="number" style="max-width: 35px"
+                                                      placeholder="&mdash;" name="flags.wjmais.air"
+                                                                            data-dtype="Number" value="{{flags.wjmais.air}}">
+            </div>
+          </div>
+          <div class="counter flexrow cargo-cap">
+            <h4>{{localize 'WJMAIS.CargoHold'}}</h4>
+            <div class="counter-value">
+              <input class="wjmais-cargo-hold" type="number"
+                                               placeholder="&mdash;" name="flags.wjmais.cargo"
+                                                                     data-dtype="Number" value="{{flags.wjmais.cargo}}">
+            </div>
+          </div>
+          <div class="counter flexrow hardpoints">
+            <h4>{{localize 'WJMAIS.Hardpoints'}}</h4>
+            <div class="counter-value">
+              <input class="wjmais-hardpoints-sm" type="number"
+                                                  placeholder="0" name="flags.wjmais.hardpoints.sm"
+                                                                  data-dtype="Number" value="{{flags.wjmais.hardpoints.sm}}">
+              <span>Small</span>
+              <span class="sep"> &sol; </span>
+              <input class="wjmais-hardpoints-med" type="number"
+                                                   placeholder="0" name="flags.wjmais.hardpoints.med"
+                                                                   data-dtype="Number" value="{{flags.wjmais.hardpoints.med}}">
+              <span>Medium</span>
+              <span class="sep"> &sol; </span>
+              <input class="wjmais-hardpoints-lg" type="number"
+                                                  placeholder="0" name="flags.wjmais.hardpoints.lg"
+                                                                  data-dtype="Number" value="{{flags.wjmais.hardpoints.lg}}">
+              <span>Large</span>
+            </div>
+          </div>
+        </div>
+        <div class="traits">
+          <div class="form-group">
+            <label>{{localize "DND5E.Size"}}</label>
+            <select class="actor-size" name="data.traits.size">
+              {{#select data.traits.size}}
+                {{#each config.actorSizes as |label size|}}
+                  <option value="{{size}}">{{label}}</option>
+                {{/each}}
+              {{/select}}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>{{localize "WJMAIS.LandingTypes"}}</label>
+            <a class="trait-selector" data-options="landingTypes" data-target="flags.wjmais.traits.lt">
+              <i class="fas fa-edit"></i>
+            </a>
+            <ul class="traits-list">
+              {{#each flags.wjmais.traits.lt.selected as |v k|}}
+                <li class="tag {{k}}">{{v}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab features flexcol" data-group="primary" data-tab="features">
+      {{> 'modules/wjmais/templates/actors/parts/actor-features.html' sections=features}}
+    </div>
+
+    <div class="tab cargo flexcol" data-group="primary" data-tab="cargo">
+      {{> 'systems/dnd5e/templates/actors/parts/actor-inventory.html' sections=cargo}}
+    </div>
+
+    <div class="tab biography flexcol" data-group="primary" data-tab="biography">
+      {{editor content=data.details.biography.value target='data.details.biography.value'
+        button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>
