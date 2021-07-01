@@ -1,11 +1,11 @@
 {
   "name": "wjmais",
   "title": "Wildjammer: More Adventures in Space",
-  "description": "Extends dnd5e and provides content to support WJMAiS adventures",
+  "description": "Wildjammer content and dnd5e extensions",
   "version": "0.0.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.8",
-  "systems": ["dnd5e"],
+  "system": ["dnd5e"],
   "dependencies": [
     {
       "name": "lib-wrapper"
