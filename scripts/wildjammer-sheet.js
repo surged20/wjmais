@@ -753,7 +753,7 @@ export default class WildjammerSheet extends ActorSheet5e {
     const button = event.currentTarget;
     switch ( button.dataset.action ) {
       case "speed":
-        new ActorSpeedConfig(this.object).render(true);
+        new WildjammerSpeedConfig(this.object).render(true);
         break;
     }
   }
