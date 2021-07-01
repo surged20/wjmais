@@ -17,6 +17,7 @@ This Foundry VTT module extends the dnd5e system with the folowing:
 - Wildjammer ship vehicle sheet 
   - Bridge crew role management
   - Fighter-Helmsman/Gunner and Helmsman ship weapon assignment
+- Token resource bar support for Hull Points and Bulwark Points
 - Additional personal and ship mounted weapon properties
 - Additional wildjammer module and upgrade equipment types
 - Compendiums

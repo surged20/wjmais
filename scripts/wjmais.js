@@ -1,5 +1,6 @@
 import { DND5E } from "/systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
+import { patchItemSheet, patchResourceBars } from "./patch.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
@@ -36,7 +37,6 @@ Actors.registerSheet("wjmais", WildjammerSheet, {
 });
 
 function registerSettings() {
-
   game.settings.register('wjmais', "roleChangeChat", {
     name: "SETTINGS.WJMAIS.RoleChangeChatN",
     hint: "SETTINGS.WJMAIS.RoleChangeChatH",
@@ -45,13 +45,20 @@ function registerSettings() {
     default: false,
     config: true
   });
-
 }
 
 Hooks.once("init", function() {
-  CONFIG.WJMAIS = WJMAIS;
+  if(!game.modules.get('lib-wrapper')?.active && game.user.isGM) {
+    ui.notifications.error("Module wjmais requires the 'libWrapper' module. Please install and activate it.");
+    return;
+  }
+
+  patchItemSheet();
+  patchResourceBars();
 
   console.log("wjmais | Initializing Wildjammer: More Adventures in Space");
+
+  CONFIG.WJMAIS = WJMAIS;
 
   registerSettings();
 
@@ -82,19 +89,6 @@ Hooks.once("init", function() {
         return obj;
       }, {});
     }
-  });
-
-  Hooks.once('ready', () => {
-    if(!game.modules.get('lib-wrapper')?.active && game.user.isGM) {
-      ui.notifications.error("Module wjmais requires the 'libWrapper' module. Please install and activate it.");
-      return;
-    }
-
-    // Display wildjammer modules and upgrades as mountable items like vehicle equipment
-    libWrapper.register('wjmais', 'game.dnd5e.applications.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
-      const armorType = this.document.data.data?.armor?.type;
-      return wrapped(...args) || armorType === "module" || armorType === "upgrade";
-    }, 'MIXED' );
   });
 
   Hooks.on('updateActor', (actor, data) => {
