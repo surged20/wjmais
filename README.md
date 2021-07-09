@@ -42,9 +42,11 @@ This Foundry VTT module extends the dnd5e system with the folowing:
 - This Foundry VTT module is licensed under MIT and with permission from Sesserdrix#7270
 - This work is licensed under Foundry Virtual Tabletop EULA - Limited License Agreement for module development v 0.1.6.
 - Threshership and Turtleship artwork used under permission from [Lauren Decker](http://www.instagram.com/1d10art).
-- The remaining ship artwork and cover art is used under the WotC Fan Content Policy.
+- The remaining ship artwork is used under the WotC Fan Content Policy.
+- Social preview art used under permission from [Kelly](https://www.instagram.com/rathofkelly).
 
 ## Thanks
 
 - Sesserdrix#7270 for producing the high quality Wildjammer supplement for 5e.
+- [Lauren Decker](http://www.instagram.com/1d10art) and [Kelly](https://www.instagram.com/rathofkelly) for providing beautiful artwork (check out their sites).
 - Calego#0914 and the entire League of Extraordinary FoundryVTT Developers community for answering questions and documenting API usage.
