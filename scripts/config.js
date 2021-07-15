@@ -81,7 +81,7 @@ WJMAIS.shipData = [
       ],
       "model": "Blade",
       "speed.tactical": 3500,
-      "speed.mnv": 45
+      "speed.mnv": 180
     }
   },
   {
@@ -102,7 +102,7 @@ WJMAIS.shipData = [
         "spacedock",
         "water"
       ],
-      "model": "Battle Flitter",
+      "model": "Spirit Warrior",
       "speed.tactical": 3000,
       "speed.mnv": 360
     }
@@ -131,8 +131,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 8,
-      "tempmax": 8
+      "temp": 10,
+      "tempmax": 10
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -155,8 +155,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 8,
-      "tempmax": 8
+      "temp": 12,
+      "tempmax":12
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -200,8 +200,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 16,
-      "tempmax": 16
+      "temp": 14,
+      "tempmax": 14
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -222,8 +222,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 16,
-      "tempmax": 16
+      "temp": 18,
+      "tempmax": 18
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -245,8 +245,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 20,
-      "tempmax": 20
+      "temp": 16,
+      "tempmax": 16
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -267,8 +267,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 20,
-      "tempmax": 20
+      "temp": 18,
+      "tempmax": 18
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -288,8 +288,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 28,
-      "tempmax": 28
+      "temp": 18,
+      "tempmax": 18
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -312,8 +312,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 20,
-      "tempmax": 20
+      "temp": 16,
+      "tempmax": 16
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -357,8 +357,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 24,
-      "tempmax": 24
+      "temp": 26,
+      "tempmax": 26
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -379,8 +379,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 30,
-      "tempmax": 30
+      "temp": 20,
+      "tempmax": 20
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -402,8 +402,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 32,
-      "tempmax": 32
+      "temp": 26,
+      "tempmax": 26
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -423,8 +423,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 26,
-      "tempmax":26 
+      "temp": 30,
+      "tempmax": 30
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -445,8 +445,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 26,
-      "tempmax":26 
+      "temp": 30,
+      "tempmax": 30
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -467,7 +467,7 @@ WJMAIS.shipData = [
   {
     "data.attributes.hp": {
       "temp": 12,
-      "tempmax": 12 
+      "tempmax": 12
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -481,15 +481,15 @@ WJMAIS.shipData = [
         "spacedock",
         "water"
       ],
-      "model": "Battle Dolphin Shuttle",
+      "model": "Dolphin Shuttle",
       "speed.tactical": 3000,
       "speed.mnv": 135
     }
   },
   {
     "data.attributes.hp": {
-      "temp": 28,
-      "tempmax": 28 
+      "temp": 36,
+      "tempmax": 36
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -511,8 +511,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 28,
-      "tempmax": 28 
+      "temp": 36,
+      "tempmax": 36
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -534,8 +534,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 30,
-      "tempmax": 30 
+      "temp": 26,
+      "tempmax": 26
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -556,8 +556,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 32,
-      "tempmax": 32 
+      "temp": 40,
+      "tempmax": 40
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -578,8 +578,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 36,
-      "tempmax": 36 
+      "temp": 40,
+      "tempmax": 40
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -600,8 +600,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 36,
-      "tempmax": 36 
+      "temp": 40,
+      "tempmax": 40
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
@@ -621,8 +621,8 @@ WJMAIS.shipData = [
   },
   {
     "data.attributes.hp": {
-      "temp": 40,
-      "tempmax": 40 
+      "temp": 74,
+      "tempmax": 74
     },
     "flags.core.sheetClass": "wjmais.WildjammerSheet",
     "flags.wjmais": {
