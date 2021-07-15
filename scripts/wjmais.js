@@ -1,6 +1,6 @@
 import { DND5E } from "/systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
-import { patchItemSheet, patchResourceBars } from "./patch.js";
+import { patchItemSheet, patchResourceBars, patchRollData } from "./patch.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
@@ -12,6 +12,7 @@ DND5E.weaponProperties["bf2"] = "Backfire 2";
 DND5E.weaponProperties["bf3"] = "Backfire 3";
 DND5E.weaponProperties["bf4"] = "Backfire 4";
 DND5E.weaponProperties["clb"] = "Climbing";
+DND5E.weaponProperties["dpl"] = "Deployable";
 DND5E.weaponProperties["cr1"] = "Crew 1";
 DND5E.weaponProperties["cr2"] = "Crew 2";
 DND5E.weaponProperties["cr3"] = "Crew 3";
@@ -19,6 +20,7 @@ DND5E.weaponProperties["cr4"] = "Crew 4";
 DND5E.weaponProperties["cr5"] = "Crew 5";
 DND5E.weaponProperties["cr6"] = "Crew 6";
 DND5E.weaponProperties["cr8"] = "Crew 8";
+DND5E.weaponProperties["fmm"] = "Fore Mantle Module";
 DND5E.weaponProperties["fxd"] = "Fixed";
 DND5E.weaponProperties["hlm"] = "Helmsman";
 DND5E.weaponProperties["hps"] = "Hardpoint (Small)";
@@ -27,6 +29,7 @@ DND5E.weaponProperties["hpl"] = "Hardpoint (Large)";
 DND5E.weaponProperties["ovh"] = "Overheat";
 DND5E.weaponProperties["sc1d12"] = "Scatter (1d12)";
 DND5E.weaponProperties["sc2d6"] = "Scatter (2d6)";
+DND5E.weaponProperties["sc2d10"] = "Scatter (2d10)";
 DND5E.weaponProperties["smw"] = "Ship Mounted Weapon";
 
 // Register Wildjammer Sheet and make it the default vehicle sheet
@@ -55,6 +58,7 @@ Hooks.once("init", function() {
 
   patchItemSheet();
   patchResourceBars();
+  patchRollData();
 
   console.log("wjmais | Initializing Wildjammer: More Adventures in Space");
 
