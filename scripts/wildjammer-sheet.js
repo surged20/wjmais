@@ -148,7 +148,7 @@ export default class WildjammerSheet extends ActorSheet5e {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["dnd5e", "sheet", "actor", "vehicle"],
-      width: 605,
+      width: 680,
       height: 680
     });
   }
