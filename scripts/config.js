@@ -10,6 +10,15 @@ WJMAIS.actorSizes = {
   "grg": "WJMAIS.SizeMegaGargantuan" // 4x4
 };
 
+WJMAIS.shipRamDice = {
+  "tiny": 1,
+  "sm": 1,
+  "med": 2,
+  "lg": 3,
+  "huge": 4,
+  "grg": 0
+};
+
 WJMAIS.mnvs = {
   "0": 0,
   "45": 45,

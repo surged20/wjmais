@@ -71,3 +71,15 @@ export function patchResourceBars() {
       return wrapped(...args);
   }, 'MIXED' );
 }
+
+export function patchRollData() {
+  // Add @ship.ram.dice formula support
+  libWrapper.register('wjmais', 'CONFIG.Actor.documentClass.prototype.getRollData', function (wrapped, ...args) {
+    const shipId = this.data.flags?.wjmais?.shipId;
+    if (shipId) {
+      const size = game?.actors?.get(shipId).data.data.traits.size;
+      this.data.data["ship"] = {"ram": {"dice": CONFIG.WJMAIS.shipRamDice[size]}};
+    }
+    return wrapped(...args);
+  }, 'MIXED' );
+}
