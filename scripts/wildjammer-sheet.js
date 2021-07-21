@@ -43,6 +43,17 @@ function isHelmsman(role) {
   return role === "helmsman"
 }
 
+/**
+ * Is the item rollable?
+ * @param {ItemData} itemData   The item data object
+ */
+function isRollable(itemData) {
+  if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle") 
+    return false;
+
+  return true;
+}
+
 function isRoleChangeInvalid(role, ship, creature) {
   // Error if actor already assigned
   const creatureShipId = creature.data.flags?.wjmais?.shipId;
@@ -290,7 +301,7 @@ export default class WildjammerSheet extends ActorSheet5e {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
-    if (!item.data.data?.properties?.smw) super._onItemRoll(event);
+    if (isRollable(item.data)) super._onItemRoll(event);
   }
 
   /**
@@ -541,11 +552,12 @@ export default class WildjammerSheet extends ActorSheet5e {
     const roles = (this.actor.data.data.traits.size === 'tiny') ? fighterRoles : shipRoles;
 
     for (const item of data.items) {
+      item["rollable"] = isRollable(item);
       if (item.type === 'weapon' && item.data?.properties.smw) {
         item["crewValue"] = this._getCrewValue(item);
         features.weapons.items.push(item);
       }
-      else if (item.type === 'equipment' && item.data?.armor.type === "module") {
+      else if (item.type === 'equipment' && (item.data?.armor.type === "foremantle" || item.data?.armor.type === "module")) {
         totalWeight += (item.data.weight || 0) * item.data.quantity;
         features.modules.items.push(item);
       }

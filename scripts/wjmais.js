@@ -4,8 +4,9 @@ import { patchItemSheet, patchResourceBars, patchRollData } from "./patch.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
-DND5E.equipmentTypes["module"] = "Wildjammer Module";
-DND5E.equipmentTypes["upgrade"] = "Wildjammer Upgrade";
+DND5E.equipmentTypes["foremantle"] = "Fore Mantle Module";
+DND5E.equipmentTypes["module"] = "Ship Module";
+DND5E.equipmentTypes["upgrade"] = "Ship Upgrade";
 
 DND5E.weaponProperties["bf1"] = "Backfire 1";
 DND5E.weaponProperties["bf2"] = "Backfire 2";

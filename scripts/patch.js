@@ -2,7 +2,7 @@ export function patchItemSheet() {
   // Display wildjammer modules and upgrades as mountable items like vehicle equipment
   libWrapper.register('wjmais', 'game.dnd5e.applications.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
     const armorType = this.document.data.data?.armor?.type;
-    return wrapped(...args) || armorType === "module" || armorType === "upgrade";
+    return wrapped(...args) || armorType === "foremantle" || armorType === "module" || armorType === "upgrade";
   }, 'MIXED' );
 }
 
