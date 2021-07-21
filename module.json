@@ -6,6 +6,7 @@
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.8",
   "system": ["dnd5e"],
+  "minimumSystemVersion": "1.4.1",
   "dependencies": [
     {
       "name": "lib-wrapper"
@@ -22,52 +23,38 @@
   ],
   "packs": [
     {
-      "name": "wildjammers",
-      "label": "Wildjammers",
+      "name": "features",
+      "label": "Features",
       "systems": ["dnd5e"],
-      "path": "./packs/wildjammers.db",
+      "path": "./packs/features.db",
+      "entity": "Item"
+    },
+    {
+      "name": "items",
+      "label": "Items",
+      "systems": ["dnd5e"],
+      "path": "./packs/items.db",
+      "entity": "Item"
+    },
+    {
+      "name": "quickref",
+      "label": "Quick Reference",
+      "systems": ["dnd5e"],
+      "path": "./packs/quickref.db",
+      "entity": "JournalEntry"
+    },
+    {
+      "name": "ships",
+      "label": "Ships",
+      "systems": ["dnd5e"],
+      "path": "./packs/ships.db",
       "entity": "Actor"
-    },
-    {
-      "name": "helms",
-      "label": "Helms",
-      "systems": ["dnd5e"],
-      "path": "./packs/helms.db",
-      "entity": "Item"
-    },
-    {
-      "name": "modules",
-      "label": "Modules",
-      "systems": ["dnd5e"],
-      "path": "./packs/modules.db",
-      "entity": "Item"
-    },
-    {
-      "name": "upgrades",
-      "label": "Upgrades",
-      "systems": ["dnd5e"],
-      "path": "./packs/upgrades.db",
-      "entity": "Item"
-    },
-    {
-      "name": "shipmountedweapons",
-      "label": "Ship Mounted Weapons",
-      "systems": ["dnd5e"],
-      "path": "./packs/ship-mounted-weapons.db",
-      "entity": "Item"
     },
     {
       "name": "spells",
       "label": "Spells",
       "systems": ["dnd5e"],
       "path": "./packs/spells.db",
-      "entity": "Item"
-    },
-    {
-      "name": "weapons",
-      "label": "Weapons",
-      "systems": ["dnd5e"],
-      "path": "./packs/weapons.db",
       "entity": "Item"
     }
   ],
