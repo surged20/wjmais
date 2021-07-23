@@ -51,6 +51,11 @@ function registerSettings() {
   });
 }
 
+function updateLogo() {
+  document.getElementById("logo").src = "modules/wjmais/assets/wj-logo-banner.webp"
+  document.getElementById("logo").style = "left: 12px; top: 12px";
+}
+
 Hooks.once("init", function() {
   if(!game.modules.get('lib-wrapper')?.active && game.user.isGM) {
     ui.notifications.error("Module wjmais requires the 'libWrapper' module. Please install and activate it.");
@@ -68,6 +73,8 @@ Hooks.once("init", function() {
   registerSettings();
 
   preloadHandlebarsTemplates();
+
+  updateLogo();
 
   /**
    * This function runs after game data has been requested and loaded from the servers, so entities exist
