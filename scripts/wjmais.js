@@ -31,7 +31,7 @@ DND5E.weaponProperties["ovh"] = "Overheat";
 DND5E.weaponProperties["sc1d12"] = "Scatter (1d12)";
 DND5E.weaponProperties["sc2d6"] = "Scatter (2d6)";
 DND5E.weaponProperties["sc2d10"] = "Scatter (2d10)";
-DND5E.weaponProperties["smw"] = "Ship Mounted Weapon";
+DND5E.weaponProperties["smw"] = "Ship Weapon";
 
 // Register Wildjammer Sheet and make it the default vehicle sheet
 Actors.registerSheet("wjmais", WildjammerSheet, {
