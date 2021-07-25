@@ -130,6 +130,7 @@ async function updateRole(creature, ship, role) {
       await creatureShipWeapon[0].update(
         {
           "name": shipWeapon.data.name + " (" + ship.data.name + ")",
+          "data.equipped": true,
           "flags.wjmais.swid": shipWeapon.id
         }
       );
