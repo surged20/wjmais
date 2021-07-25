@@ -77,7 +77,7 @@ async function notifyBridgeCrewRoleChange(ship, actor, role) {
     const roleName = game.i18n.localize(CONFIG.WJMAIS.bridgeCrewRoles[role]);
     roleChangeMessage = game.i18n.localize('WJMAIS.RoleIsAssigned') + ship.name + ' ';
     if (isFighterHelmsmanGunner(role)) {
-      const shipWeaponId = actor.items.find(i => i.data.data?.properties?.smw).data.flags.wjmais.swid;
+      const shipWeaponId = actor.items.find(i => i.data.data?.properties?.smw).data.flags?.wjmais?.swid;
       if (shipWeaponId)
         roleChangeMessage += ship.items.get(shipWeaponId).name + ' ';
     }
