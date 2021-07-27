@@ -4,6 +4,14 @@ import SelectItemPrompt from "./select-item-prompt.js";
 import TraitSelector from "../../../systems/dnd5e/module/apps/trait-selector.js";
 
 /**
+ * Is the item a fore mantle module?
+ * @param {Item5e} item   The item data object
+ */
+function isForeMantleModule(item) {
+  return item.type === "equipment" && item.data.data?.armor?.type === "foremantle";
+}
+
+/**
  * Is the item a ship mounted weapon?
  * @param {Item5e} item   The item data object
  */
@@ -48,7 +56,7 @@ function isHelmsman(role) {
  * @param {ItemData} itemData   The item data object
  */
 function isRollable(itemData) {
-  if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle") 
+  if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle")
     return false;
 
   return true;
@@ -93,54 +101,54 @@ async function notifyBridgeCrewRoleChange(ship, actor, role) {
   }
 }
 
+async function createCrewOwnedItem(item, ship, crewMember) {
+  const itemData = duplicate(item.data);
+  itemData.name = itemData.name + " (" + ship.data.name + ")";
+  itemData.data.equipped = true;
+  itemData.flags["wjmais.swid"] = item.id;
+  await crewMember.createEmbeddedDocuments("Item", [itemData]);
+  await item.setFlag("wjmais", "crewed", crewMember.id);
+}
+
 async function updateRole(creature, ship, role) {
-  const creatureRole = creature.data.flags?.wjmais?.role;
-  if (isFighterHelmsmanGunner(creatureRole) || isHelmsman(creatureRole)) {
-    const creatureShipWeapon = creature.items.find(i => i.data.flags.wjmais?.swid);
-    if (creatureShipWeapon) {
-      const shipWeapon = await ship.items.get(creatureShipWeapon.data.flags?.wjmais?.swid);
-      shipWeapon.unsetFlag("wjmais", "crewed");
-      await creatureShipWeapon.delete();
+  const currentRole = creature.data.flags?.wjmais?.role;
+
+  // Uncrew and delete all owned ship items when leaving F-H, Gunner, or Helmsman roles
+  if (isFighterHelmsmanGunner(currentRole) || isHelmsman(currentRole)) {
+    for (const item of creature.items.filter(i => i.data.flags?.wjmais?.swid)) {
+      const shipItem = await ship.items.get(item.data.flags?.wjmais?.swid);
+      await shipItem.unsetFlag("wjmais", "crewed");
+      await item.delete();
     }
   }
 
-  if (isFighterHelmsmanGunner(role) || isHelmsman(role)) {
-    const shipWeapons = [];
-    let shipWeapon = null;
+  if (isFighterHelmsmanGunner(role)) {
+    const shipWeapons = ship.items.filter(i => isGunnerWeapon(i) && !isShipWeaponCrewed(i));
 
-    ship.items.forEach((i, k) => {
-      if (isFighterHelmsmanGunner(role) && isGunnerWeapon(i) && !isShipWeaponCrewed(i)) shipWeapons.push(i);
-      else if (isHelmsman(role) && isHelmsmanWeapon(i) && !isShipWeaponCrewed(i)) shipWeapons.push(i);
-    });
-
-    if (shipWeapons.length === 0 && isFighterHelmsmanGunner(role)) {
+    if (shipWeapons.length === 0) {
       ui.notifications.warn(ship.name + game.i18n.localize('WJMAIS.ShipHasNoWeapons'));
       return false;
-    } else if (shipWeapons.length === 1) {
-      shipWeapon = shipWeapons[0];
-    } else if (shipWeapons.length > 1) {
-      const shipWeaponId = await SelectItemPrompt.create(shipWeapons, {
-      });
+    }
+
+    let shipWeapon = shipWeapons[0];
+    // Prompt if there's more than one ship weapon to choose from
+    if (shipWeapons.length > 1) {
+      const shipWeaponId = await SelectItemPrompt.create(shipWeapons, {});
       shipWeapon = ship.items.get(shipWeaponId);
     }
 
-    if (shipWeapon) {
-      const creatureShipWeapon = await creature.createEmbeddedDocuments("Item", [shipWeapon.data]);
-      await shipWeapon.setFlag("wjmais", "crewed", creature.id);
-      await creatureShipWeapon[0].update(
-        {
-          "name": shipWeapon.data.name + " (" + ship.data.name + ")",
-          "data.equipped": true,
-          "flags.wjmais.swid": shipWeapon.id
-        }
-      );
+    if (shipWeapon) await createCrewOwnedItem(shipWeapon, ship, creature);
+  }
+
+  if (isHelmsman(role)) {
+    // Helmsman owns multiple ship items
+    for (const item of ship.items.filter(i => isHelmsmanWeapon(i) || isForeMantleModule(i))) {
+      await createCrewOwnedItem(item, ship, creature);
     }
   }
 
-  if (role === "unassigned")
-    creature.unsetFlag("wjmais", "shipId");
-  else
-    await creature.setFlag("wjmais", "shipId", ship.id);
+  if (role === "unassigned") await creature.unsetFlag("wjmais", "shipId");
+  else await creature.setFlag("wjmais", "shipId", ship.id);
 
   await creature.setFlag("wjmais", "role", role);
 
