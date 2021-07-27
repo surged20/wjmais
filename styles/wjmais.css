@@ -34,6 +34,42 @@
   border: 0px;
 }
 
+.dnd5e.sheet, .editor-content {
+  font-family: 'Vollkorn', serif;
+}
+
+.editor-content h1 {
+  color: #450045;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.editor-content  h2 {
+  color: #590059;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  border-bottom: 2px solid black
+}
+
+.editor-content  h3 {
+  color: #6c006c;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+caption {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+a.entity-link, a.inline-roll {
+  box-shadow: 2px 2px 2px 0px #4b4a44;
+  border-radius: 6px;
+}
+
 .tidy5e.sheet.item .sheet-body .tab.details .form-group.form-group label.checkbox {
   font-size: 11px;
   /* min-width: 600px; */
