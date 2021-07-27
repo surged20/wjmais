@@ -10,6 +10,15 @@ WJMAIS.actorSizes = {
   "grg": "WJMAIS.SizeMegaGargantuan" // 4x4
 };
 
+WJMAIS.shipClass = {
+  "tiny": "WJMAIS.ShipClassFighter",
+  "sm": "WJMAIS.ShipClassSchooner",
+  "med": "WJMAIS.ShipClassSloop",
+  "lg": "WJMAIS.ShipClassFrigate",
+  "huge": "WJMAIS.ShipClassHeavyFrigate",
+  "grg": "WJMAIS.ShipClassShipOfTheLine"
+};
+
 WJMAIS.shipRamDice = {
   "tiny": 1,
   "sm": 1,
@@ -81,7 +90,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 120,
       "cargo": 0.25,
-      "class": "Fighter",
       "crew.min": 1,
       "crew.max": 1,
       "hardpoints.sm": 1,
@@ -102,7 +110,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 120,
       "cargo": 0.25,
-      "class": "Fighter",
       "crew.min": 1,
       "crew.max": 1,
       "hardpoints.spc": 1,
@@ -125,7 +132,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 1200,
       "cargo": 5,
-      "class": "Schooner",
       "crew.min": 3,
       "crew.max": 10,
       "hardpoints.sm": 1,
@@ -147,7 +153,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 1800,
       "cargo": 5,
-      "class": "Schooner",
       "crew.min": 5,
       "crew.max": 15,
       "hardpoints.sm": 1,
@@ -171,7 +176,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 2160,
       "cargo": 9,
-      "class": "Schooner",
       "crew.min": 8,
       "crew.max": 18,
       "hardpoints.lg": 1,
@@ -194,7 +198,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 2400,
       "cargo": 10,
-      "class": "Schooner",
       "crew.min": 6,
       "crew.max": 20,
       "hardpoints.med": 3,
@@ -216,7 +219,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 3000,
       "cargo": 13,
-      "class": "Sloop",
       "crew.min": 10,
       "crew.max": 25,
       "hardpoints.sm": 1,
@@ -238,7 +240,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 4800,
       "cargo": 20,
-      "class": "Sloop",
       "crew.min": 20,
       "crew.max": 40,
       "hardpoints.sm": 1,
@@ -261,7 +262,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 4200,
       "cargo": 17,
-      "class": "Sloop",
       "crew.min": 10,
       "crew.max": 35,
       "hardpoints.med": 5,
@@ -283,7 +283,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 4800,
       "cargo": 20,
-      "class": "Sloop",
       "crew.min": 3,
       "crew.max": 40,
       "hardpoints.med": 3,
@@ -304,7 +303,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 4800,
       "cargo": 28,
-      "class": "Sloop",
       "crew.min": 12,
       "crew.max": 40,
       "hardpoints.sm": 3,
@@ -328,7 +326,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 5400,
       "cargo": 22,
-      "class": "Frigate",
       "crew.min": 20,
       "crew.max": 45,
       "hardpoints.med": 2,
@@ -350,7 +347,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 5400,
       "cargo": 22,
-      "class": "Frigate",
       "crew.min": 12,
       "crew.max": 45,
       "hardpoints.med": 2,
@@ -373,7 +369,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 7200,
       "cargo": 30,
-      "class": "Frigate",
       "crew.min": 24,
       "crew.max": 60,
       "hardpoints.lg": 3,
@@ -395,7 +390,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 5400,
       "cargo": 22,
-      "class": "Frigate",
       "crew.min": 10,
       "crew.max": 45,
       "hardpoints.sm": 6,
@@ -418,7 +412,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 7200,
       "cargo": 30,
-      "class": "Frigate",
       "crew.min": 10,
       "crew.max": 60,
       "hardpoints.med": 5,
@@ -439,7 +432,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 8400,
       "cargo": 35,
-      "class": "Heavy Frigate",
       "crew.min": 13,
       "crew.max": 70,
       "hardpoints.lg": 4,
@@ -461,7 +453,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 8400,
       "cargo": 35,
-      "class": "Heavy Frigate",
       "crew.min": 12,
       "crew.max": 70,
       "hardpoints.med": 2,
@@ -482,7 +473,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 800,
       "cargo": 15,
-      "class": "Schooner",
       "crew.min": 4,
       "crew.max": 20,
       "hardpoints.sm": 0,
@@ -504,7 +494,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 10800,
       "cargo": 45,
-      "class": "Heavy Frigate",
       "crew.min": 20,
       "crew.max": 90,
       "hardpoints.med": 4,
@@ -527,7 +516,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 10800,
       "cargo": 50,
-      "class": "Heavy Frigate",
       "crew.min": 20,
       "crew.max": 90,
       "hardpoints.med": 1,
@@ -550,7 +538,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 10200,
       "cargo": 26,
-      "class": "Heavy Frigate",
       "crew.min": 18,
       "crew.max": 65,
       "hardpoints.med": 26,
@@ -572,7 +559,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 12000,
       "cargo": 50,
-      "class": "Ship of the Line",
       "crew.min": 30,
       "crew.max": 100,
       "hardpoints.lg": 7,
@@ -594,7 +580,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 12000,
       "cargo": 50,
-      "class": "Ship of the Line",
       "crew.min": 40,
       "crew.max": 100,
       "hardpoints.med": 3,
@@ -616,7 +601,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 12000,
       "cargo": 50,
-      "class": "Ship of the Line",
       "crew.min": 30,
       "crew.max": 100,
       "hardpoints.lg": 6,
@@ -637,7 +621,6 @@ WJMAIS.shipData = [
     "flags.wjmais": {
       "air": 36000,
       "cargo": 100,
-      "class": "Ship of the Line",
       "crew.min": 75,
       "crew.max": 300,
       "hardpoints.med": 9,

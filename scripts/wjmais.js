@@ -82,7 +82,7 @@ Hooks.once("init", function() {
   Hooks.once("setup", function() {
     // Localize WJMAIS objects once up-front
     const toLocalize = [
-      "actorSizes", "bridgeCrewRoles", "landingTypes"
+      "actorSizes", "bridgeCrewRoles", "landingTypes", "shipClass"
     ];
 
     // Exclude some from sorting where the default order matters

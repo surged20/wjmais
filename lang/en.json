@@ -14,6 +14,13 @@
   "WJMAIS.SizeMegaHuge": "Mega Huge",
   "WJMAIS.SizeMegaGargantuan": "Mega Gargantuan",
 
+  "WJMAIS.ShipClassFighter": "Fighter",
+  "WJMAIS.ShipClassSchooner": "Schooner",
+  "WJMAIS.ShipClassSloop": "Sloop",
+  "WJMAIS.ShipClassFrigate": "Frigate",
+  "WJMAIS.ShipClassHeavyFrigate": "Heavy Frigate",
+  "WJMAIS.ShipClassShipOfTheLine": "Ship of the Line",
+
   "WJMAIS.HullPoints": "Hull Points",
   "WJMAIS.BulwarkPoints": "Bulwark Points",
 
