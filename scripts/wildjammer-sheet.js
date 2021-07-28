@@ -209,8 +209,12 @@ export default class WildjammerSheet extends ActorSheet5e {
     data.flags = this.actor.data.flags;
     data.config = CONFIG.WJMAIS;
 
+    if (!data.flags?.wjmais) data.flags["wjmais"] = {};
     if (!data.flags?.wjmais?.traits)
-      data.flags["wjmais"] = {"traits": { "lt" : { "value": [], "custom": "" }}};
+      data.flags["wjmais"]["traits"] = {"lt": {"value": ["spacedock"]}};
+    if (!data.flags?.wjmais?.speed)
+      data.flags["wjmais"]["speed"] = {"tactical": 0, "mnv": 0};
+
     this._prepareTraits(data.flags.wjmais.traits);
 
     // Return data to the sheet
