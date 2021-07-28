@@ -78,11 +78,52 @@
 
   <section class="sheet-body">
     <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
+      {{#if isNPC}}
+        <ul class="ability-scores flexrow">
+          {{#each data.abilities as |ability id|}}
+            <li class="ability" data-ability="{{id}}">
+              <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
+              <input class="ability-score" name="data.abilities.{{id}}.value" type="text"
+                                                                              value="{{ability.value}}" data-dtype="Number" placeholder="0">
+              <div class="ability-modifiers flexrow">
+                <span class="ability-mod" title="{{localize 'DND5E.Modifier'}}">
+                  {{numberFormat ability.mod decimals=0 sign=true}}
+                </span>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+      {{#unless isNPC}}
+        <section class="center-pane flexcol">
+          <h4 class="attribute-name box-title">{{localize 'WJMAIS.BridgeCrewRoles'}}</span>
+          {{> 'modules/wjmais/templates/actors/parts/bridge-crew-roles.html' sections=roles}}
+        </section>
+      {{/unless}}
       <section class="center-pane flexcol">
-        <h4 class="attribute-name box-title">{{localize 'WJMAIS.BridgeCrewRoles'}}</span>
-        {{> 'modules/wjmais/templates/actors/parts/bridge-crew-roles.html' sections=roles}}
-      </section>
-      <section class="center-pane flexcol">
+        {{#if isGM}}
+          <div class="counters">
+            <div class="counter flexrow npc-toggle">
+              <h4>Mode</h4>
+              <div class="counter-value">
+                <label class="checkbox">
+                  {{localize 'WJMAIS.NPCShip'}}
+                  <input class="npc-toggle" type="checkbox" name="flags.wjmais.npc" data-dtype="Boolean" {{checked flags.wjmais.npc}}>
+                </label>
+              </div>
+            </div>
+            {{#if isNPC}}
+              <div class="counter flexrow prof">
+                <h4>{{localize 'DND5E.Proficiency'}}</h4>
+                <div class="counter-value">
+                  <input class="wjmais-prof" type="number"
+                                             placeholder="0" name="data.attributes.prof"
+                                                             data-dtype="Number" value="{{data.attributes.prof}}">
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
         <div class="counters">
           <div class="counter flexrow crew-min-max">
             <h4>{{localize 'WJMAIS.CrewMinMax'}}</h4>

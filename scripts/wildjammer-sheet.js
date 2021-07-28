@@ -51,17 +51,6 @@ function isHelmsman(role) {
   return role === "helmsman"
 }
 
-/**
- * Is the item rollable?
- * @param {ItemData} itemData   The item data object
- */
-function isRollable(itemData) {
-  if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle")
-    return false;
-
-  return true;
-}
-
 function isRoleChangeInvalid(role, ship, creature) {
   // Error if actor already assigned
   const creatureShipId = creature.data.flags?.wjmais?.shipId;
@@ -208,6 +197,8 @@ export default class WildjammerSheet extends ActorSheet5e {
 
     data.flags = this.actor.data.flags;
     data.config = CONFIG.WJMAIS;
+    data.isNPC = this.actor.data.flags?.wjmais?.npc;
+    data.isGM = game.user.isGM;
 
     if (!data.flags?.wjmais) data.flags["wjmais"] = {};
     if (!data.flags?.wjmais?.traits)
@@ -314,7 +305,7 @@ export default class WildjammerSheet extends ActorSheet5e {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
-    if (isRollable(item.data)) super._onItemRoll(event);
+    if (this._isRollable(item.data)) super._onItemRoll(event);
   }
 
   /**
@@ -356,6 +347,39 @@ export default class WildjammerSheet extends ActorSheet5e {
   }
 
   /* -------------------------------------------- */
+
+  /**
+   * Remove actor role
+   * @param {Item} item   The role item
+   * @private
+   */
+  async _doRemoveRole(item) {
+    const actor = game.actors.get(item.data.flags.wjmais.actorId);
+    await updateRole(actor, this.actor, "unassigned");
+    notifyBridgeCrewRoleChange(actor, "unassigned");
+  }
+
+  /**
+   * Is ship an NPC?
+   * @private
+   */
+  _isNPC() {
+    return this.actor.data.flags?.wjmais?.npc;
+  }
+
+  /**
+   * Is the item rollable?
+   * @param {ItemData} itemData   The item data object
+   * @private
+   */
+  _isRollable(itemData) {
+    if (this._isNPC()) return true;
+
+    if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle")
+      return false;
+
+    return true;
+  }
 
   /**
    * Get required crew from weapon properties.
@@ -565,7 +589,7 @@ export default class WildjammerSheet extends ActorSheet5e {
     const roles = (this.actor.data.data.traits.size === 'tiny') ? fighterRoles : shipRoles;
 
     for (const item of data.items) {
-      item["rollable"] = isRollable(item);
+      item["rollable"] = this._isRollable(item);
       if (item.type === 'weapon' && item.data?.properties.smw) {
         item["crewValue"] = this._getCrewValue(item);
         features.weapons.items.push(item);
@@ -641,6 +665,8 @@ export default class WildjammerSheet extends ActorSheet5e {
 
     html.find('.trait-selector-landing').click(this._onTraitSelector.bind(this));
 
+    html.find('.npc-toggle input')
+      .change(this._onNPCChanged.bind(this));
   }
 
 
@@ -735,9 +761,7 @@ export default class WildjammerSheet extends ActorSheet5e {
       const cargo = duplicate(this.actor.data.data.cargo[type]).filter((_, i) => i !== idx);
       return this.actor.update({[`data.cargo.${type}`]: cargo});
     } else if (item.data.flags?.wjmais?.role) {
-      const actor = game.actors.get(item.data.flags.wjmais.actorId);
-      await updateRole(actor, this.actor, "unassigned");
-      notifyBridgeCrewRoleChange(actor, "unassigned");
+      this._doRemoveRole(item);
     } else if (isGunnerWeapon(item)) {
       const creature = game.actors.get(item.data.flags?.wjmais?.crewed);
       if (creature) {
@@ -764,6 +788,20 @@ export default class WildjammerSheet extends ActorSheet5e {
     const hp = Math.clamped(0, parseInt(event.currentTarget.value), item.data.data.hp.max);
     event.currentTarget.value = hp;
     return item.update({'data.hp.value': hp});
+  }
+
+  /**
+   * When entering NPC mode, remove all existing bridge crew roles
+   * @param event {Event}
+   * @private
+   */
+  async _onNPCChanged(event) {
+    if (event.target.checked) {
+      this.actor.items.filter(i => i.data.flags?.wjmais?.role).forEach(async item => {
+        await this._doRemoveRole(item);
+        await item.delete();
+      });
+    }
   }
 
   /* -------------------------------------------- */
