@@ -103,6 +103,17 @@ Hooks.once("init", function() {
     }
   });
 
+  Hooks.on('ready', () => {
+    $('#logo').click(async ev => {
+      const pack = await game.packs.get("wjmais.quickref");
+      const quickref = pack.index.getName("Wildjammer Quick Reference");
+      if (quickref) {
+        const quickrefDocument = await pack.getDocument(quickref._id);
+        quickrefDocument.sheet.render(true);
+      }
+    });
+  });
+
   Hooks.on('updateActor', (actor, data) => {
     if (actor.data.type === "vehicle" && !actor.data.flags?.wjmais?.model && actor.data.name != "Importing..." && actor.data.data.attributes.ac.value ) {
       const shipData = WJMAIS.shipData.find( (ship) => ship["flags.wjmais"].model === actor.data.name );
