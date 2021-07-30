@@ -349,6 +349,16 @@ export default class WildjammerSheet extends ActorSheet5e {
   /* -------------------------------------------- */
 
   /**
+   * Prepare items that are mounted to a vehicle and are equippable.
+   * @private
+   */
+  _prepareEquippableItem(item) {
+    const isEquipped = item.data.equipped;
+    item.toggleClass = isEquipped ? 'active' : '';
+    item.toggleTitle = game.i18n.localize(`DND5E.${isEquipped ? 'Equipped' : 'Unequipped'}`);
+  }
+
+  /**
    * Remove actor role
    * @param {Item} item   The role item
    * @private
@@ -465,33 +475,39 @@ export default class WildjammerSheet extends ActorSheet5e {
       actions: {
         label: game.i18n.localize('DND5E.ActionPl'),
         items: [],
+        equippable: true,
         dataset: {type: 'feat', 'activation.type': 'crew'},
       },
       passive: {
         label: game.i18n.localize('DND5E.Features'),
         items: [],
+        equippable: true,
         dataset: {type: 'feat'}
       },
       modules: {
         label: game.i18n.localize('WJMAIS.ItemTypeModules'),
         items: [],
+        equippable: true,
         dataset: {type: 'equipment', 'armor.type': 'module', 'armor.value': '', 'hp.max': 10, 'hp.value': 10},
         columns: moduleColumns
       },
       reactions: {
         label: game.i18n.localize('DND5E.ReactionPl'),
         items: [],
+        equippable: true,
         dataset: {type: 'feat', 'activation.type': 'reaction'}
       },
       upgrades: {
         label: game.i18n.localize('WJMAIS.ItemTypeUpgrades'),
         items: [],
+        equippable: true,
         dataset: {type: 'equipment', 'armor.type': 'upgrade', 'armor.value': ''},
         columns: upgradeColumns
       },
       weapons: {
         label: game.i18n.localize('DND5E.ItemTypeWeaponPl'),
         items: [],
+        equippable: true,
         dataset: {type: 'weapon', 'properties.smw': true, 'action-type': 'mwak', 'hp.max': 10, 'hp.value': 10},
         columns: weaponColumns
       }
@@ -589,6 +605,7 @@ export default class WildjammerSheet extends ActorSheet5e {
     const roles = (this.actor.data.data.traits.size === 'tiny') ? fighterRoles : shipRoles;
 
     for (const item of data.items) {
+      this._prepareEquippableItem(item);
       item["rollable"] = this._isRollable(item);
       if (item.type === 'weapon' && item.data?.properties.smw) {
         item["crewValue"] = this._getCrewValue(item);
@@ -633,6 +650,7 @@ export default class WildjammerSheet extends ActorSheet5e {
 
     if (!this.options.editable) return;
 
+    html.find('.item-toggle').click(this._onToggleItem.bind(this));
     html.find('.item-facing select').change(async (event) => {
       event.preventDefault();
       const itemID = event.currentTarget.closest('.item').dataset.itemId;
@@ -833,5 +851,19 @@ export default class WildjammerSheet extends ActorSheet5e {
     const choices = CONFIG.WJMAIS[a.dataset.options];
     const options = { name: a.dataset.target, title: label.innerText, choices, allowCustom: false };
     new TraitSelector(this.actor, options).render(true)
+  }
+
+  /**
+   * Handle toggling an item's equipped status.
+   * @param event {Event}
+   * @returns {Promise<Item>}
+   * @private
+   */
+  _onToggleItem(event) {
+    event.preventDefault();
+    const itemID = event.currentTarget.closest('.item').dataset.itemId;
+    const item = this.actor.items.get(itemID);
+    const equipped = !!item.data.data.equipped;
+    return item.update({'data.equipped': !equipped});
   }
 };
