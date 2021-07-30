@@ -80,6 +80,16 @@ WJMAIS.crewValues = {
   "cr8": 8,
 }; 
 
+WJMAIS.cargoTypes = [
+  "consumable",
+  "backpack",
+  "equipment",
+  "loot",
+  "spell",
+  "tool",
+  "weapon"
+];
+
 WJMAIS.shipData = [
   {
     "data.attributes.hp": {
