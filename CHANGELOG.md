@@ -16,6 +16,7 @@
 - Replace anvil with wildjammer logo
 - Click on wildjammer logo opens quick reference guide
 - README updated with additional docs
+- Added support for dnd5e 1.4.x compatible armor class config dialog
 
 ### Changed
 
