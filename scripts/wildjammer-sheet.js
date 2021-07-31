@@ -679,6 +679,7 @@ export default class WildjammerSheet extends ActorSheet5e {
       .click(evt => evt.target.select())
       .change(this._onCargoRowChange.bind(this));
 
+    html.find('.armor-config-button').click(super._onConfigMenu.bind(this));
     html.find('.speed-config-button').click(this._onSpeedConfigMenu.bind(this));
 
     html.find('.trait-selector-landing').click(this._onTraitSelector.bind(this));

@@ -48,11 +48,13 @@
                                                                                 value="{{data.attributes.hp.tempmax}}" data-dtype="Number">
           </div>
         </li>
-        <li class="attribute">
-          <h4 class="attribute-name box-title">{{localize 'DND5E.ArmorClass'}}</h4>
-          <div class="attribute-value">
-            <input name="data.attributes.ac.value" type="text" placeholder="&mdash;"
-                                                               value="{{data.attributes.ac.value}}" data-dtype="Number">
+        <li class="attribute armor">
+          <h4 class="attribute-name box-title">
+            {{ localize "DND5E.ArmorClass" }}
+            <a class="armor-config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}"><i class="fas fa-cog"></i></a>
+          </h4>
+          <div class="attribute-value attributable" data-property="attributes.ac">
+            <span>{{data.attributes.ac.value}}</span>
           </div>
         </li>
         <li class="attribute speed">
