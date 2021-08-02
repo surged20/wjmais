@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.1] - 2021-08-03
+
+### Added
+
+- Patched fromCompendium() so that ships that are imported from a compendium will retain their resource bar config. This allow ships to be imported with bar2 preset to BP.
+
+### Changed
+
+- Update with wording changes between 0.97 prerelease and final pdf
+- Ships now set base AC using custom formula instead of using the flat AC override.
+
+### Fixed
+
+- Fix bug where opening Default Token Config will crash
+
 ## [0.2.0] - 2021-07-31
 
 ### Added
@@ -55,6 +70,7 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
+[0.2.1]: https://github.com/surged20/wjmais/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/surged20/wjmais/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/surged20/wjmais/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/surged20/wjmais/releases/tag/0.1.0
