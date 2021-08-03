@@ -1,6 +1,6 @@
 import { DND5E } from "/systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
-import { patchItemSheet, patchResourceBars, patchRollData } from "./patch.js";
+import { patchCompendiumImport, patchItemSheet, patchResourceBars, patchRollData } from "./patch.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
@@ -62,6 +62,7 @@ Hooks.once("init", function() {
     return;
   }
 
+  patchCompendiumImport();
   patchItemSheet();
   patchResourceBars();
   patchRollData();

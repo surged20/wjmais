@@ -1,3 +1,18 @@
+export function patchCompendiumImport() {
+  // Override default system token bar values on wildjammer import from compendium.
+  // We want token bars from the compendium to be used for ships to pick up BP.
+  libWrapper.register('wjmais', 'WorldCollection.prototype.fromCompendium', function (wrapped, ...args) {
+    if (!args[0].data.flags?.wjmais?.speed)
+      return wrapped(...args);
+
+    const token = args[0].data.token;
+    const data = wrapped(...args);
+    data.token.bar1 = token.bar1;
+    data.token.bar2 = token.bar2;
+    return data;
+  }, 'MIXED' );
+}
+
 export function patchItemSheet() {
   // Display wildjammer modules and upgrades as mountable items like vehicle equipment
   libWrapper.register('wjmais', 'game.dnd5e.applications.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
