@@ -9,7 +9,10 @@ export function patchItemSheet() {
 export function patchResourceBars() {
   // Add Bulwark Points bar attribute choice
   libWrapper.register('wjmais', 'TokenDocument.getTrackedAttributeChoices', function (wrapped, ...args) {
-    // XXX only add on wildjammer actors
+    // If no args then it's the default token settings config.
+    // Init args with the default tracked attribute choices.
+    if (!args[0])
+      args[0] = this.getTrackedAttributes();
     args[0].bar.push(["Bulwark Points"]);
     return wrapped(...args);
   }, 'MIXED' );
