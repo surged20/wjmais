@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Removed
+
+- Remove **Ram** feature, was replaced by **Collide**.
+
 ## [0.2.1] - 2021-08-03
 
 ### Added
@@ -70,6 +76,7 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.2.1...HEAD
 [0.2.1]: https://github.com/surged20/wjmais/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/surged20/wjmais/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/surged20/wjmais/compare/0.1.0...0.1.1
