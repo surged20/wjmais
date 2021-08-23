@@ -59,6 +59,7 @@
   "WJMAIS.RoleIsAssigned": "joins the bridge crew as ",
   "WJMAIS.RoleIsUnassigned": "leaves the bridge crew of the ",
 
+  "WJMAIS.ItemTypeHull": "Hull",
   "WJMAIS.ItemTypeModules": "Modules",
   "WJMAIS.ItemTypeUpgrades": "Upgrades",
   "WJMAIS.Crew": "Crew",

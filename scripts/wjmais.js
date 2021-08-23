@@ -5,6 +5,8 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
 DND5E.equipmentTypes["foremantle"] = "Fore Mantle Module";
+DND5E.equipmentTypes["material"] = "Hull Material";
+DND5E.equipmentTypes["modifier"] = "Hull Modifier";
 DND5E.equipmentTypes["module"] = "Ship Module";
 DND5E.equipmentTypes["upgrade"] = "Ship Upgrade";
 

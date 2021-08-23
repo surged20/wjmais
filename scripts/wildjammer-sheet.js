@@ -484,6 +484,12 @@ export default class WildjammerSheet extends ActorSheet5e {
         equippable: true,
         dataset: {type: 'feat'}
       },
+      hull: {
+        label: game.i18n.localize('WJMAIS.ItemTypeHull'),
+        items: [],
+        equippable: true,
+        dataset: {type: 'equipment', 'armor.type': 'material', 'armor.value': '', 'hp.max': 10, 'hp.value': 10},
+      },
       modules: {
         label: game.i18n.localize('WJMAIS.ItemTypeModules'),
         items: [],
@@ -611,11 +617,12 @@ export default class WildjammerSheet extends ActorSheet5e {
         item["crewValue"] = this._getCrewValue(item);
         features.weapons.items.push(item);
       }
-      else if (item.type === 'equipment' && (item.data?.armor.type === "foremantle" || item.data?.armor.type === "module")) {
+      else if (item.type === 'equipment' && ["foremantle", "module"].includes(item.data?.armor.type)) {
         totalWeight += (item.data.weight || 0) * item.data.quantity;
         features.modules.items.push(item);
       }
       else if (item.type === 'equipment' && item.data?.armor.type === "upgrade") features.upgrades.items.push(item);
+      else if (item.type === 'equipment' && ["material", "modifier"].includes(item.data?.armor.type)) features.hull.items.push(item);
       else if (CONFIG.WJMAIS.cargoTypes.includes(item.type)) {
         totalWeight += (item.data.weight || 0) * item.data.quantity;
         cargo.cargo.items.push(item);
