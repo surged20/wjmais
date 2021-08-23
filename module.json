@@ -4,7 +4,7 @@
   "description": "Wildjammer content and dnd5e extensions",
   "version": "0.0.0",
   "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "0.8.8",
+  "compatibleCoreVersion": "0.8.9",
   "system": ["dnd5e"],
   "minimumSystemVersion": "1.4.1",
   "dependencies": [
