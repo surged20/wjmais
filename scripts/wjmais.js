@@ -1,6 +1,7 @@
 import { DND5E } from "/systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
 import { applyPatches } from "./patch.js";
+import { updateActorEffects } from "./effects.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
 
@@ -117,6 +118,14 @@ Hooks.once("init", function() {
         quickrefDocument.sheet.render(true);
       }
     });
+  });
+
+  Hooks.on('deleteActiveEffect', (effect) => {
+    updateActorEffects(effect, true);
+  });
+
+  Hooks.on('updateActiveEffect', (effect) => {
+    updateActorEffects(effect);
   });
 
   Hooks.on('updateActor', (actor, data) => {
