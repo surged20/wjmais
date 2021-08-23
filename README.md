@@ -15,14 +15,14 @@ supplement by Sesserdrix#7270.
 This Foundry VTT module extends the dnd5e 1.4.1+ system with the following:
 - WJ:MAiS version 0.97 content
   - Wildjammer ships
-  - Helms, Modules, Upgrades, and Fore Mantle Modules
+  - Helms, Modules, Upgrades, Fore Mantle Modules, Hull Materials/Modifiers
   - Ship Weapons and Personal Weapons
   - Optional class features, Bridge Crew Role Features, and Spells
   - Quick Reference guide
 - Wildjammer ship vehicle sheet (PC and NPC modes)
   - Hull Points, Bulwark Points, Tactical Speed, and Manueverability
-  - dnd5e 1.4.x compatible armor class config
-  - Active Effects tab
+  - dnd5e 1.4.x compatible armor class config with wildjammer AC formula
+  - Active Effects support for content with changes targeting AC, Speed, BP, and HP.
   - PC Mode
     - Weapons not rollable from Wildjammer sheet
     - Bridge crew role management
@@ -34,7 +34,7 @@ This Foundry VTT module extends the dnd5e 1.4.1+ system with the following:
 - Token resource bar support for Hull Points and Bulwark Points
 - Ship class scaled Collide and Ram attacks using **@ship.ram.dice** 
 - Additional personal and ship weapon properties
-- Additional wildjammer fore mantle module, module, and upgrade equipment types
+- Additional wildjammer fore mantle module, module, upgrade, hull material/modifier equipment types
 
 ## Use
 
@@ -57,7 +57,7 @@ This is the default mode available to players.
 
 #### NPC Mode
 
-This mode is only availble to GMs.
+This mode is only available to GMs.
 
 - GM Visible *NPC Ship* toggle enters NPC mode.
   - Any PCs assigned to bridge crew roles will be removed upon entering NPC mode.
