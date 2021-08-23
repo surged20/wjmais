@@ -1,6 +1,19 @@
 # Changelog
 
-## [Unreleased]
+## [0.2.2] - 2021-08-23
+
+### Added 
+
+- New wildjammer AC formula to support ship construction rules ship class AC modifier.
+- New hull material and modifier equipment types.
+- Hull section on sheet contains material/modifiers.
+- New ship construction hull material content. 
+- Actor update support for active effects that modify BP or HP.
+- Active effects for all material, modifiers, and upgrades with changes targeting AC, Speed, BP, or HP.
+
+### Changed
+
+- Ship construction hull modifiers moved from features to equipment items
 
 ### Removed
 
@@ -76,7 +89,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.2.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.2.2...HEAD
+[0.2.2]: https://github.com/surged20/wjmais/compare/0.2.1...0.2.2
 [0.2.1]: https://github.com/surged20/wjmais/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/surged20/wjmais/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/surged20/wjmais/compare/0.1.0...0.1.1
