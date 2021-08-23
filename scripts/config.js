@@ -19,6 +19,15 @@ WJMAIS.shipClass = {
   "grg": "WJMAIS.ShipClassShipOfTheLine"
 };
 
+WJMAIS.shipModifiers = {
+  "tiny": {"ac": 0, "spd": 0, "mnv": 0},
+  "sm": {"ac": 2, "spd": 0, "mnv": 45},
+  "med": {"ac": 4, "spd": 0, "mnv": 0},
+  "lg": {"ac": 5, "spd": -500, "mnv": 0},
+  "huge": {"ac": 6, "spd": -1000, "mnv": -45},
+  "grg": {"ac": 7, "spd": -1500, "mnv": -45}
+};
+
 WJMAIS.shipRamDice = {
   "tiny": 1,
   "sm": 1,

@@ -1,8 +1,13 @@
 import { DND5E } from "/systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
-import { patchCompendiumImport, patchItemSheet, patchResourceBars, patchRollData } from "./patch.js";
+import { applyPatches } from "./patch.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
+
+DND5E.armorClasses["wildjammer"] = {
+  label: "WJMAIS.Wildjammer",
+  formula: "10 + @ship.ac.mod"
+}
 
 DND5E.equipmentTypes["foremantle"] = "Fore Mantle Module";
 DND5E.equipmentTypes["material"] = "Hull Material";
@@ -64,10 +69,7 @@ Hooks.once("init", function() {
     return;
   }
 
-  patchCompendiumImport();
-  patchItemSheet();
-  patchResourceBars();
-  patchRollData();
+  applyPatches();
 
   console.log("wjmais | Initializing Wildjammer: More Adventures in Space");
 

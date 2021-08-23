@@ -1,4 +1,4 @@
-export function patchCompendiumImport() {
+function patchCompendiumImport() {
   // Override default system token bar values on wildjammer import from compendium.
   // We want token bars from the compendium to be used for ships to pick up BP.
   libWrapper.register('wjmais', 'WorldCollection.prototype.fromCompendium', function (wrapped, ...args) {
@@ -13,7 +13,7 @@ export function patchCompendiumImport() {
   }, 'MIXED' );
 }
 
-export function patchItemSheet() {
+function patchItemSheet() {
   // Display wildjammer modules and upgrades as mountable items like vehicle equipment
   libWrapper.register('wjmais', 'game.dnd5e.applications.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
     const armorType = this.document.data.data?.armor?.type;
@@ -22,7 +22,7 @@ export function patchItemSheet() {
   }, 'MIXED' );
 }
 
-export function patchResourceBars() {
+function patchResourceBars() {
   // Add Bulwark Points bar attribute choice
   libWrapper.register('wjmais', 'TokenDocument.getTrackedAttributeChoices', function (wrapped, ...args) {
     // If no args then it's the default token settings config.
@@ -91,15 +91,24 @@ export function patchResourceBars() {
   }, 'MIXED' );
 }
 
-export function patchRollData() {
-  // Add @ship.ram.dice formula support
-  libWrapper.register('wjmais', 'CONFIG.Actor.documentClass.prototype.getRollData', function (wrapped, ...args) {
-    const shipId = this.data.flags?.wjmais?.shipId;
-    const ship = game?.actors?.get(shipId);
-    if (ship) {
-      const size = ship.data.data.traits.size;
-      this.data.data["ship"] = {"ram": {"dice": CONFIG.WJMAIS.shipRamDice[size]}};
-    }
+function patchRollData() {
+  libWrapper.register('wjmais', 'game.dnd5e.entities.Actor5e.prototype.getRollData', function (wrapped, ...args) {
+    const ship = game?.actors?.get(this.data.flags?.wjmais?.shipId);
+    const size = ship ? ship.data.data.traits.size : this.data.data.traits.size;
+
+    // Add @ship.ac.mod and @ship.ram.dice formula support
+    this.data.data["ship"] = {
+      "ac": {"mod": CONFIG.WJMAIS.shipModifiers[size].ac},
+      "ram": {"dice": CONFIG.WJMAIS.shipRamDice[size]}
+    };
+
     return wrapped(...args);
   }, 'MIXED' );
+}
+
+export function applyPatches() {
+  patchCompendiumImport();
+  patchItemSheet();
+  patchResourceBars();
+  patchRollData();
 }
