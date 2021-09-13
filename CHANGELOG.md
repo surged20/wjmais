@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.3] - 2021-09-13
+
+### Fixed
+
+- Speed config now stores maneuverability as an integer. This fixes active effects calculations applied to maneuverability.
+
 ## [0.2.2] - 2021-08-23
 
 ### Added 
@@ -89,7 +95,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.2.2...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.2.3...HEAD
+[0.2.3]: https://github.com/surged20/wjmais/compare/0.2.2...0.2.3
 [0.2.2]: https://github.com/surged20/wjmais/compare/0.2.1...0.2.2
 [0.2.1]: https://github.com/surged20/wjmais/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/surged20/wjmais/compare/0.1.1...0.2.0
