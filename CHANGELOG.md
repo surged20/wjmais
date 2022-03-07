@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0] - 2022-03-07
+
+### Added
+
+- core v9 and dnd5e 1.5.7 compatibility
+
+### Fixed
+
+- Cargo weight now correctly calculated (was NaN after dnd5e system update)
+
 ## [0.2.3] - 2021-09-13
 
 ### Fixed
