@@ -331,7 +331,7 @@ export default class WildjammerSheet extends ActorSheet5e {
 
     // Compute currency weight
     const totalCoins = Object.values(actorData.data.currency).reduce((acc, denom) => acc + denom, 0);
-    totalWeight += totalCoins / CONFIG.DND5E.encumbrance.currencyPerWeight;
+    totalWeight += totalCoins / CONFIG.DND5E.encumbrance.currencyPerWeight.imperial;
 
     // Compute overall encumbrance
     const max = actorData.actor.flags?.wjmais?.cargo * 2000;
