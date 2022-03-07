@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1] - 2022-03-07
+
+### Fixed
+
+- Fix display and configuration of ship equipment on item sheets
+
 ## [0.3.0] - 2022-03-07
 
 ### Added
