@@ -10,11 +10,18 @@ DND5E.armorClasses["wildjammer"] = {
   formula: "10 + @ship.ac.mod"
 }
 
-DND5E.equipmentTypes["foremantle"] = "Fore Mantle Module";
-DND5E.equipmentTypes["material"] = "Hull Material";
-DND5E.equipmentTypes["modifier"] = "Hull Modifier";
-DND5E.equipmentTypes["module"] = "Ship Module";
-DND5E.equipmentTypes["upgrade"] = "Ship Upgrade";
+
+DND5E.equipmentTypes["foremantle"] = "WJMAIS.ForeMantleModule";
+DND5E.equipmentTypes["material"] = "WJMAIS.HullMaterial";
+DND5E.equipmentTypes["modifier"] = "WJMAIS.HullModifier";
+DND5E.equipmentTypes["module"] = "WJMAIS.ShipModule";
+DND5E.equipmentTypes["upgrade"] = "WJMAIS.ShipUpgrade";
+
+DND5E.miscEquipmentTypes["foremantle"] = "WJMAIS.ForeMantleModule";
+DND5E.miscEquipmentTypes["material"] = "WJMAIS.HullMaterial";
+DND5E.miscEquipmentTypes["modifier"] = "WJMAIS.HullModifier";
+DND5E.miscEquipmentTypes["module"] = "WJMAIS.ShipModule";
+DND5E.miscEquipmentTypes["upgrade"] = "WJMAIS.ShipUpgrade";
 
 DND5E.weaponProperties["bf1"] = "Backfire 1";
 DND5E.weaponProperties["bf2"] = "Backfire 2";

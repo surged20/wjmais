@@ -51,6 +51,12 @@
   "WJMAIS.RoleHelmsman": "Helmsman",
   "WJMAIS.RoleUnassigned": "Unassigned",
 
+  "WJMAIS.ForeMantleModule": "Fore Mantle Module",
+  "WJMAIS.HullMaterial": "Hull Material",
+  "WJMAIS.HullModifier": "Hull Modifier",
+  "WJMAIS.ShipModule": "Ship Module",
+  "WJMAIS.ShipUpgrade": "Ship Upgrade",
+
   "WJMAIS.ShipHasNoWeapons": " has no available ship mounted weapons.",
   "WJMAIS.ActorAlreadyAssigned": " is already assigned to the ",
   "WJMAIS.RoleAlreadyFilled": " role is already filled on the bridge crew.",
