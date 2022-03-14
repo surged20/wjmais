@@ -135,11 +135,4 @@ Hooks.once("init", function() {
     updateActorEffects(effect);
   });
 
-  Hooks.on('updateActor', (actor, data) => {
-    if (actor.data.type === "vehicle" && !actor.data.flags?.wjmais?.model && actor.data.name != "Importing..." && actor.data.data.attributes.ac.value ) {
-      const shipData = WJMAIS.shipData.find( (ship) => ship["flags.wjmais"].model === actor.data.name );
-      if (shipData) actor.update(shipData);
-    }
-  });
-
 });
