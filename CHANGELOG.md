@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.3] - 2022-03-16
+
+### Add
+
+- Sheet support for per-ability proficiency
+
+### Fixed
+
+- Base proficiency configuration for NPC ships
+
+### Removed
+
+- Unused shipData and import support removed
+
 ## [0.3.2] - 2022-03-14
 
 ### Added
