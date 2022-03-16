@@ -4,7 +4,7 @@
 
 ### Add
 
-- Sheet support for per-ability proficiency
+- Sheet support for NPC ship per-ability proficiency
 
 ### Fixed
 
