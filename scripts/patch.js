@@ -106,9 +106,17 @@ function patchRollData() {
   }, 'MIXED' );
 }
 
+function patchProficiency() {
+  libWrapper.register('wjmais', 'CONFIG.Actor.documentClass.prototype._prepareVehicleData', function (wrapped, ...args) {
+    if (!args[0].flags?.wjmais?.npc)
+      wrapped(...args);
+  }, 'MIXED' );
+}
+
 export function applyPatches() {
   patchCompendiumImport();
   patchItemSheet();
   patchResourceBars();
   patchRollData();
+  patchProficiency();
 }
