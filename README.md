@@ -13,7 +13,7 @@ supplement by Sesserdrix#7270.
 ## Features
 
 This Foundry VTT module extends the dnd5e system with the following:
-- WJ:MAiS version 0.97 content
+- WJ:MAiS version 0.97.2 content
   - Wildjammer ships
   - Helms, Modules, Upgrades, Fore Mantle Modules, Hull Materials/Modifiers
   - Ship Weapons and Personal Weapons
