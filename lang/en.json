@@ -61,6 +61,7 @@
   "WJMAIS.ActorAlreadyAssigned": " is already assigned to the ",
   "WJMAIS.RoleAlreadyFilled": " role is already filled on the bridge crew.",
   "WJMAIS.CompendiumActorRole": "Actors cannot be dropped into bridge crew roles from a compendium.",
+  "WJMAIS.NoVehiclePolymorph": "Ships cannot be transformed (polymorph)",
   "WJMAIS.FighterHelmsmanMustUseFighter": "Fighter Helmsman can only be assigned on a fighter class ship.",
   "WJMAIS.FighterOnlyHasFighterHelmsman": "A fighter class ship may only be assigned a Fighter Helmsman.",
   "WJMAIS.RoleIsAssigned": "joins the bridge crew as ",

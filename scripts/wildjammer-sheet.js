@@ -249,9 +249,14 @@ export default class WildjammerSheet extends ActorSheet5e {
     };
     delete itemData.data["type"];
 
+    if (actor.data.type === 'vehicle') {
+      ui.notifications.error(game.i18n.localize('WJMAIS.NoShipPolymorph'))
+      return;
+    }
+
     // DnD actor to a bridge crew role
     for (const [role, label] of Object.entries(CONFIG.WJMAIS.bridgeCrewRoles)) {
-      if (event.target.classList.contains(role)) {
+      if (event.target.classList.contains(role) || role === 'unassigned') {
         // Error if actor dropped from compendium
         if (data.pack) {
           ui.notifications.error(game.i18n.localize('WJMAIS.CompendiumActorRole'));
@@ -266,8 +271,6 @@ export default class WildjammerSheet extends ActorSheet5e {
         return;
       }
     }
-
-    return super._onDropActor(event, data);
   }
 
   /** @override */
