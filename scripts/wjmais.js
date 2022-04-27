@@ -10,6 +10,10 @@ DND5E.armorClasses["wildjammer"] = {
   formula: "10 + @ship.ac.mod"
 }
 
+DND5E.spellTags["megascale"] = {
+  label: "WJMAIS.Megascale",
+  abbr: "WJMAIS.MegascaleAbbr"
+}
 
 DND5E.equipmentTypes["foremantle"] = "WJMAIS.ForeMantleModule";
 DND5E.equipmentTypes["material"] = "WJMAIS.HullMaterial";

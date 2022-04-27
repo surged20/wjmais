@@ -89,6 +89,9 @@
 
   "WJMAIS.SelectShipWeapon": "Select ship weapon",
   "WJMAIS.Apply": "Apply",
-  "WJMAIS.Skip": "Skip"
+  "WJMAIS.Skip": "Skip",
+
+  "WJMAIS.Megascale": "Megascale",
+  "WJMAIS.MegascaleAbbr": "Mega"
 
 }
