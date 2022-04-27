@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.4] - 2022-04-27
+
+### Added
+
+- Megascale spell tag support (requires dnd5e 1.6.0)
+
+### Changed
+
+- Dropping a PC/NPC actor anywhere adds them to the unassigned bridge crew role
+- Ship polymorph is disabled since restoring transformation is buggy and needs mechanics defined
+
+### Fixed
+
+- Dual Ballista and Clipper content updates from 0.97.2
+
 ## [0.3.3] - 2022-03-16
 
 ### Add
@@ -137,7 +152,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.3.3...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.3.4...HEAD
+[0.3.4]: https://github.com/surged20/wjmais/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/surged20/wjmais/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/surged20/wjmais/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/surged20/wjmais/compare/0.3.0...0.3.1
