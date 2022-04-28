@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Tagged all megascale spells with with megascale
+
 ## [0.3.4] - 2022-04-27
 
 ### Added
