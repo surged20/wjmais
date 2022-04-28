@@ -6,6 +6,11 @@
 
 - Tagged all megascale spells with with megascale
 
+### Fixed
+
+- Quick reference dual ballista data in ship weapons table
+- Removed C&P scaling text in Distress Beacon spell
+
 ## [0.3.4] - 2022-04-27
 
 ### Added
