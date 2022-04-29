@@ -6,6 +6,10 @@
 
 - Tagged all megascale spells with with megascale
 
+### Changed
+
+- Minimum core system is now v9, as required by dnd5e 1.6.0
+
 ### Fixed
 
 - Quick reference dual ballista data in ship weapons table
