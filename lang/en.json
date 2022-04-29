@@ -1,4 +1,6 @@
 {
+  "SETTINGS.WJMAIS.RollPcWeaponsN": "Roll weapons from PC ship sheet",
+  "SETTINGS.WJMAIS.RollPcWeaponsH": "By default, weapons may not be rolled from a wildjammer sheet unless it is in NPC mode.",
   "SETTINGS.WJMAIS.RoleChangeChatN": "Enable role change chat cards",
   "SETTINGS.WJMAIS.RoleChangeChatH": "Send a chat card notification when an actor is assigned to a bridge crew role.",
 

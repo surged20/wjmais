@@ -26,7 +26,7 @@ This Foundry VTT module extends the dnd5e system with the following:
   - dnd5e 1.4.x compatible armor class config with wildjammer AC formula
   - Active Effects support for content with changes targeting AC, Speed, BP, and HP.
   - PC Mode
-    - Weapons not rollable from Wildjammer sheet
+    - Weapons not rollable from Wildjammer sheet (unless roll weapons from PC sheet setting is enabled)
     - Bridge crew role management
     - Fighter-Helmsman/Gunner and Helmsman character sheets inherit ship weapons/equipment when entering the appropriate role.
   - NPC Mode

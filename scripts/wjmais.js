@@ -60,6 +60,14 @@ Actors.registerSheet("wjmais", WildjammerSheet, {
 });
 
 function registerSettings() {
+  game.settings.register('wjmais', "rollPcWeapons", {
+    name: "SETTINGS.WJMAIS.RollPcWeaponsN",
+    hint: "SETTINGS.WJMAIS.RollPcWeaponsH",
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true
+  });
   game.settings.register('wjmais', "roleChangeChat", {
     name: "SETTINGS.WJMAIS.RoleChangeChatN",
     hint: "SETTINGS.WJMAIS.RoleChangeChatH",

@@ -5,6 +5,7 @@
 ### Added
 
 - Tagged all megascale spells with with megascale
+- Add module setting to allow weapons to be rolled from a sheet in PC mode
 
 ### Changed
 

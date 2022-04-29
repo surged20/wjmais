@@ -388,7 +388,7 @@ export default class WildjammerSheet extends ActorSheet5e {
   _isRollable(itemData) {
     if (this._isNPC()) return true;
 
-    if (itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle")
+    if ((itemData.data?.properties?.smw || itemData.data?.armor?.type === "foremantle") && !game.settings.get("wjmais", "rollPcWeapons"))
       return false;
 
     return true;
