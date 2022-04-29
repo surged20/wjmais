@@ -1,12 +1,14 @@
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/surged20/wjmais/releases/latest/download/module.json)
 ![GitHub License](https://img.shields.io/github/license/surged20/wjmais)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/surged20/wjmais/latest/module.zip)
+[![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%&url=https://forge-vtt.com/api/bazaar/package/wjmais&colorB=brightgreen)](https://forge-vtt.com/)
+[![Spelljammer Discord Server](https://img.shields.io/badge/-Discord-%232c2f33?style=flat-square&logo=discord)](https://discord.gg/TAsaxnm6Vx)
 
 # Wildjammer: More Adventures in Space
 
 This Foundry VTT module provides support for the
 [Wildjammer: More Adventures in Space](https://www.dropbox.com/sh/3c88jrhy1t7gyql/AACS63QaKFCCrBn_-cxRVHBda)
-supplement by Sesserdrix#7270.
+supplement by Sesserdrix#7270. It provides a dnd5e-compatible wildjammer ship vehicle sheet and compendium content including all ships, ship components, weapons, spells, bridge crew features, and quick reference journals.
 
 **Wildjammer: More Adventures in Space is unofficial Fan Content permitted under the [Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy). Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.**
 
