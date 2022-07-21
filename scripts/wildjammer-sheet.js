@@ -627,7 +627,7 @@ export default class WildjammerSheet extends ActorSheet5e {
       else if (item.type === 'equipment' && item.data?.armor.type === "upgrade") features.upgrades.items.push(item);
       else if (item.type === 'equipment' && ["material", "modifier"].includes(item.data?.armor.type)) features.hull.items.push(item);
       else if (CONFIG.WJMAIS.cargoTypes.includes(item.type)) {
-        totalWeight += (item.data.weight || 0) * item.data.quantity;
+        totalWeight += (item.data.weight || 0) * (item.data.quantity || 0);
         cargo.cargo.items.push(item);
       }
       else if (item.type === 'feat') {
