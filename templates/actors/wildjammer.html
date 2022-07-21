@@ -11,19 +11,19 @@
       </h1>
       <ul class="summary flexrow">
         <li>
-          <span>{{lookup config.actorSizes data.traits.size}}</span>
+          <span>{{lookup config.actorSizes system.traits.size}}</span>
         </li>
         <li>
-          <span>{{lookup config.shipClass data.traits.size}}</span>
+          <span>{{lookup config.shipClass system.traits.size}}</span>
         </li>
         <li>
-          <input class="wjmais-model" type="text" name="flags.wjmais.model"
-                                                  value="{{flags.wjmais.model}}"
+          <input class="wjmais-model" type="text" name="actor.flags.wjmais.model"
+                                                  value="{{actor.flags.wjmais.model}}"
                                                   placeholder="{{localize 'WJMAIS.Model'}}">
         </li>
         <li>
-          <input type="text" name="data.details.source"
-                             value="{{data.details.source}}"
+          <input type="text" name="system.details.source"
+                             value="{{system.details.source}}"
                              placeholder="{{localize 'DND5E.Source'}}">
         </li>
       </ul>
@@ -31,21 +31,21 @@
         <li class="attribute health">
           <h4 class="attribute-name box-title">{{localize 'WJMAIS.HullPoints'}}</h4>
           <div class="attribute-value multiple">
-            <input name="data.attributes.hp.value" type="text" placeholder="&mdash;"
-                                                               value="{{data.attributes.hp.value}}" data-dtype="Number">
+            <input name="system.attributes.hp.value" type="text" placeholder="&mdash;"
+                                                               value="{{system.attributes.hp.value}}" data-dtype="Number">
             <span class="sep"> &sol; </span>
-            <input name="data.attributes.hp.max" type="text" placeholder="&mdash;"
-                                                             value="{{data.attributes.hp.max}}" data-dtype="Number">
+            <input name="system.attributes.hp.max" type="text" placeholder="&mdash;"
+                                                             value="{{system.attributes.hp.max}}" data-dtype="Number">
           </div>
         </li>
         <li class="attribute health">
           <h4 class="attribute-name box-title">{{localize 'WJMAIS.BulwarkPoints'}}</h4>
           <div class="attribute-value multiple">
-            <input class="temphp" name="data.attributes.hp.temp" type="text" placeholder="&mdash;"
-                                                                             value="{{data.attributes.hp.temp}}" data-dtype="Number">
+            <input class="temphp" name="system.attributes.hp.temp" type="text" placeholder="&mdash;"
+                                                                             value="{{system.attributes.hp.temp}}" data-dtype="Number">
             <span class="sep"> &sol; </span>
-            <input class="temphp" name="data.attributes.hp.tempmax" type="text" placeholder="&mdash;"
-                                                                                value="{{data.attributes.hp.tempmax}}" data-dtype="Number">
+            <input class="temphp" name="system.attributes.hp.tempmax" type="text" placeholder="&mdash;"
+                                                                                value="{{system.attributes.hp.tempmax}}" data-dtype="Number">
           </div>
         </li>
         <li class="attribute armor">
@@ -54,7 +54,7 @@
             <a class="armor-config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}"><i class="fas fa-cog"></i></a>
           </h4>
           <div class="attribute-value attributable" data-property="attributes.ac">
-            <span>{{data.attributes.ac.value}}</span>
+            <span>{{system.attributes.ac.value}}</span>
           </div>
         </li>
         <li class="attribute speed">
@@ -82,14 +82,14 @@
     <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
       {{#if isNPC}}
         <ul class="ability-scores flexrow">
-          {{#each data.abilities as |ability id|}}
+          {{#each system.abilities as |ability id|}}
             <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
               <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
-              <input class="ability-score" name="data.abilities.{{id}}.value" type="number" value="{{ability.value}}" placeholder="10">
+              <input class="ability-score" name="system.abilities.{{id}}.value" type="number" value="{{ability.value}}" placeholder="10">
               <div class="ability-modifiers flexrow">
                 <div class="ability-modifiers flexrow">
                   <span class="ability-mod" title="{{ localize 'DND5E.Modifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-                  <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.baseProf}}" data-dtype="Number"/>
+                  <input type="hidden" name="system.abilities.{{id}}.proficient" value="{{ability.baseProf}}" data-dtype="Number"/>
                   <a class="proficiency-toggle ability-proficiency" title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
                   <span class="ability-save" title="{{ localize 'DND5E.SavingThrow' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
                 </div>
@@ -121,8 +121,8 @@
                 <h4>{{localize 'DND5E.Proficiency'}}</h4>
                 <div class="counter-value">
                   <input class="wjmais-prof" type="number"
-                                             name="data.attributes.prof"
-                                             data-dtype="Number" value="{{data.attributes.prof}}">
+                                             name="system.attributes.prof"
+                                             data-dtype="Number" value="{{system.attributes.prof}}">
                 </div>
               </div>
             {{/if}}
@@ -180,8 +180,8 @@
         <div class="traits">
           <div class="form-group">
             <label>{{localize "DND5E.Size"}}</label>
-            <select class="actor-size" name="data.traits.size">
-              {{#select data.traits.size}}
+            <select class="actor-size" name="system.traits.size">
+              {{#select system.traits.size}}
                 {{#each config.actorSizes as |label size|}}
                   <option value="{{size}}">{{label}}</option>
                 {{/each}}
@@ -216,7 +216,7 @@
     </div>
 
     <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-      {{editor content=data.details.biography.value target='data.details.biography.value'
+      {{editor system.details.biography.value target='system.details.biography.value'
         button=true owner=owner editable=editable}}
     </div>
   </section>
