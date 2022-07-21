@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1] - 2022-07-21
+
+### Fixed
+
+- NaN encumberance value when switching PC/NPC sheet mode
+
 ## [0.4.0] - 2022-05-09
 
 ### Added
@@ -168,7 +174,9 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.3.4...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/surged20/wjmais/compare/0.4.0...0.4.1
+[0.4.0]: https://github.com/surged20/wjmais/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/surged20/wjmais/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/surged20/wjmais/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/surged20/wjmais/compare/0.3.1...0.3.2
