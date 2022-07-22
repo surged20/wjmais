@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0-beta1] - 2022-07-22
+
+### Changed
+
+- v10 compatible manifest
+- Update data.data to system and data.flags to flags for v10
+- dnd5e 2.0.0 import fixes
+
 ## [0.4.1] - 2022-07-21
 
 ### Fixed
@@ -164,9 +172,9 @@
 - Fix bug in speed config
 
 ## [0.1.0] - 2021-06-29
-
+ 
 ### Added
-
+ 
 - Wildjammer ship vehicle sheet
 - Bridge crew role management
 - Fighter-Helmsman/Gunner/Helmsman ship weapon assignment
@@ -174,7 +182,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.4.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.5.0-beta1...HEAD
+[0.5.0-beta1]: https://github.com/surged20/wjmais/compare/0.4.1...0.5.0-beta1
 [0.4.1]: https://github.com/surged20/wjmais/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/surged20/wjmais/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/surged20/wjmais/compare/0.3.3...0.3.4
