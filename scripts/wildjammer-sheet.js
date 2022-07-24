@@ -711,11 +711,11 @@ export default class WildjammerSheet extends ActorSheet5e {
     event.preventDefault();
     const target = event.currentTarget;
     const row = target.closest('.item');
-    const idx = Number(row.dataset.itemId);
+    const idx = Number(row.dataset.itemIndex);
     const property = row.classList.contains('crew') ? 'crew' : 'passengers';
 
     // Get the cargo entry
-    const cargo = duplicate(this.actor.data.data.cargo[property]);
+    const cargo = foundry.utils.deepClone(this.actor.data.data.cargo[property])
     const entry = cargo[idx];
     if (!entry) return null;
 
