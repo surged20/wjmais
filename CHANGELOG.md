@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2] - 2022-07-24
+
+### Fixed
+
+- Failure adding crew and passenger entries
+
 ## [0.4.1] - 2022-07-21
 
 ### Fixed
@@ -174,7 +180,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.4.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.4.2...HEAD
+[0.4.2]: https://github.com/surged20/wjmais/compare/0.4.1...0.4.2
 [0.4.1]: https://github.com/surged20/wjmais/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/surged20/wjmais/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/surged20/wjmais/compare/0.3.3...0.3.4
