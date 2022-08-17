@@ -5,17 +5,17 @@ function patchCompendiumImport() {
     if (!args[0].flags?.wjmais?.speed)
       return wrapped(...args);
 
-    const token = args[0].token;
+    const prototypeToken = args[0].prototypeToken;
     const data = wrapped(...args);
-    data.token.bar1 = token.bar1;
-    data.token.bar2 = token.bar2;
+    data.prototypeToken.bar1 = prototypeToken.bar1;
+    data.prototypeToken.bar2 = prototypeToken.bar2;
     return data;
   }, 'MIXED' );
 }
 
 function patchItemSheet() {
   // Display wildjammer modules and upgrades as mountable items like vehicle equipment
-  libWrapper.register('wjmais', 'game.dnd5e.applications.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
+  libWrapper.register('wjmais', 'game.dnd5e.applications.item.ItemSheet5e.prototype._isItemMountable', function (wrapped, ...args) {
     const armorType = this.document.system?.armor?.type;
     const wjEquipmentTypes = ["foremantle", "material", "modifier", "module", "upgrade"];
     return wrapped(...args) || wjEquipmentTypes.includes(armorType);
