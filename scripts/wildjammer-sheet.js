@@ -1,7 +1,5 @@
-import ActorSheet5e from "../../../systems/dnd5e/module/actor/sheets/base.js";
 import WildjammerSpeedConfig from "./speed-config.js";
 import SelectItemPrompt from "./select-item-prompt.js";
-import TraitSelector from "../../../systems/dnd5e/module/apps/trait-selector.js";
 
 /**
  * Is the item a fore mantle module?
@@ -149,7 +147,7 @@ async function updateRole(creature, ship, role) {
  * Extends the base ActorSheet5e class.
  * @type {ActorSheet5e}
  */
-export default class WildjammerSheet extends ActorSheet5e {
+export default class WildjammerSheet extends dnd5e.applications.actor.ActorSheet5e {
   /**
    * Define default rendering options for the Vehicle sheet.
    * @returns {Object}
