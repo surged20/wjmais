@@ -23,7 +23,7 @@ This Foundry VTT module extends the dnd5e system with the following:
   - Quick Reference guide
 - Wildjammer ship vehicle sheet (PC and NPC modes)
   - Hull Points, Bulwark Points, Tactical Speed, and Manueverability
-  - dnd5e 1.4.x compatible armor class config with wildjammer AC formula
+  - dnd5e Wildjammer AC formula
   - Active Effects support for content with changes targeting AC, Speed, BP, and HP.
   - PC Mode
     - Weapons not rollable from Wildjammer sheet (unless roll weapons from PC sheet setting is enabled)
