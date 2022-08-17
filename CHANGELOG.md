@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.5.0] - 2022-08-31
+
+### Fixed
+
+- Fixed landing types trait selector
+- Correctly test for actors dropped from a compendium so the user facing error is displayed
+- Active effects targeting hull points and bulwark points now work
+- Fixed html and compendium link rendering in the ship description tab
+- Fixed drag and drop to roles
+
+### Changed
+
+- Add dnd5e extensions by mergeObject to the global dnd5e config variable. This gets rid of the hacky relative import of dnd5e.mjs.
+- Switch ship description text editor to use prosemirror
+- Updated quick reference to v10 journal pages
+- v10 compatible manifest
+- migrate packs to dnd5e v2 schema
+- patch updates for v10 and dnd5e v2
+- dnd5e v2 import fixes
+- Update data.data to system and data.flags to flags for v10
+
 ## [0.4.3] - 2022-08-26
 
 ### Changed
@@ -180,9 +201,9 @@
 - Fix bug in speed config
 
 ## [0.1.0] - 2021-06-29
-
+ 
 ### Added
-
+ 
 - Wildjammer ship vehicle sheet
 - Bridge crew role management
 - Fighter-Helmsman/Gunner/Helmsman ship weapon assignment
@@ -190,7 +211,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.4.3...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/surged20/wjmais/compare/0.4.3...0.5.0
 [0.4.3]: https://github.com/surged20/wjmais/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/surged20/wjmais/compare/0.4.1...0.4.2
 [0.4.1]: https://github.com/surged20/wjmais/compare/0.4.0...0.4.1
