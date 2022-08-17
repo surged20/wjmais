@@ -26,7 +26,7 @@ export default class WildjammerSpeedConfig extends DocumentSheet {
   /** @override */
   getData(options) {
     const data = {
-      speed: this.document.data.flags.wjmais.speed,
+      speed: this.document.flags.wjmais.speed,
       config: CONFIG.WJMAIS
     }
     return data;
