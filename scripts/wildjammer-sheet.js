@@ -223,14 +223,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor.ActorSheet
 
   /** @override */
   async _onDropActor(event, data) {
-    // Get the actor
-    let actor = null;
-    if (data.pack) {
-      const pack = game.packs.find(p => p.collection === data.pack);
-      actor = await pack.getDocument(data.id);
-    } else {
-      actor = game.actors.get(data.id);
-    }
+    let actor = await fromUuid(data.uuid);
     if ( !actor ) return;
 
     const itemData = {
@@ -272,15 +265,15 @@ export default class WildjammerSheet extends dnd5e.applications.actor.ActorSheet
 
   /** @override */
   async _onDropItem(event, itemData) {
+    const item = await fromUuid(itemData.uuid);
     // DnD bridge crew to another bridge crew role
-    if (itemData.system?.flags?.wjmais?.role) {
+    if (item.flags?.wjmais?.role) {
       for (const [role, label] of Object.entries(CONFIG.WJMAIS.bridgeCrewRoles)) {
         if (event.target.classList.contains(role)) {
-          const creature = game.actors.get(system.flags.wjmais.actorId);
+          const creature = game.actors.get(item.flags.wjmais.actorId);
           if (creature) {
             if (isRoleChangeInvalid(role, this.actor, creature)) break;
             if (!(await updateRole(creature, this.actor, role))) break;
-            const item = this.actor.items.get(system._id);
             await item.update({flags: { wjmais: {role: role}}});
             await notifyBridgeCrewRoleChange(this.actor, creature, role);
             break;
