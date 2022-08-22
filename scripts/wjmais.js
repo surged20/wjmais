@@ -1,4 +1,4 @@
-import { DND5E } from "/systems/dnd5e/module/config.js";
+import { DND5E } from "../../../systems/dnd5e/module/config.js";
 import { WJMAIS } from "./config.js";
 import { applyPatches } from "./patch.js";
 import { updateActorEffects } from "./effects.js";
