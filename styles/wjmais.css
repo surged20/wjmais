@@ -10,10 +10,21 @@
 
 .dnd5e.sheet .items-list .roles-header h3 {
   padding-left: 5px;
-  font-family: "Modesto Condensed", "Palatino Linotype", serif;
-  font-size: 20px; 
+  font-size: 16px; 
   font-weight: 700;   
   text-align: left;
+}
+
+.dnd5e.sheet.actor .counters .crew-min-max input[type="number"] {
+  max-width: 25px;
+}
+
+.dnd5e.sheet.actor .counters .air input[type="number"] {
+  max-width: 40px;
+}
+
+.dnd5e.sheet.actor .counters .cargo-cap input[type="number"] {
+  max-width: 25px;
 }
 
 .dnd5e.sheet.actor .inventory-list .item-detail {
@@ -22,60 +33,4 @@
 
 .dnd5e.sheet.item .weapon-properties label.checkbox {
   flex: 0 0 135px;
-}
-
-.dnd5e.sheet select.item-facing {
-  font-size: 10px;
-  border: 0px;
-}
-
-.dnd5e.sheet select.item-location {
-  font-size: 10px;
-  border: 0px;
-}
-
-.dnd5e.sheet, .editor-content {
-  font-family: 'Vollkorn', serif;
-}
-
-.editor-content h1 {
-  color: #450045;
-  font-family: 'Libre Baskerville', serif;
-  font-weight: bold;
-  border-bottom: none;
-}
-
-.editor-content  h2 {
-  color: #590059;
-  font-family: 'Libre Baskerville', serif;
-  font-weight: bold;
-  border-bottom: 2px solid black
-}
-
-.editor-content  h3 {
-  color: #6c006c;
-  font-family: 'Libre Baskerville', serif;
-  font-weight: bold;
-  border-bottom: none;
-}
-
-.editor-content li + li {
-  margin-top: 0px;
-  padding-top: 5px;
-}
-
-caption {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-}
-
-a.entity-link, a.inline-roll {
-  box-shadow: 2px 2px 2px 0px #4b4a44;
-  border-radius: 6px;
-}
-
-.tidy5e.sheet.item .sheet-body .tab.details .form-group.form-group label.checkbox {
-  font-size: 11px;
-  /* min-width: 600px; */
 }
