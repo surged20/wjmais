@@ -139,6 +139,10 @@ Hooks.once("init", function() {
     });
   });
 
+  Hooks.on('createActiveEffect', (effect) => {
+    updateActorEffects(effect);
+  });
+
   Hooks.on('deleteActiveEffect', (effect) => {
     updateActorEffects(effect, true);
   });
