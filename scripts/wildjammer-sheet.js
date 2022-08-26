@@ -248,7 +248,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor.ActorSheet
     for (const [role, label] of Object.entries(CONFIG.WJMAIS.bridgeCrewRoles)) {
       if (event.target.classList.contains(role) || role === 'unassigned') {
         // Error if actor dropped from compendium
-        if (data.pack) {
+        if (actor.pack) {
           ui.notifications.error(game.i18n.localize('WJMAIS.CompendiumActorRole'));
           return;
         }
