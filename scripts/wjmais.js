@@ -1,56 +1,8 @@
-import { DND5E } from "../../../systems/dnd5e/dnd5e.mjs";
 import { WJMAIS } from "./config.js";
 import { applyPatches } from "./patch.js";
 import { updateActorEffects } from "./effects.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
-
-DND5E.armorClasses["wildjammer"] = {
-  label: "WJMAIS.Wildjammer",
-  formula: "10 + @ship.ac.mod"
-}
-
-DND5E.spellTags["megascale"] = {
-  label: "WJMAIS.Megascale",
-  abbr: "WJMAIS.MegascaleAbbr"
-}
-
-DND5E.equipmentTypes["foremantle"] = "WJMAIS.ForeMantleModule";
-DND5E.equipmentTypes["material"] = "WJMAIS.HullMaterial";
-DND5E.equipmentTypes["modifier"] = "WJMAIS.HullModifier";
-DND5E.equipmentTypes["module"] = "WJMAIS.ShipModule";
-DND5E.equipmentTypes["upgrade"] = "WJMAIS.ShipUpgrade";
-
-DND5E.miscEquipmentTypes["foremantle"] = "WJMAIS.ForeMantleModule";
-DND5E.miscEquipmentTypes["material"] = "WJMAIS.HullMaterial";
-DND5E.miscEquipmentTypes["modifier"] = "WJMAIS.HullModifier";
-DND5E.miscEquipmentTypes["module"] = "WJMAIS.ShipModule";
-DND5E.miscEquipmentTypes["upgrade"] = "WJMAIS.ShipUpgrade";
-
-DND5E.weaponProperties["bf1"] = "Backfire 1";
-DND5E.weaponProperties["bf2"] = "Backfire 2";
-DND5E.weaponProperties["bf3"] = "Backfire 3";
-DND5E.weaponProperties["bf4"] = "Backfire 4";
-DND5E.weaponProperties["clb"] = "Climbing";
-DND5E.weaponProperties["dpl"] = "Deployable";
-DND5E.weaponProperties["cr1"] = "Crew 1";
-DND5E.weaponProperties["cr2"] = "Crew 2";
-DND5E.weaponProperties["cr3"] = "Crew 3";
-DND5E.weaponProperties["cr4"] = "Crew 4";
-DND5E.weaponProperties["cr5"] = "Crew 5";
-DND5E.weaponProperties["cr6"] = "Crew 6";
-DND5E.weaponProperties["cr8"] = "Crew 8";
-DND5E.weaponProperties["fmm"] = "Fore Mantle Module";
-DND5E.weaponProperties["fxd"] = "Fixed";
-DND5E.weaponProperties["hlm"] = "Helmsman";
-DND5E.weaponProperties["hps"] = "Hardpoint (Small)";
-DND5E.weaponProperties["hpm"] = "Hardpoint (Medium)";
-DND5E.weaponProperties["hpl"] = "Hardpoint (Large)";
-DND5E.weaponProperties["ovh"] = "Overheat";
-DND5E.weaponProperties["sc1d12"] = "Scatter (1d12)";
-DND5E.weaponProperties["sc2d6"] = "Scatter (2d6)";
-DND5E.weaponProperties["sc2d10"] = "Scatter (2d10)";
-DND5E.weaponProperties["smw"] = "Ship Weapon";
 
 // Register Wildjammer Sheet and make it the default vehicle sheet
 Actors.registerSheet("wjmais", WildjammerSheet, {
@@ -58,6 +10,92 @@ Actors.registerSheet("wjmais", WildjammerSheet, {
   types: ["vehicle"],
   makeDefault: true
 });
+
+function localize( stringId, data = {} ) {
+    return game.i18n.format(stringId, data);
+}
+
+function translateObject(obj) {
+    /* translate in place */
+    Object.keys(obj).forEach( key => obj[key] = localize(obj[key]));
+
+    return obj;
+}
+
+function configProperties() {
+  mergeObject(
+    globalThis.game.dnd5e.config.armorClasses,
+    {
+      wildjammer: {
+        label: localize('WJMAIS.Wildjammer'),
+        formula: '10 + @ship.ac.mod'
+      }
+    }
+  );
+
+  mergeObject(
+    globalThis.game.dnd5e.config.equipmentTypes,
+    translateObject ({
+      foremantle: 'WJMAIS.ForeMantleModule',
+      material: 'WJMAIS.HullMaterial',
+      modifier: 'WJMAIS.HullModifier',
+      module: 'WJMAIS.ShipModule',
+      upgrade: 'WJMAIS.ShipUpgrade',
+    })
+  );
+
+  mergeObject(
+    globalThis.game.dnd5e.config.miscEquipmentTypes,
+    translateObject ({
+      foremantle: 'WJMAIS.ForeMantleModule',
+      material: 'WJMAIS.HullMaterial',
+      modifier: 'WJMAIS.HullModifier',
+      module: 'WJMAIS.ShipModule',
+      upgrade: 'WJMAIS.ShipUpgrade',
+    })
+  );
+
+  mergeObject(
+    globalThis.game.dnd5e.config.spellTags,
+    {
+      megascale: {
+        label: localize('WJMAIS.Megascale'),
+        abbr: localize('WJMAIS.MegascaleAbbr')
+      }
+    }
+  );
+
+  mergeObject(
+    globalThis.game.dnd5e.config.weaponProperties,
+    translateObject ({
+      bf1: 'WJMAIS.WeaponPropertyBackfire1',
+      bf2: 'WJMAIS.WeaponPropertyBackfire2',
+      bf3: 'WJMAIS.WeaponPropertyBackfire3',
+      bf4: 'WJMAIS.WeaponPropertyBackfire4',
+      clb: 'WJMAIS.WeaponPropertyClimbing',
+      dpl: 'WJMAIS.WeaponPropertyDeployable',
+      cr1: 'WJMAIS.WeaponPropertyCrew1',
+      cr2: 'WJMAIS.WeaponPropertyCrew2',
+      cr3: 'WJMAIS.WeaponPropertyCrew3',
+      cr4: 'WJMAIS.WeaponPropertyCrew4',
+      cr5: 'WJMAIS.WeaponPropertyCrew5',
+      cr6: 'WJMAIS.WeaponPropertyCrew6',
+      cr7: 'WJMAIS.WeaponPropertyCrew7',
+      cr8: 'WJMAIS.WeaponPropertyCrew8',
+      fmm: 'WJMAIS.WeaponPropertyForeMantleModule',
+      fxd: 'WJMAIS.WeaponPropertyFixed',
+      hlm: 'WJMAIS.WeaponPropertyHelmsman',
+      hps: 'WJMAIS.WeaponPropertyHardpointSmall',
+      hpm: 'WJMAIS.WeaponPropertyHardpointMedium',
+      hpl: 'WJMAIS.WeaponPropertyHardpointLarge',
+      ovh: 'WJMAIS.WeaponPropertyOverheat',
+      sc1d12: 'WJMAIS.WeaponPropertyScatter112',
+      sc2d6: 'WJMAIS.WeaponPropertyScatter26',
+      sc2d10: 'WJMAIS.WeaponPropertyScatter210',
+      smw: 'WJMAIS.WeaponPropertyShipWeapon'
+    })
+  );
+}
 
 function registerSettings() {
   game.settings.register('wjmais', "rollPcWeapons", {
@@ -105,6 +143,8 @@ Hooks.once("init", function() {
    * This function runs after game data has been requested and loaded from the servers, so entities exist
    */
   Hooks.once("setup", function() {
+    configProperties();
+
     // Localize WJMAIS objects once up-front
     const toLocalize = [
       "actorSizes", "bridgeCrewRoles", "landingTypes", "shipClass"
