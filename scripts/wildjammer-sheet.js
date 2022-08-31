@@ -850,7 +850,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor.ActorSheet
     const label = a.parentElement.querySelector("label");
     const choices = CONFIG.WJMAIS[a.dataset.options];
     const options = { name: a.dataset.target, title: label.innerText, choices, allowCustom: false };
-    new TraitSelector(this.actor, options).render(true)
+    new dnd5e.applications.TraitSelector(this.actor, options).render(true)
   }
 
   /**
