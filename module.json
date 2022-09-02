@@ -3,7 +3,7 @@
   "name": "wjmais",
   "title": "Wildjammer: More Adventures in Space",
   "description": "Wildjammer content and dnd5e extensions",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "authors": [
     {
       "name": "Surge",
@@ -14,7 +14,8 @@
   "minimumCoreVersion": "10",
   "compatibility": {
     "minimum": "10",
-    "verified": "10.282"
+    "verified": "10",
+    "maximum": "10"
   },
   "esmodules": ["scripts/wjmais.js"],
   "styles": ["styles/wjmais.css"],
@@ -32,8 +33,7 @@
         "type": "system",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
-          "minimum": "2.0.1",
-          "verified": "2.0.1"
+          "minimum": "2.0.1"
         }
       }
     ],
@@ -41,10 +41,9 @@
       {
         "id": "lib-wrapper",
         "type": "module",
-        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.12.7.1/module.json",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
         "compatibility": {
-          "minimum": "1.12.7.1",
-          "verified": "1.12.7.1"
+          "minimum": "1.12.7.1"
         }
       }
     ]
