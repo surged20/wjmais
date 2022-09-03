@@ -1,5 +1,6 @@
 import { WJMAIS } from "./config.js";
 import { applyPatches } from "./patch.js";
+import { registerMovementKey } from "./movement.js";
 import { updateActorEffects } from "./effects.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import WildjammerSheet from "./wildjammer-sheet.js";
@@ -132,6 +133,8 @@ Hooks.once("init", function() {
   console.log("wjmais | Initializing Wildjammer: More Adventures in Space");
 
   CONFIG.WJMAIS = WJMAIS;
+
+  registerMovementKey();
 
   registerSettings();
 
