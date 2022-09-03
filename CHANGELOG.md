@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0] - 2022-09-03
+
+### Added
+
+- Key toggled ship cone of movement measured template. Represent the allowed cone of movement for the currently select token.
+
+### Changed
+
+- Adjusted manifest to remove explicit verified versions. This has the side effect of displaying scary warnings in the package manager.
+
 ## [0.5.0] - 2022-08-31
 
 ### Fixed
@@ -211,7 +221,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.5.0...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/surged20/wjmais/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/surged20/wjmais/compare/0.4.3...0.5.0
 [0.4.3]: https://github.com/surged20/wjmais/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/surged20/wjmais/compare/0.4.1...0.4.2
