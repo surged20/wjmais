@@ -33,9 +33,14 @@ async function toggleConeOfMovement() {
     180: {x: width*gridPixels/2, y: height*gridPixels },
     225: {x: 0, y: height*gridPixels },
     270: {x: 0, y: height*gridPixels/2 },
-    315: {x: 0, y: 0}
+    315: {x: 0, y: 0},
+    // If the user rotates the token in place, rotation for S cardinal direction is 360 rather than 0
+    360: {x: width*gridPixels/2, y: 0 }
   }
-  const rotation = token.document.rotation;
+  let rotation = token.document.rotation;
+  // Normalize rotation to positive value
+  // If the user rotates the token in place to the SE inter-cardinal direction, rotation is -45
+  rotation = (rotation < 0) ? 360 + rotation : rotation;
 
   const data = {
     t: 'cone',
