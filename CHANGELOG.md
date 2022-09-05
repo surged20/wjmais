@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1] - 2022-09-05
+
+### Fixed
+
+- Addressed issues preventing cone of movement template from working in all cases.
+
 ## [0.6.0] - 2022-09-03
 
 ### Added
@@ -221,7 +227,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.6.0...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.6.1...HEAD
+[0.6.1]: https://github.com/surged20/wjmais/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/surged20/wjmais/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/surged20/wjmais/compare/0.4.3...0.5.0
 [0.4.3]: https://github.com/surged20/wjmais/compare/0.4.2...0.4.3

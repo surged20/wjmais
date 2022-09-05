@@ -33,6 +33,7 @@ This Foundry VTT module extends the dnd5e system with the following:
     - Exposes configurable abilities and proficiency modifier
     - All items, ability checks, and saving throws rollable from Wildjammer sheet
     - Attacks may have hardcoded bonuses or use the ability/proficiency modifiers.
+- Cone of movement measured template toggle using key bind
 - Token resource bar support for Hull Points and Bulwark Points
 - Ship class scaled Collide and Ram attacks using **@ship.ram.dice** 
 - Additional personal and ship weapon properties
@@ -66,6 +67,10 @@ This mode is only available to GMs.
 - Ability scores and proficiency may be configured as needed.
 - Roll weapon attacks and other items directly from the sheet.
 - Roll ability checks or saving throws for the ship by clicking the appropriate ability.
+
+### Cone of Movement
+
+- By default, the cone of movement template is bound to `m`. This key may be changed in *Configure Controls*. Select a wildjammer ship token and use the bound key to toggle the cone of movement template on and off.
 
 ## Licenses
 
