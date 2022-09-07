@@ -3,7 +3,7 @@
  * @type {Dialog}
  */
 export default class SelectItemPrompt extends Dialog {
-  constructor(items, dialogData={}, options={}) {
+  constructor(items, dialogData = {}, options = {}) {
     super(dialogData, options);
     this.options.classes = ["dnd5e", "dialog", "select-items-prompt", "sheet"];
 
@@ -18,11 +18,13 @@ export default class SelectItemPrompt extends Dialog {
     super.activateListeners(html);
 
     // render the item's sheet if its image is clicked
-    html.on('click', '.item-image', (event) => {
-      const item = this.items.find((feature) => feature.id === event.currentTarget.dataset?.itemId);
+    html.on("click", ".item-image", (event) => {
+      const item = this.items.find(
+        (feature) => feature.id === event.currentTarget.dataset?.itemId
+      );
 
       item?.sheet.render(true);
-    })
+    });
   }
 
   /**
@@ -33,40 +35,43 @@ export default class SelectItemPrompt extends Dialog {
    * @param {string} options.hint - Localized hint to display at the top of the prompt
    * @return {Promise<string[]>} - list of item ids which the user has selected
    */
-  static async create(items, {
-    hint
-  }) {
+  static async create(items, { hint }) {
     const templateData = {
       config: CONFIG.WJMAIS,
-      items: items
-    }
+      items: items,
+    };
     // Check first item
     items[0].default = true;
     // Render the selection template
-    const html = await renderTemplate("modules/wjmais/templates/actors/select-item-prompt.html", {templateData, hint});
+    const html = await renderTemplate(
+      "modules/wjmais/templates/actors/select-item-prompt.html",
+      { templateData, hint }
+    );
 
     return new Promise((resolve) => {
       const dlg = new this(items, {
-        title: game.i18n.localize('WJMAIS.SelectShipWeapon'),
+        title: game.i18n.localize("WJMAIS.SelectShipWeapon"),
         content: html,
         buttons: {
           apply: {
             icon: `<i class="fas fa-user-plus"></i>`,
-            label: game.i18n.localize('WJMAIS.Apply'),
-            callback: html => {
-              const fd = new FormDataExtended(html[0].querySelector("form")).toObject();
+            label: game.i18n.localize("WJMAIS.Apply"),
+            callback: (html) => {
+              const fd = new FormDataExtended(
+                html[0].querySelector("form")
+              ).toObject();
               const selectedId = fd["shipWeapon"];
               resolve(selectedId);
-            }
+            },
           },
           cancel: {
             icon: '<i class="fas fa-forward"></i>',
-            label: game.i18n.localize('WJMAIS.Skip'),
-            callback: () => resolve([])
-          }
+            label: game.i18n.localize("WJMAIS.Skip"),
+            callback: () => resolve([]),
+          },
         },
         default: "apply",
-        close: () => resolve([])
+        close: () => resolve([]),
       });
       dlg.render(true);
     });

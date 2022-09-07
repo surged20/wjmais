@@ -4,7 +4,9 @@ async function toggleConeOfMovement() {
   if (document.body !== document.activeElement) return;
 
   if (token.document.flags?.wjmais?.cone) {
-    const template = canvas.scene.templates.get(token.document.flags.wjmais.cone);
+    const template = canvas.scene.templates.get(
+      token.document.flags.wjmais.cone
+    );
     if (template) {
       await template.delete();
     }
@@ -15,47 +17,52 @@ async function toggleConeOfMovement() {
   const supportedGridSizes = [5, 500];
   const gridSize = canvas.scene.grid.distance;
   if (!supportedGridSizes.includes(gridSize)) {
-    ui.notifications.error("Cone of movement template requires a 5 or 500 foot grid.");
+    ui.notifications.error(
+      "Cone of movement template requires a 5 or 500 foot grid."
+    );
     return;
   }
 
   const tacticalSpeed = token.actor.flags.wjmais.speed.tactical;
-  const distance = (gridSize === 500) ? tacticalSpeed : tacticalSpeed / 100;
+  const distance = gridSize === 500 ? tacticalSpeed : tacticalSpeed / 100;
 
   const width = token.document.width;
   const height = token.document.height;
   const gridPixels = canvas.scene.grid.size;
   const offsets = {
-    0: {x: width*gridPixels/2, y: 0 },
-    45: {x: width*gridPixels, y: 0 },
-    90: {x: width*gridPixels, y: height*gridPixels/2 },
-    135: {x: width*gridPixels, y: height*gridPixels },
-    180: {x: width*gridPixels/2, y: height*gridPixels },
-    225: {x: 0, y: height*gridPixels },
-    270: {x: 0, y: height*gridPixels/2 },
-    315: {x: 0, y: 0},
+    0: { x: (width * gridPixels) / 2, y: 0 },
+    45: { x: width * gridPixels, y: 0 },
+    90: { x: width * gridPixels, y: (height * gridPixels) / 2 },
+    135: { x: width * gridPixels, y: height * gridPixels },
+    180: { x: (width * gridPixels) / 2, y: height * gridPixels },
+    225: { x: 0, y: height * gridPixels },
+    270: { x: 0, y: (height * gridPixels) / 2 },
+    315: { x: 0, y: 0 },
     // If the user rotates the token in place, rotation for S cardinal direction is 360 rather than 0
-    360: {x: width*gridPixels/2, y: 0 }
-  }
+    360: { x: (width * gridPixels) / 2, y: 0 },
+  };
   let rotation = token.document.rotation;
   // Normalize rotation to positive value
   // If the user rotates the token in place to the SE inter-cardinal direction, rotation is -45
-  rotation = (rotation < 0) ? 360 + rotation : rotation;
+  rotation = rotation < 0 ? 360 + rotation : rotation;
 
   const data = {
-    t: 'cone',
+    t: "cone",
     user: game.user.id,
-    distance: distance + width*gridSize,
+    distance: distance + width * gridSize,
     angle: token.actor.flags.wjmais.speed.mnv,
     direction: rotation - 270,
     x: token.document.x + offsets[rotation].x,
     y: token.document.y + offsets[rotation].y,
-    fillColor: game.user.color
+    fillColor: game.user.color,
   };
 
-  const doc = new MeasuredTemplateDocument(data, {parent: canvas.scene});
+  const doc = new MeasuredTemplateDocument(data, { parent: canvas.scene });
   const template = new game.dnd5e.canvas.AbilityTemplate(doc);
-  const placedTemplate = await canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [template.document.toObject()]);
+  const placedTemplate = await canvas.scene.createEmbeddedDocuments(
+    "MeasuredTemplate",
+    [template.document.toObject()]
+  );
 
   await token.document.setFlag("wjmais", "cone", placedTemplate[0].id);
 }
@@ -66,8 +73,8 @@ export function registerMovementKey() {
     hint: "Toggle the Wildjammer cone of movement template for the selected token.",
     editable: [
       {
-        key: "KeyM"
-      }
+        key: "KeyM",
+      },
     ],
     onDown: () => {
       toggleConeOfMovement();

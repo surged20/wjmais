@@ -3,14 +3,13 @@
  * @implements {DocumentSheet}
  */
 export default class WildjammerSpeedConfig extends DocumentSheet {
-
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["dnd5e"],
       template: "modules/wjmais/templates/actors/speed-config.html",
       width: 300,
-      height: "auto"
+      height: "auto",
     });
   }
 
@@ -24,11 +23,11 @@ export default class WildjammerSpeedConfig extends DocumentSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData(options) {
+  getData() {
     const data = {
       speed: this.document.flags.wjmais.speed,
-      config: CONFIG.WJMAIS
-    }
+      config: CONFIG.WJMAIS,
+    };
     return data;
   }
 }
