@@ -88,6 +88,7 @@ function configProperties() {
       sc2d6: "WJMAIS.WeaponPropertyScatter26",
       sc2d10: "WJMAIS.WeaponPropertyScatter210",
       smw: "WJMAIS.WeaponPropertyShipWeapon",
+      ram: "WJMAIS.WeaponPropertyRam",
     })
   );
 }

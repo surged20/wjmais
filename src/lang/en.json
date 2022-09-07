@@ -78,6 +78,7 @@
   "WJMAIS.WeaponPropertyScatter26": "Scatter (2d6)",
   "WJMAIS.WeaponPropertyScatter210": "Scatter (2d10)",
   "WJMAIS.WeaponPropertyShipWeapon": "Ship Weapon",
+  "WJMAIS.WeaponPropertyRam": "Ram",
 
   "WJMAIS.ForeMantleModule": "Fore Mantle Module",
   "WJMAIS.HullMaterial": "Hull Material",

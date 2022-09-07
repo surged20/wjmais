@@ -310,9 +310,28 @@ export default class WildjammerSheet extends dnd5e.applications.actor
 
   /** @override */
   async _onDropItemCreate(itemData) {
-    if (itemData.system?.properties?.smw) {
-      foundry.utils.setProperty(itemData, "flags.wjmais.location", "forward");
-      foundry.utils.setProperty(itemData, "flags.wjmais.facing", 90);
+    if (itemData.type === "weapon") {
+      if (itemData.system.properties.smw) {
+        foundry.utils.setProperty(itemData, "flags.wjmais.location", "forward");
+        foundry.utils.setProperty(itemData, "flags.wjmais.facing", 90);
+      }
+      if (itemData.system.properties.ram) {
+        const ramDiceNum =
+          CONFIG.WJMAIS.shipRamDice[this.actor.system.traits.size];
+        const ramDamageDie = Roll.parse(itemData.system.damage.parts[0][0])[0]
+          .faces;
+        const backlashDamageDie = Roll.parse(
+          itemData.system.damage.versatile
+        )[0].faces;
+        foundry.utils.setProperty(itemData, "system.damage.parts", [
+          [`${ramDiceNum}d${ramDamageDie}`, itemData.system.damage.parts[0][1]],
+        ]);
+        foundry.utils.setProperty(
+          itemData,
+          "system.damage.versatile",
+          `${ramDiceNum}d${backlashDamageDie}`
+        );
+      }
     }
     return super._onDropItemCreate(itemData);
   }

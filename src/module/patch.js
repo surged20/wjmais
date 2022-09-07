@@ -149,10 +149,9 @@ function patchRollData() {
       const ship = game?.actors?.get(this.flags?.wjmais?.shipId);
       const size = ship ? ship.system.traits.size : this.system.traits.size;
 
-      // Add @ship.ac.mod and @ship.ram.dice formula support
+      // Add @ship.ac.mod formula support
       this.system["ship"] = {
         ac: { mod: CONFIG.WJMAIS.shipModifiers[size].ac },
-        ram: { dice: CONFIG.WJMAIS.shipRamDice[size] },
       };
 
       return wrapped(...args);
