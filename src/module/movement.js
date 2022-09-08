@@ -14,11 +14,30 @@ async function toggleConeOfMovement() {
     return;
   }
 
+  let rotation = token.document.rotation;
+  // Normalize rotation to positive value
+  // If the user rotates the token in place to the SE inter-cardinal direction, rotation is -45
+  rotation = rotation < 0 ? 360 + rotation : rotation;
+  const supportedAngles = [0, 45, 90, 135, 180, 225, 270, 325, 360];
+  if (!supportedAngles.includes(rotation)) {
+    return;
+  }
+
   const supportedGridSizes = [5, 500];
   const gridSize = canvas.scene.grid.distance;
   if (!supportedGridSizes.includes(gridSize)) {
-    ui.notifications.error(
+    ui.notifications.warn(
       "Cone of movement template requires a 5 or 500 foot grid."
+    );
+    return;
+  }
+
+  if (
+    !token.actor.flags.wjmais.speed?.tactical ||
+    !token.actor.flags.wjmais.speed?.mnv
+  ) {
+    ui.notifications.warn(
+      "Cone of movement requires that the ship speed is configured."
     );
     return;
   }
@@ -41,11 +60,6 @@ async function toggleConeOfMovement() {
     // If the user rotates the token in place, rotation for S cardinal direction is 360 rather than 0
     360: { x: (width * gridPixels) / 2, y: 0 },
   };
-  let rotation = token.document.rotation;
-  // Normalize rotation to positive value
-  // If the user rotates the token in place to the SE inter-cardinal direction, rotation is -45
-  rotation = rotation < 0 ? 360 + rotation : rotation;
-
   const data = {
     t: "cone",
     user: game.user.id,
