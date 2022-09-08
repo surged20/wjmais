@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0] - 2022-09-08
+
+### Added
+
+- midi-qol onUse macro support for Collide Attack and Rams resolving backlash damage to the attacking ship.
+- Additional check to warn user if ship speed is not configured when using the cone of movement measured template.
+- Check that ship is in a valid cardinal/inter-cardinal facing before enabling the movement template.
+
+### Changed
+
+- Collide Attack and Rams now have a base damage formula that is scaled according to the rules when added to a ship.
+
 ## [0.6.1] - 2022-09-05
 
 ### Fixed
@@ -227,7 +239,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.6.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.0...HEAD
+[0.7.0]: https://github.com/surged20/wjmais/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/surged20/wjmais/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/surged20/wjmais/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/surged20/wjmais/compare/0.4.3...0.5.0
