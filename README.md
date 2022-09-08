@@ -35,7 +35,7 @@ This Foundry VTT module extends the dnd5e system with the following:
     - Attacks may have hardcoded bonuses or use the ability/proficiency modifiers.
 - Cone of movement measured template toggle using key bind
 - Token resource bar support for Hull Points and Bulwark Points
-- Ship class scaled Collide and Ram attacks using **@ship.ram.dice** 
+- Ship class scaled Collide and Ram attacks with midi-qol support
 - Additional personal and ship weapon properties
 - Additional wildjammer fore mantle module, module, upgrade, hull material/modifier equipment types
 
