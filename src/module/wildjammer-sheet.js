@@ -53,17 +53,21 @@ function isHelmsman(role) {
   return role === "helmsman";
 }
 
-function isRoleChangeInvalid(role, ship, creature) {
+async function isRoleChangeInvalid(role, ship, creature) {
   // Error if actor already assigned
   const creatureShipId = creature.flags?.wjmais?.shipId;
   if (creatureShipId && role != "unassigned") {
     const ship = game.actors.get(creature.flags.wjmais.shipId);
-    ui.notifications.error(
-      creature.name +
+    if (ship) {
+      ui.notifications.error(
+        creature.name +
         game.i18n.localize("WJMAIS.ActorAlreadyAssigned") +
         (ship ? ship.name : "unknown ship")
-    );
-    return true;
+      );
+      return true;
+    } else {
+      await creature.unsetFlag("wjmais", "shipId");
+    }
   }
   // Error if unique role filled
   if (
@@ -275,7 +279,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
           );
           return;
         }
-        if (isRoleChangeInvalid(role, this.actor, actor)) return;
+        if (await isRoleChangeInvalid(role, this.actor, actor)) return;
         itemData.flags.wjmais.role = role;
         itemData.description = { value: CONFIG.WJMAIS.bridgeCrewRoles[role] };
         if (!(await updateRole(actor, this.actor, role))) return;
@@ -295,7 +299,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         if (event.target.classList.contains(role)) {
           const creature = game.actors.get(item.flags.wjmais.actorId);
           if (creature) {
-            if (isRoleChangeInvalid(role, this.actor, creature)) break;
+            if (await isRoleChangeInvalid(role, this.actor, creature)) break;
             if (!(await updateRole(creature, this.actor, role))) break;
             await item.update({ flags: { wjmais: { role: role } } });
             await notifyBridgeCrewRoleChange(this.actor, creature, role);
