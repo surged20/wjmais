@@ -61,8 +61,8 @@ async function isRoleChangeInvalid(role, ship, creature) {
     if (ship) {
       ui.notifications.error(
         creature.name +
-        game.i18n.localize("WJMAIS.ActorAlreadyAssigned") +
-        (ship ? ship.name : "unknown ship")
+          game.i18n.localize("WJMAIS.ActorAlreadyAssigned") +
+          (ship ? ship.name : "unknown ship")
       );
       return true;
     } else {
