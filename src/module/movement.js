@@ -17,8 +17,9 @@ async function toggleConeOfMovement() {
   let rotation = token.document.rotation;
   // Normalize rotation to positive value
   // If the user rotates the token in place to the SE inter-cardinal direction, rotation is -45
+  // Required on v10 builds before 10.285
   rotation = rotation < 0 ? 360 + rotation : rotation;
-  const supportedAngles = [0, 45, 90, 135, 180, 225, 270, 325, 360];
+  const supportedAngles = [0, 45, 90, 135, 180, 225, 270, 315, 360];
   if (!supportedAngles.includes(rotation)) {
     return;
   }
@@ -58,6 +59,7 @@ async function toggleConeOfMovement() {
     270: { x: 0, y: (height * gridPixels) / 2 },
     315: { x: 0, y: 0 },
     // If the user rotates the token in place, rotation for S cardinal direction is 360 rather than 0
+    // Required on v10 builds before 10.285
     360: { x: (width * gridPixels) / 2, y: 0 },
   };
   const data = {
