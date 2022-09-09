@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.2] - 2022-09-09
+
+### Fixed
+
+- Fixed typo causing cone of movement to not work at 315 degrees.
+
 ## [0.7.1] - 2022-09-09
 
 ### Fixed
@@ -245,7 +251,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.2...HEAD
+[0.7.2]: https://github.com/surged20/wjmais/compare/0.7.1...0.7.2
 [0.7.1]: https://github.com/surged20/wjmais/compare/0.7.0...0.7.1
 [0.7.0]: https://github.com/surged20/wjmais/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/surged20/wjmais/compare/0.6.0...0.6.1
