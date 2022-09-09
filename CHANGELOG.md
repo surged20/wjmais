@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.1] - 2022-09-09
+
+### Fixed
+
+- Fix bug where an actor assigned to a deleted ship actor cannot be reassigned to another ship.
+
 ## [0.7.0] - 2022-09-08
 
 ### Added
@@ -239,7 +245,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.0...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.1...HEAD
+[0.7.1]: https://github.com/surged20/wjmais/compare/0.7.0...0.7.1
 [0.7.0]: https://github.com/surged20/wjmais/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/surged20/wjmais/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/surged20/wjmais/compare/0.5.0...0.6.0
