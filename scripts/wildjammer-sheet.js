@@ -51,13 +51,17 @@ function isHelmsman(role) {
   return role === "helmsman"
 }
 
-function isRoleChangeInvalid(role, ship, creature) {
+async function isRoleChangeInvalid(role, ship, creature) {
   // Error if actor already assigned
   const creatureShipId = creature.data.flags?.wjmais?.shipId;
   if (creatureShipId && role != "unassigned") {
     const ship = game.actors.get(creature.data.flags.wjmais.shipId);
-    ui.notifications.error(creature.name + game.i18n.localize('WJMAIS.ActorAlreadyAssigned') + (ship ? ship.name : "unknown ship"));
-    return true;
+    if (ship) {
+      ui.notifications.error(creature.name + game.i18n.localize('WJMAIS.ActorAlreadyAssigned') + (ship ? ship.name : "unknown ship"));
+      return true;
+    } else {
+      await creature.unsetFlag("wjmais", "shipId");
+    }
   }
   // Error if unique role filled
   if (CONFIG.WJMAIS.uniqueBridgeCrewRoles.includes(role) && (ship.items.toObject().some(i => i.flags?.wjmais?.role === role))) {
@@ -262,7 +266,7 @@ export default class WildjammerSheet extends ActorSheet5e {
           ui.notifications.error(game.i18n.localize('WJMAIS.CompendiumActorRole'));
           return;
         }
-        if (isRoleChangeInvalid(role, this.actor, actor)) return;
+        if (await isRoleChangeInvalid(role, this.actor, actor)) return;
         itemData.flags.wjmais.role = role;
         itemData.data.description = {value: CONFIG.WJMAIS.bridgeCrewRoles[role]};
         if (!(await updateRole(actor, this.actor, role))) return;
@@ -281,7 +285,7 @@ export default class WildjammerSheet extends ActorSheet5e {
         if (event.target.classList.contains(role)) {
           const creature = game.actors.get(data.data.flags.wjmais.actorId);
           if (creature) {
-            if (isRoleChangeInvalid(role, this.actor, creature)) break;
+            if (await isRoleChangeInvalid(role, this.actor, creature)) break;
             if (!(await updateRole(creature, this.actor, role))) break;
             const item = this.actor.items.get(data.data._id);
             await item.update({flags: { wjmais: {role: role}}});
