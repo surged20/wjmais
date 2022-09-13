@@ -322,19 +322,29 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       if (itemData.system.properties.ram) {
         const ramDiceNum =
           CONFIG.WJMAIS.shipRamDice[this.actor.system.traits.size];
-        const ramDamageDie = Roll.parse(itemData.system.damage.parts[0][0])[0]
-          .faces;
-        const backlashDamageDie = Roll.parse(
-          itemData.system.damage.versatile
-        )[0].faces;
-        foundry.utils.setProperty(itemData, "system.damage.parts", [
-          [`${ramDiceNum}d${ramDamageDie}`, itemData.system.damage.parts[0][1]],
-        ]);
-        foundry.utils.setProperty(
-          itemData,
-          "system.damage.versatile",
-          `${ramDiceNum}d${backlashDamageDie}`
-        );
+        if (itemData.system.damage.parts.length > 1) {
+          const ramDamageDie = Roll.parse(itemData.system.damage.parts[0][0])[0].faces;
+          const backlashDamageDie = Roll.parse(itemData.system.damage.parts[1][0])[0].faces;
+          foundry.utils.setProperty(itemData, "system.damage.parts", [
+            [`${ramDiceNum}d${ramDamageDie}`, itemData.system.damage.parts[0][1]],
+            [`${ramDiceNum}d${backlashDamageDie}`, itemData.system.damage.parts[1][1]],
+          ]);
+        } else if (itemData.system.damage.parts.length > 0) {
+          const ramDamageDie = Roll.parse(itemData.system.damage.parts[0][0])[0].faces;
+          foundry.utils.setProperty(itemData, "system.damage.parts", [
+            [`${ramDiceNum}d${ramDamageDie}`, itemData.system.damage.parts[0][1]],
+          ]);
+        }
+        if (itemData.system.damage.versatile) {
+          const backlashDamageDie = Roll.parse(
+            itemData.system.damage.versatile
+          )[0].faces;
+          foundry.utils.setProperty(
+            itemData,
+            "system.damage.versatile",
+            `${ramDiceNum}d${backlashDamageDie}`
+          );
+        }
       }
     }
     return super._onDropItemCreate(itemData);
