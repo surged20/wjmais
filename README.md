@@ -76,8 +76,9 @@ This mode is only available to GMs.
 
 - This Foundry VTT module is licensed under MIT and with permission from Sesserdrix#7270
 - This work is licensed under Foundry Virtual Tabletop EULA - Limited License Agreement for module development v 0.1.6.
+- Wildjammer content provided under the [Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy) and [OGL 1.0a](https://github.com/surged20/wjmais/blob/master/OGL.md)
 - Threshership and Turtleship artwork used under permission from [Lauren Decker](http://www.instagram.com/1d10art).
-- The remaining ship artwork is used under the WotC Fan Content Policy.
+- The remaining ship artwork is used under the [Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy).
 - Wildjammer logo and social preview art used under permission from [RathofKelly](https://www.instagram.com/rathofkelly).
 
 ## Thanks
