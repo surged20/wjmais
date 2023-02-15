@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0] - 2023-02-15
+
+### Fixed
+
+- NPC ship ability display on dnd5e 2.1.x
+- Warnings for deprecated `attributable` `data-property` use on dnd5e 2.1.x
+
 ## [0.7.3] - 2022-09-13
 
 ### Added
@@ -257,7 +264,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.7.3...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.8.0...HEAD
+[0.8.0]: https://github.com/surged20/wjmais/compare/0.7.3...0.8.0
 [0.7.3]: https://github.com/surged20/wjmais/compare/0.7.2...0.7.3
 [0.7.2]: https://github.com/surged20/wjmais/compare/0.7.1...0.7.2
 [0.7.1]: https://github.com/surged20/wjmais/compare/0.7.0...0.7.1
