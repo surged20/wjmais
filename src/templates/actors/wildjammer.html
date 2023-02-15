@@ -53,7 +53,7 @@
             {{ localize "DND5E.ArmorClass" }}
             <a class="armor-config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}"><i class="fas fa-cog"></i></a>
           </h4>
-          <div class="attribute-value attributable" data-property="attributes.ac">
+          <div class="attribute-value" data-attribution="attributes.ac">
             <span>{{system.attributes.ac.value}}</span>
           </div>
         </li>
@@ -82,20 +82,17 @@
     <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
       {{#if isNPC}}
         <ul class="ability-scores flexrow">
-          {{#each system.abilities as |ability id|}}
-            <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-              <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
-              <input class="ability-score" name="system.abilities.{{id}}.value" type="number" value="{{ability.value}}" placeholder="10">
-              <div class="ability-modifiers flexrow">
-                <div class="ability-modifiers flexrow">
-                  <span class="ability-mod" title="{{ localize 'DND5E.Modifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-                  <input type="hidden" name="system.abilities.{{id}}.proficient" value="{{ability.baseProf}}" data-dtype="Number"/>
-                  <a class="proficiency-toggle ability-proficiency" title="{{ localize 'DND5E.Proficiency' }}">{{{ability.icon}}}</a>
-                  <span class="ability-save" title="{{ localize 'DND5E.SavingThrow' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
-                </div>
-                <a class="config-button" data-action="ability" title="{{localize 'DND5E.AbilityConfigure'}}"><i class="fas fa-cog"></i></a>
-            </li>
-          {{/each}}
+        {{#each abilities as |ability id|}}
+          <li class="ability" data-ability="{{id}}">
+            <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
+            <input type="text" name="system.abilities.{{id}}.value" value="{{ability.value}}" class="ability-score"  placeholder="0" data-dtype="Number">
+            <div class="ability-modifiers flexrow">
+              <span class="ability-mod" data-tooltip="DND5E.Modifier">
+                {{numberFormat ability.mod decimals=0 sign=true}}
+              </span>
+            </div>
+          </li>
+        {{/each}}
         </ul>
       {{/if}}
       {{#unless isNPC}}
