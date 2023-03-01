@@ -598,7 +598,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         columns: upgradeColumns,
       },
       weapons: {
-        label: game.i18n.localize("DND5E.ItemTypeWeaponPl"),
+        label: game.i18n.localize("ITEM.TypeWeaponPl"),
         items: [],
         equippable: true,
         dataset: {
