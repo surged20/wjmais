@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.2] - 2023-03-02
+
+### Fixed
+
+- Unable to open core default token settings (undefined actor flags in wrapper)
+
 ## [0.8.1] - 2023-03-01
 
 ### Fixed
@@ -270,7 +276,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.8.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.8.2...HEAD
+[0.8.2]: https://github.com/surged20/wjmais/compare/0.8.1...0.8.2
 [0.8.1]: https://github.com/surged20/wjmais/compare/0.8.0...0.8.1
 [0.8.0]: https://github.com/surged20/wjmais/compare/0.7.3...0.8.0
 [0.7.3]: https://github.com/surged20/wjmais/compare/0.7.2...0.7.3
