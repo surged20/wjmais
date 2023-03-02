@@ -131,7 +131,7 @@ function patchResourceBars() {
     "wjmais",
     "game.dnd5e.documents.TokenDocument5e.prototype.getBarAttribute",
     function (wrapped, ...args) {
-      if (game.actors.get(this.actorId).flags?.wjmais?.traits)
+      if (game.actors.get(this.actorId)?.flags?.wjmais?.traits)
         return Object.getPrototypeOf(
           game.dnd5e.documents.TokenDocument5e
         ).prototype.getBarAttribute.apply(this, args);
