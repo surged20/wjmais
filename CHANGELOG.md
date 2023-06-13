@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.0] - 2023-06-13
+
+### Added
+
+- FoundryVTT v11 and dnd5e 2.2.x compatibility
+
+### Changed
+
+- Removed patching of isItemMountable for ship equipment. It's no longer necessary since the dnd5e 2.2.x refactor.
+
 ## [0.8.2] - 2023-03-02
 
 ### Fixed
@@ -276,7 +286,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.8.2...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.0...HEAD
+[0.9.0]: https://github.com/surged20/wjmais/compare/0.8.2...0.9.0
 [0.8.2]: https://github.com/surged20/wjmais/compare/0.8.1...0.8.2
 [0.8.1]: https://github.com/surged20/wjmais/compare/0.8.0...0.8.1
 [0.8.0]: https://github.com/surged20/wjmais/compare/0.7.3...0.8.0
