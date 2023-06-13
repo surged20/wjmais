@@ -14,8 +14,8 @@
   "minimumCoreVersion": "10",
   "compatibility": {
     "minimum": "10",
-    "verified": "10",
-    "maximum": "10"
+    "verified": "11",
+    "maximum": "11"
   },
   "esmodules": ["module/wjmais.js"],
   "styles": ["styles/wjmais.css"],
@@ -33,7 +33,8 @@
         "type": "system",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
-          "minimum": "2.1.4"
+          "minimum": "2.2.0",
+          "verified": "2.2.1"
         }
       }
     ],
@@ -43,7 +44,8 @@
         "type": "module",
         "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
         "compatibility": {
-          "minimum": "1.12.7.1"
+          "minimum": "1.12.12.1",
+          "verified": "1.12.12.1"
         }
       }
     ]
