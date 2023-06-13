@@ -17,26 +17,6 @@ function patchCompendiumImport() {
   );
 }
 
-function patchItemSheet() {
-  // Display wildjammer modules and upgrades as mountable items like vehicle equipment
-  libWrapper.register(
-    "wjmais",
-    "game.dnd5e.applications.item.ItemSheet5e.prototype._isItemMountable",
-    function (wrapped, ...args) {
-      const armorType = this.document.system?.armor?.type;
-      const wjEquipmentTypes = [
-        "foremantle",
-        "material",
-        "modifier",
-        "module",
-        "upgrade",
-      ];
-      return wrapped(...args) || wjEquipmentTypes.includes(armorType);
-    },
-    "MIXED"
-  );
-}
-
 function patchResourceBars() {
   // Add Bulwark Points bar attribute choice
   libWrapper.register(
@@ -173,7 +153,6 @@ function patchProficiency() {
 
 export function applyPatches() {
   patchCompendiumImport();
-  patchItemSheet();
   patchResourceBars();
   patchRollData();
   patchProficiency();
