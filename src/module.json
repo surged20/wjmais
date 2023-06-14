@@ -56,35 +56,60 @@
       "label": "Features",
       "systems": ["dnd5e"],
       "path": "./packs/features.db",
-      "type": "Item"
+      "type": "Item",
+      "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
     {
       "name": "items",
       "label": "Items",
       "systems": ["dnd5e"],
       "path": "./packs/items.db",
-      "type": "Item"
+      "type": "Item",
+      "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
     {
       "name": "quickref",
       "label": "Quick Reference",
       "systems": ["dnd5e"],
       "path": "./packs/quickref.db",
-      "type": "JournalEntry"
+      "type": "JournalEntry",
+      "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
     {
       "name": "ships",
       "label": "Ships",
       "systems": ["dnd5e"],
       "path": "./packs/ships.db",
-      "type": "Actor"
+      "type": "Actor",
+      "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
     {
       "name": "spells",
       "label": "Spells",
       "systems": ["dnd5e"],
       "path": "./packs/spells.db",
-      "type": "Item"
+      "type": "Item",
+      "banner": "./modules/wjmais/assets/wj-banner.webp"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Wildjammer",
+      "sorting": "m",
+      "color": "#57534e",
+      "packs": [
+        "ships",
+        "features",
+        "items",
+        "spells",
+        "quickref"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "type": "setup",
+      "url": "modules/wjmais/assets/wj-logo-banner.webp"
     }
   ],
   "url": "https://github.com/surged20/wjmais",
