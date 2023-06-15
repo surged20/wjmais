@@ -24,7 +24,10 @@ function translateObject(obj) {
 }
 
 function configProperties() {
-  CONFIG.Actor.trackableAttributes.vehicle.bar.push("attributes.hp", "Bulwark Points");
+  CONFIG.Actor.trackableAttributes.vehicle.bar.push(
+    "attributes.hp",
+    "Bulwark Points"
+  );
 
   mergeObject(globalThis.game.dnd5e.config.armorClasses, {
     wildjammer: {
