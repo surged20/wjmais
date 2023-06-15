@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.2] - 2023-06-15
+
+### Fixed
+
+- dnd5e removed all attribute bar options for vehicles so add back attributes.hp for Hull Point display
+
 ## [0.9.1] - 2023-06-14
 
 ### Added
@@ -294,7 +300,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.2...HEAD
+[0.9.2]: https://github.com/surged20/wjmais/compare/0.9.1...0.9.2
 [0.9.1]: https://github.com/surged20/wjmais/compare/0.9.0...0.9.1
 [0.9.0]: https://github.com/surged20/wjmais/compare/0.8.2...0.9.0
 [0.8.2]: https://github.com/surged20/wjmais/compare/0.8.1...0.8.2
