@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.3] - 2023-06-16
+
+### Fixed
+
+- Cargo price now displays properly with denomination. dnd5e 2.1.x change prices to value/denomination (thanks to tprussak for the suggested fix.
+
 ## [0.9.2] - 2023-06-15
 
 ### Fixed
@@ -300,7 +306,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.2...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.3...HEAD
+[0.9.3]: https://github.com/surged20/wjmais/compare/0.9.2...0.9.3
 [0.9.2]: https://github.com/surged20/wjmais/compare/0.9.1...0.9.2
 [0.9.1]: https://github.com/surged20/wjmais/compare/0.9.0...0.9.1
 [0.9.0]: https://github.com/surged20/wjmais/compare/0.8.2...0.9.0
