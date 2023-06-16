@@ -643,8 +643,13 @@ export default class WildjammerSheet extends dnd5e.applications.actor
           {
             label: game.i18n.localize("DND5E.Price"),
             css: "item-price",
-            property: "system.price",
+            property: "system.price.value",
             editable: "Number",
+          },
+          {
+            label: game.i18n.localize("WJMAIS.Denomination"),
+            css: "item-denomination",
+            property: "system.price.denomination",
           },
           {
             label: game.i18n.localize("DND5E.Weight"),

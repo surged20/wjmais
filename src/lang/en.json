@@ -121,5 +121,7 @@
   "WJMAIS.Skip": "Skip",
 
   "WJMAIS.Megascale": "Megascale",
-  "WJMAIS.MegascaleAbbr": "Mega"
+  "WJMAIS.MegascaleAbbr": "Mega",
+
+  "WJMAIS.Denomination": "Denomination"
 }
