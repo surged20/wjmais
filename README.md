@@ -43,7 +43,7 @@ This Foundry VTT module extends the dnd5e system with the following:
 
 ### Quick Reference
 
-Click the Wildjammer logo in the upper left to open the *Wildjammer Quick Reference* journal. This journal provides an index of the Wildjammer: More Adventures in Space content.
+Click the Wildjammer logo in the upper left or use the keybind to open the *Wildjammer Quick Reference* journal. This journal provides an index of the Wildjammer: More Adventures in Space content.
 
 ### Wildjammer Sheet
 
