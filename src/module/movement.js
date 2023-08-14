@@ -85,8 +85,8 @@ async function toggleConeOfMovement() {
 
 export function registerMovementKey() {
   game.keybindings.register("wjmais", "coneOfMovement", {
-    name: "Toggle Wildjammer cone of movement template",
-    hint: "Toggle the Wildjammer cone of movement template for the selected token.",
+    name: "SETTINGS.WJMAIS.ConeOfMovementN",
+    hint: "SETTINGS.WJMAIS.ConeOfMovementH",
     editable: [
       {
         key: "KeyM",
