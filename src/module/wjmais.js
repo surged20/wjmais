@@ -100,16 +100,16 @@ function configProperties() {
 
 async function openQuickReference() {
   const pack = await game.packs.get("wjmais.quickref");
-    const quickref = pack.index.getName("Wildjammer Quick Reference");
-    if (quickref) {
-      const quickrefDocument = await pack.getDocument(quickref._id);
-      quickrefDocument.sheet.render(true);
-    }
+  const quickref = pack.index.getName("Wildjammer Quick Reference");
+  if (quickref) {
+    const quickrefDocument = await pack.getDocument(quickref._id);
+    quickrefDocument.sheet.render(true);
+  }
 }
 
 function registerKeys() {
   registerMovementKey();
- 
+
   game.keybindings.register("wjmais", "openQuickReference", {
     name: "SETTINGS.WJMAIS.OpenQuickReferenceN",
     hint: "SETTINGS.WJMAIS.OpenQuickReferenceH",
