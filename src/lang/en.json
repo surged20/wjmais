@@ -1,6 +1,8 @@
 {
   "SETTINGS.WJMAIS.ConeOfMovementN": "Toggle Wildjammer cone of movement template",
   "SETTINGS.WJMAIS.ConeOfMovementH": "Toggle the Wildjammer cone of movement template for the selected token.",
+  "SETTINGS.WJMAIS.OpenQuickReferenceN": "Wildjammer quick reference",
+  "SETTINGS.WJMAIS.OpenQuickReferenceH": "Opens the Wildjammer quick reference journal.",
   "SETTINGS.WJMAIS.RollPcWeaponsN": "Roll weapons from PC ship sheet",
   "SETTINGS.WJMAIS.RollPcWeaponsH": "By default, weapons may not be rolled from a wildjammer sheet unless it is in NPC mode.",
   "SETTINGS.WJMAIS.RoleChangeChatN": "Enable role change chat cards",

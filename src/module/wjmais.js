@@ -98,6 +98,33 @@ function configProperties() {
   );
 }
 
+async function openQuickReference() {
+  const pack = await game.packs.get("wjmais.quickref");
+    const quickref = pack.index.getName("Wildjammer Quick Reference");
+    if (quickref) {
+      const quickrefDocument = await pack.getDocument(quickref._id);
+      quickrefDocument.sheet.render(true);
+    }
+}
+
+function registerKeys() {
+  registerMovementKey();
+ 
+  game.keybindings.register("wjmais", "openQuickReference", {
+    name: "SETTINGS.WJMAIS.OpenQuickReferenceN",
+    hint: "SETTINGS.WJMAIS.OpenQuickReferenceH",
+    editable: [
+      {
+        key: "KeyQ",
+      },
+    ],
+    onDown: () => {
+      openQuickReference();
+      return true;
+    },
+  });
+}
+
 function registerSettings() {
   game.settings.register("wjmais", "rollPcWeapons", {
     name: "SETTINGS.WJMAIS.RollPcWeaponsN",
@@ -137,8 +164,7 @@ Hooks.once("init", function () {
 
   CONFIG.WJMAIS = WJMAIS;
 
-  registerMovementKey();
-
+  registerKeys();
   registerSettings();
 
   preloadHandlebarsTemplates();
@@ -178,12 +204,7 @@ Hooks.once("init", function () {
 
   Hooks.on("ready", () => {
     $("#logo").click(async () => {
-      const pack = await game.packs.get("wjmais.quickref");
-      const quickref = pack.index.getName("Wildjammer Quick Reference");
-      if (quickref) {
-        const quickrefDocument = await pack.getDocument(quickref._id);
-        quickrefDocument.sheet.render(true);
-      }
+      openQuickReference();
     });
   });
 
