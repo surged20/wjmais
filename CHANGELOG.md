@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.0] - 2024-02-01
+
+### Added
+
+- v12 verified
+
+### Changed
+
+- Requires dnd5e 3.0.0+
+
+### Fixed
+
+- failed template partial references from dnd5e 3.0.0 reorg
+- template source object deprecation warning
+
 ## [0.9.4] - 2023-08-14
 
 ### Added
@@ -312,7 +327,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/0.9.4...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.0.0...HEAD
+[0.9.4]: https://github.com/surged20/wjmais/compare/0.9.4...1.0.0
 [0.9.4]: https://github.com/surged20/wjmais/compare/0.9.3...0.9.4
 [0.9.3]: https://github.com/surged20/wjmais/compare/0.9.2...0.9.3
 [0.9.2]: https://github.com/surged20/wjmais/compare/0.9.1...0.9.2
