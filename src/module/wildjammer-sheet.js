@@ -6,7 +6,7 @@ import SelectItemPrompt from "./select-item-prompt.js";
  * @param {Item5e} item   The item data object
  */
 function isForeMantleModule(item) {
-  return item.type === "equipment" && item.system?.armor?.type === "foremantle";
+  return item.type === "equipment" && item.system?.type.value === "foremantle";
 }
 
 /**
@@ -452,7 +452,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
 
     if (
       (item.system?.properties?.smw ||
-        item.system?.armor?.type === "foremantle") &&
+        item.system?.type.value === "foremantle") &&
       !game.settings.get("wjmais", "rollPcWeapons")
     )
       return false;
@@ -561,8 +561,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         equippable: true,
         dataset: {
           type: "equipment",
-          "armor.type": "material",
-          "armor.value": "",
+          "type.value": "material",
           "hp.max": 10,
           "hp.value": 10,
         },
@@ -573,8 +572,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         equippable: true,
         dataset: {
           type: "equipment",
-          "armor.type": "module",
-          "armor.value": "",
+          "type.value": "module",
           "hp.max": 10,
           "hp.value": 10,
         },
@@ -592,8 +590,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         equippable: true,
         dataset: {
           type: "equipment",
-          "armor.type": "upgrade",
-          "armor.value": "",
+          "type.value": "upgrade",
         },
         columns: upgradeColumns,
       },
@@ -721,18 +718,18 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         features.weapons.items.push(item);
       } else if (
         item.type === "equipment" &&
-        ["foremantle", "module"].includes(item.system?.armor.type)
+        ["foremantle", "module"].includes(item.system?.type.value)
       ) {
         totalWeight += (item.system.weight || 0) * (item.system.quantity || 0);
         features.modules.items.push(item);
       } else if (
         item.type === "equipment" &&
-        item.system?.armor.type === "upgrade"
+        item.system?.type.value === "upgrade"
       )
         features.upgrades.items.push(item);
       else if (
         item.type === "equipment" &&
-        ["material", "modifier"].includes(item.system?.armor.type)
+        ["material", "modifier"].includes(item.system?.type.value)
       )
         features.hull.items.push(item);
       else if (CONFIG.WJMAIS.cargoTypes.includes(item.type)) {
