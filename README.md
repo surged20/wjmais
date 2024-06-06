@@ -30,9 +30,9 @@ This Foundry VTT module extends the dnd5e system with the following:
     - Bridge crew role management
     - Fighter-Helmsman/Gunner and Helmsman character sheets inherit ship weapons/equipment when entering the appropriate role.
   - NPC Mode
-    - Exposes configurable abilities and proficiency modifier
+    - Exposes configurable abilities
     - All items, ability checks, and saving throws rollable from Wildjammer sheet
-    - Attacks may have hardcoded bonuses or use the ability/proficiency modifiers.
+    - Attacks may have hardcoded bonuses or use the ability modifiers.
 - Cone of movement measured template toggle using key bind
 - Token resource bar support for Hull Points and Bulwark Points
 - Ship class scaled Collide and Ram attacks with midi-qol and Ready Set Roll support

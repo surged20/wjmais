@@ -126,20 +126,9 @@ function patchRollData() {
   );
 }
 
-function patchProficiency() {
-  libWrapper.register(
-    "wjmais",
-    "CONFIG.Actor.documentClass.prototype._prepareVehicleData",
-    function (wrapped, ...args) {
-      if (this.flags?.wjmais?.npc) wrapped(...args);
-    },
-    "MIXED"
-  );
-}
 
 export function applyPatches() {
   patchCompendiumImport();
   patchResourceBars();
   patchRollData();
-  patchProficiency();
 }
