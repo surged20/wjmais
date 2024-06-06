@@ -98,7 +98,7 @@
       {{#unless isNPC}}
         <section class="center-pane flexcol">
           <h4 class="attribute-name box-title">{{localize 'WJMAIS.BridgeCrewRoles'}}</span>
-          {{> 'modules/wjmais/templates/actors/parts/bridge-crew-roles.html' sections=roles}}
+          {{> "wjmais.bridge-crew-roles" sections=roles}}
         </section>
       {{/unless}}
       <section class="center-pane flexcol">
@@ -201,7 +201,7 @@
     </div>
 
     <div class="tab features flexcol" data-group="primary" data-tab="features">
-      {{> "modules/wjmais/templates/actors/parts/actor-features.html" sections=features}}
+      {{> "wjmais.actor-features" sections=features}}
     </div>
 
     <div class="tab cargo flexcol" data-group="primary" data-tab="cargo">
