@@ -58,7 +58,7 @@ async function isRoleChangeInvalid(role, ship, creature) {
   const creatureShipId = creature.flags?.wjmais?.shipId;
   if (creatureShipId && role != "unassigned") {
     const ship = game.actors.get(creature.flags.wjmais.shipId);
-    if (ship && (ship.id != creatureShipId)) {
+    if (ship && ship.id != creatureShipId) {
       ui.notifications.error(
         creature.name +
           game.i18n.localize("WJMAIS.ActorAlreadyAssigned") +
@@ -419,7 +419,9 @@ export default class WildjammerSheet extends dnd5e.applications.actor
   _prepareEquippableItem(item, context) {
     const isActive = !!item.system.equipped;
     context.toggleClass = isActive ? "active" : "";
-    context.toggleTitle = game.i18n.localize(isActive ? "DND5E.Equipped" : "DND5E.Unequipped");
+    context.toggleTitle = game.i18n.localize(
+      isActive ? "DND5E.Equipped" : "DND5E.Unequipped"
+    );
     context.canToggle = "equipped" in item.system;
   }
 
@@ -467,7 +469,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
   _getCrewValue(item) {
     const crewProperties = Object.keys(CONFIG.WJMAIS.crewValues);
     const itemProperties = Array.from(item.system.properties);
-    const crewProperty = crewProperties.find(r => itemProperties.includes(r));
+    const crewProperty = crewProperties.find((r) => itemProperties.includes(r));
 
     return crewProperty ? CONFIG.WJMAIS.crewValues[crewProperty] : 0;
   }
@@ -706,7 +708,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
 
     for (const item of context.items) {
       // Item details
-      const ctx = context.itemContext[item.id] ??= {};
+      const ctx = (context.itemContext[item.id] ??= {});
       this._prepareEquippableItem(item, ctx);
       item["rollable"] = this._isRollable(item);
       if (item.type === "weapon" && item.system?.properties.has("smw")) {
@@ -748,10 +750,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     context.roles = Object.values(roles);
     context.features = Object.values(features);
     context.cargo = Object.values(cargo);
-    context.encumbrance = this._computeEncumbrance(
-      totalWeight,
-      context
-    );
+    context.encumbrance = this._computeEncumbrance(totalWeight, context);
   }
 
   /* -------------------------------------------- */
@@ -859,7 +858,9 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       event.preventDefault();
       const idx = Number(row.dataset.itemIndex);
       const type = row.classList.contains("crew") ? "crew" : "passengers";
-      const cargoCollection = foundry.utils.deepClone(this.actor.system.cargo[type]).filter((_, i) => i !== idx);
+      const cargoCollection = foundry.utils
+        .deepClone(this.actor.system.cargo[type])
+        .filter((_, i) => i !== idx);
       return this.actor.update({ [`system.cargo.${type}`]: cargoCollection });
     }
   }

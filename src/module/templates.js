@@ -4,7 +4,6 @@
  * @return {Promise}
  */
 export const preloadHandlebarsTemplates = async function () {
-
   const partials = [
     // Actor Sheet Partials
     "modules/wjmais/templates/actors/parts/actor-features.hbs",
@@ -12,8 +11,8 @@ export const preloadHandlebarsTemplates = async function () {
   ];
 
   const paths = {};
-  for ( const path of partials ) {
-    paths[path.replace(".hbs", ".html")] = path;    
+  for (const path of partials) {
+    paths[path.replace(".hbs", ".html")] = path;
     paths[`wjmais.${path.split("/").pop().replace(".hbs", "")}`] = path;
   }
 

@@ -14,10 +14,10 @@ Actors.registerSheet("wjmais", WildjammerSheet, {
 
 // Handlebars helper: has
 // check if a value is contained in a set
-Handlebars.registerHelper("has", function( value, set, options ) {
-	// fallback...
-	set = ( set instanceof Set ) ? set : {set};
-	return set.has(value) ? options.fn(this) : "";
+Handlebars.registerHelper("has", function (value, set, options) {
+  // fallback...
+  set = set instanceof Set ? set : { set };
+  return set.has(value) ? options.fn(this) : "";
 });
 
 function localize(stringId, data = {}) {
@@ -33,7 +33,9 @@ function translateObject(obj) {
 
 function translateProperties(obj) {
   /* translate in place */
-  Object.keys(obj).forEach((key) => (obj[key].label = localize(obj[key].label)));
+  Object.keys(obj).forEach(
+    (key) => (obj[key].label = localize(obj[key].label))
+  );
 
   return obj;
 }
@@ -44,10 +46,10 @@ function configProperties() {
     "Bulwark Points"
   );
 
-CONFIG.DND5E.armorClasses.wildjammer = {
-  label: localize("WJMAIS.Wildjammer"),
-  formula: "10 + @ship.ac.mod"
-};
+  CONFIG.DND5E.armorClasses.wildjammer = {
+    label: localize("WJMAIS.Wildjammer"),
+    formula: "10 + @ship.ac.mod",
+  };
 
   mergeObject(
     globalThis.game.dnd5e.config.equipmentTypes,
@@ -79,36 +81,41 @@ CONFIG.DND5E.armorClasses.wildjammer = {
   });
 
   const wjWeaponProperties = {
-    bf1: {label: "WJMAIS.WeaponPropertyBackfire1"},
-    bf2: {label: "WJMAIS.WeaponPropertyBackfire2"},
-    bf3: {label: "WJMAIS.WeaponPropertyBackfire3"},
-    bf4: {label: "WJMAIS.WeaponPropertyBackfire4"},
-    clb: {label: "WJMAIS.WeaponPropertyClimbing"},
-    dpl: {label: "WJMAIS.WeaponPropertyDeployable"},
-    cr1: {label: "WJMAIS.WeaponPropertyCrew1"},
-    cr2: {label: "WJMAIS.WeaponPropertyCrew2"},
-    cr3: {label: "WJMAIS.WeaponPropertyCrew3"},
-    cr4: {label: "WJMAIS.WeaponPropertyCrew4"},
-    cr5: {label: "WJMAIS.WeaponPropertyCrew5"},
-    cr6: {label: "WJMAIS.WeaponPropertyCrew6"},
-    cr7: {label: "WJMAIS.WeaponPropertyCrew7"},
-    cr8: {label: "WJMAIS.WeaponPropertyCrew8"},
-    fmm: {label: "WJMAIS.WeaponPropertyForeMantleModule"},
-    fxd: {label: "WJMAIS.WeaponPropertyFixed"},
-    hlm: {label: "WJMAIS.WeaponPropertyHelmsman"},
-    hps: {label: "WJMAIS.WeaponPropertyHardpointSmall"},
-    hpm: {label: "WJMAIS.WeaponPropertyHardpointMedium"},
-    hpl: {label: "WJMAIS.WeaponPropertyHardpointLarge"},
-    ovh: {label: "WJMAIS.WeaponPropertyOverheat"},
-    sc1d12: {label: "WJMAIS.WeaponPropertyScatter112"},
-    sc2d6: {label: "WJMAIS.WeaponPropertyScatter26"},
-    sc2d10: {label: "WJMAIS.WeaponPropertyScatter210"},
-    smw: {label: "WJMAIS.WeaponPropertyShipWeapon"},
-    ram: {label: "WJMAIS.WeaponPropertyRam"},
+    bf1: { label: "WJMAIS.WeaponPropertyBackfire1" },
+    bf2: { label: "WJMAIS.WeaponPropertyBackfire2" },
+    bf3: { label: "WJMAIS.WeaponPropertyBackfire3" },
+    bf4: { label: "WJMAIS.WeaponPropertyBackfire4" },
+    clb: { label: "WJMAIS.WeaponPropertyClimbing" },
+    dpl: { label: "WJMAIS.WeaponPropertyDeployable" },
+    cr1: { label: "WJMAIS.WeaponPropertyCrew1" },
+    cr2: { label: "WJMAIS.WeaponPropertyCrew2" },
+    cr3: { label: "WJMAIS.WeaponPropertyCrew3" },
+    cr4: { label: "WJMAIS.WeaponPropertyCrew4" },
+    cr5: { label: "WJMAIS.WeaponPropertyCrew5" },
+    cr6: { label: "WJMAIS.WeaponPropertyCrew6" },
+    cr7: { label: "WJMAIS.WeaponPropertyCrew7" },
+    cr8: { label: "WJMAIS.WeaponPropertyCrew8" },
+    fmm: { label: "WJMAIS.WeaponPropertyForeMantleModule" },
+    fxd: { label: "WJMAIS.WeaponPropertyFixed" },
+    hlm: { label: "WJMAIS.WeaponPropertyHelmsman" },
+    hps: { label: "WJMAIS.WeaponPropertyHardpointSmall" },
+    hpm: { label: "WJMAIS.WeaponPropertyHardpointMedium" },
+    hpl: { label: "WJMAIS.WeaponPropertyHardpointLarge" },
+    ovh: { label: "WJMAIS.WeaponPropertyOverheat" },
+    sc1d12: { label: "WJMAIS.WeaponPropertyScatter112" },
+    sc2d6: { label: "WJMAIS.WeaponPropertyScatter26" },
+    sc2d10: { label: "WJMAIS.WeaponPropertyScatter210" },
+    smw: { label: "WJMAIS.WeaponPropertyShipWeapon" },
+    ram: { label: "WJMAIS.WeaponPropertyRam" },
   };
 
-  mergeObject(CONFIG.DND5E.itemProperties, translateProperties(wjWeaponProperties));
-  Object.keys(wjWeaponProperties).forEach((key) => CONFIG.DND5E.validProperties.weapon.add(key));
+  mergeObject(
+    CONFIG.DND5E.itemProperties,
+    translateProperties(wjWeaponProperties)
+  );
+  Object.keys(wjWeaponProperties).forEach((key) =>
+    CONFIG.DND5E.validProperties.weapon.add(key)
+  );
 }
 
 async function openQuickReference() {

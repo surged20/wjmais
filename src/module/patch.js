@@ -126,7 +126,6 @@ function patchRollData() {
   );
 }
 
-
 export function applyPatches() {
   patchCompendiumImport();
   patchResourceBars();
