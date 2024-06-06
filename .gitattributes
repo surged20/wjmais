@@ -1,1 +1,6 @@
 *.webp filter=lfs diff=lfs merge=lfs -text
+src/packs/quickref filter=lfs diff=lfs merge=lfs -text
+src/packs/ships filter=lfs diff=lfs merge=lfs -text
+src/packs/spells filter=lfs diff=lfs merge=lfs -text
+src/packs/features filter=lfs diff=lfs merge=lfs -text
+src/packs/items filter=lfs diff=lfs merge=lfs -text

@@ -33,7 +33,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
           "minimum": "3.0.0",
-          "verified": "3.0.0"
+          "verified": "3.2.0"
         }
       }
     ],
@@ -54,7 +54,7 @@
       "name": "features",
       "label": "Features",
       "systems": ["dnd5e"],
-      "path": "./packs/features.db",
+      "path": "./packs/features",
       "type": "Item",
       "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
@@ -62,7 +62,7 @@
       "name": "items",
       "label": "Items",
       "systems": ["dnd5e"],
-      "path": "./packs/items.db",
+      "path": "./packs/items",
       "type": "Item",
       "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
@@ -70,7 +70,7 @@
       "name": "quickref",
       "label": "Quick Reference",
       "systems": ["dnd5e"],
-      "path": "./packs/quickref.db",
+      "path": "./packs/quickref",
       "type": "JournalEntry",
       "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
@@ -78,7 +78,7 @@
       "name": "ships",
       "label": "Ships",
       "systems": ["dnd5e"],
-      "path": "./packs/ships.db",
+      "path": "./packs/ships",
       "type": "Actor",
       "banner": "./modules/wjmais/assets/wj-banner.webp"
     },
@@ -86,7 +86,7 @@
       "name": "spells",
       "label": "Spells",
       "systems": ["dnd5e"],
-      "path": "./packs/spells.db",
+      "path": "./packs/spells",
       "type": "Item",
       "banner": "./modules/wjmais/assets/wj-banner.webp"
     }
