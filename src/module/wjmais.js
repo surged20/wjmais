@@ -12,6 +12,14 @@ Actors.registerSheet("wjmais", WildjammerSheet, {
   makeDefault: true,
 });
 
+// Handlebars helper: has
+// check if a value is contained in a set
+Handlebars.registerHelper("has", function( value, set, options ) {
+	// fallback...
+	set = ( set instanceof Set ) ? set : {set};
+	return set.has(value) ? options.fn(this) : "";
+});
+
 function localize(stringId, data = {}) {
   return game.i18n.format(stringId, data);
 }
@@ -36,12 +44,10 @@ function configProperties() {
     "Bulwark Points"
   );
 
-  mergeObject(globalThis.game.dnd5e.config.armorClasses, {
-    wildjammer: {
-      label: localize("WJMAIS.Wildjammer"),
-      formula: "10 + @ship.ac.mod",
-    },
-  });
+CONFIG.DND5E.armorClasses.wildjammer = {
+  label: localize("WJMAIS.Wildjammer"),
+  formula: "10 + @ship.ac.mod"
+};
 
   mergeObject(
     globalThis.game.dnd5e.config.equipmentTypes,

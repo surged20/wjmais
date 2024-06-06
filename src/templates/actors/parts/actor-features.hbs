@@ -1,114 +1,137 @@
-{{! vim: set ft=html.handlebars ts=2 sw=2 et : }}
-
-{{#unless isVehicle}}
-  <div class="inventory-filters flexrow">
+<{{elements.inventory}} class="inventory-element">
+  {{#unless isVehicle}}
+  <div class="inventory-filters inventory-header flexrow">
     <ul class="filter-list flexrow" data-filter="features">
-      <li class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
-      <li class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-      <li class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+        <li class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
+        <li class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
+        <li class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
     </ul>
   </div>
-{{/unless}}
+  {{/unless}}
 
-<ol class="items-list inventory-list">
+  <ol class="items-list inventory-list">
   {{#each sections as |section sid|}}
     <li class="items-header flexrow">
-      <h3 class="item-name flexrow">{{localize section.label}}</h3>
+        <h3 class="item-name flexrow">{{localize section.label}}</h3>
 
-      {{#if section.hasActions}}
+        {{#if section.hasActions}}
         <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
         <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
-      {{/if}}
+        {{/if}}
 
-      {{#if section.columns}}
-        {{#each section.columns}}
-          <div class="item-detail {{css}}">{{label}}</div>
-        {{/each}}
-      {{/if}}
+        {{#if section.columns}}
+            {{#each section.columns}}
+                <div class="item-detail {{css}}">{{label}}</div>
+            {{/each}}
+        {{/if}}
 
-      {{#if ../owner}}
+        {{#if ../owner}}
         <div class="item-controls flexrow">
-          <a class="item-control item-create" title="{{localize 'DND5E.FeatureAdd'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
-            <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
-          </a>
+            <a class="item-control item-action" data-action="create" data-tooltip="DND5E.FeatureAdd"
+                {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+            </a>
         </div>
-      {{/if}}
+        {{/if}}
     </li>
 
     <ol class="item-list">
-      {{#each section.items as |item iid|}}
-        <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
-          <div class="item-name flexrow {{#if item.rollable}}rollable{{/if}}">
-            <div class="item-image" style="background-image: url('{{item.img}}')"></div>
-            <h4>{{item.name}}</h4>
-          </div>
+    {{#each section.items as |item iid|}}
+    {{#dnd5e-itemContext item as |ctx|}}
+        <li class="item flexrow {{#if ctx.isDepleted}}depleted{{/if}} {{#if ctx.isExpanded}}expanded{{/if}}"
+            data-item-id="{{item.id}}">
+            <div class="item-name flexrow {{#if item.rollable}}rollable{{/if}}">
+                <div class="item-image item-action" data-action="use" tabindex="0" role="button" aria-label="{{item.name}}" style="background-image: url('{{item.img}}')"></div>
+                <h4 class="item-action" data-action="expand">
+                    {{#if (eq item.type "subclass")}}&rdsh;{{/if}}
+                    {{item.name}}
+                    {{#if item.system.isOriginalClass}}
+                        <i class="original-class fas fa-sun" data-tooltip="DND5E.ClassOriginal"></i>
+                    {{/if}}
+                    {{~#if ctx.isStack}} ({{item.system.quantity}}){{/if}}
+                </h4>
+            </div>
 
-          {{#if section.hasActions}}
+            {{#if section.hasActions}}
             <div class="item-detail item-uses">
-              {{#if item.isOnCooldown}}
-                <a class="item-recharge rollable">{{item.labels.recharge}}</a>
-              {{else if item.system.recharge.value}}
-                {{localize "DND5E.Charged"}}
-
-              {{else if item.hasUses}}
-                <input type="text" value="{{item.system.uses.value}}" placeholder="0"/>/ {{item.system.uses.max}}
-              {{/if}}
-            </div>
-
-            <div class="item-detail item-action">
-              {{#if item.system.activation.type }}
-                {{item.labels.activation}}
-              {{/if}}
-            </div>
-
-          {{else if section.isClass}}
-            <div class="item-detail player-class">
-              {{item.system.subclass}}
+                {{#if ctx.isOnCooldown}}
+                    <a class="item-action" data-action="recharge">{{item.labels.recharge}}</a>
+                {{else if item.system.recharge.value}}
+                    {{localize "DND5E.Charged"}}
+                {{else if ctx.hasUses}}
+                    <input type="text" value="{{item.system.uses.value}}" placeholder="0" data-dtype="Number" data-name="system.uses.value">/ {{item.system.uses.max}}
+                {{/if}}
             </div>
             <div class="item-detail item-action">
-              Level {{item.system.levels}}
+                {{#if item.system.activation.type}}
+                    {{item.labels.activation}}
+                {{/if}}
             </div>
-          {{/if}}
 
-          {{#if section.columns}}
-            {{#each section.columns}}
-              <div class="item-detail {{css}}">
-                {{#with (getProperty item property)}}
-                  {{#if ../editable}}
-                    {{#if ../table}}
-                      {{#if (getProperty item ../visible)}}
-                        <select class="{{../css}} name={{../property}}">{{selectOptions ../table selected=this}}</select>
-                      {{/if}}
-                    {{else}}
-                      <input type="text" value="{{this}}" placeholder="&mdash;"
-                                                          data-dtype="{{../editable}}">
-                    {{/if}}
-                  {{else}}
-                    {{#if ../table}}
-                      {{lookup ../table this}}
-                    {{else}}
-                      {{this}}
-                    {{/if}}
-                  {{/if}}
-                {{/with}}
-              </div>
-            {{/each}}
-          {{/if}}
+            {{else if (eq item.type "class")}}
+            <div class="item-detail item-action">
+                <select class="level-selector">
+                    {{#select 0}}
+                    {{#each ctx.availableLevels}}
+                        <option value="{{this.delta}}" {{disabled this.disabled}}>
+                            {{localize "DND5E.LevelNumber" level=this.level}}
+                            {{#if this.delta}}({{numberFormat this.delta sign=true}}){{/if}}
+                        </option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            {{/if}}
 
-          {{#if ../../owner}}
+            {{#if section.columns}}
+                {{#each section.columns}}
+                    <div class="item-detail {{css}}">
+                        {{#if editable}}
+                            {{#if this.table}}
+                                {{#has this.visible (getProperty item "system.properties")}}
+                                    <select class="{{this.css}}" name="{{this.property}}" data-dtype="Number">{{selectOptions this.table selected=(getProperty item this.property)}}</select>
+                                {{/has}}
+                            {{else}}
+                                <input type="number" min="0" data-name="{{property}}"
+                                   {{#with (getProperty item maxProperty) as |max|}}max="{{max}}"{{/with}}
+                                   value="{{#with (getProperty item property) as |value|}}{{value}}
+                                   {{~else}}{{getProperty ctx property}}{{/with}}" placeholder="&mdash;">
+                            {{/if}}
+                        {{else}}
+                            {{#if (getProperty item property)}}
+                                {{getProperty item property}}
+                            {{else}}
+                                {{getProperty ctx property}}
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+            {{/if}}
+
+            {{#if @root.owner}}
             <div class="item-controls flexrow">
-              {{#if section.equippable}}
-                <a class="item-control item-toggle {{item.toggleClass}}"
-                   title="{{item.toggleTitle}}">
-                  <i class="fas fa-sun"></i>
+                {{#if section.equippable}}
+                <a class="item-control item-action {{ctx.toggleClass}}" data-action="equip"
+                   data-tooltip="{{ctx.toggleTitle}}">
+                    <i class="fas fa-shield-alt"></i>
                 </a>
-              {{/if}}
-              <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                {{/if}}
+                <a class="item-control item-action" data-action="edit" data-tooltip="DND5E.ItemEdit">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="item-control item-action" data-action="delete" data-tooltip="DND5E.ItemDelete">
+                    <i class="fas fa-trash"></i>
+                </a>
             </div>
-          {{/if}}
+            {{/if}}
+
+            {{#if ctx.isExpanded}}
+                {{> "dnd5e.item-summary" (lookup @root.expandedData item.id)}}
+            {{/if}}
         </li>
-      {{/each}}
+    {{/dnd5e-itemContext}}
+    {{/each}}
     </ol>
   {{/each}}
-</ol>
+  </ol>
+</{{elements.inventory}}>

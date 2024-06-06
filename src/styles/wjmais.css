@@ -27,8 +27,8 @@
   max-width: 25px;
 }
 
-.dnd5e.sheet.actor .inventory-list .item-detail {
-  flex: 0 0 90px;
+.dnd5e .inventory-element .inventory-list .item-detail.item-location {
+  flex: 0 0 110px;
 }
 
 .dnd5e.sheet.item .weapon-properties label.checkbox {

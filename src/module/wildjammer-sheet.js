@@ -16,8 +16,8 @@ function isForeMantleModule(item) {
 function isGunnerWeapon(item) {
   return (
     item.type === "weapon" &&
-    item.system?.properties?.smw &&
-    !item.system?.properties?.hlm
+    item.system?.properties.has("smw") &&
+    !item.system?.properties.has("hlm")
   );
 }
 
@@ -26,7 +26,7 @@ function isGunnerWeapon(item) {
  * @param {Item5e} item   The item data object
  */
 function isHelmsmanWeapon(item) {
-  return item.type === "weapon" && item.system?.properties?.hlm;
+  return item.type === "weapon" && item.system?.properties.has("hlm");
 }
 
 /**
@@ -58,7 +58,7 @@ async function isRoleChangeInvalid(role, ship, creature) {
   const creatureShipId = creature.flags?.wjmais?.shipId;
   if (creatureShipId && role != "unassigned") {
     const ship = game.actors.get(creature.flags.wjmais.shipId);
-    if (ship) {
+    if (ship && (ship.id != creatureShipId)) {
       ui.notifications.error(
         creature.name +
           game.i18n.localize("WJMAIS.ActorAlreadyAssigned") +
@@ -92,8 +92,9 @@ async function notifyBridgeCrewRoleChange(ship, actor, role) {
     roleChangeMessage =
       game.i18n.localize("WJMAIS.RoleIsAssigned") + ship.name + " ";
     if (isFighterHelmsmanGunner(role)) {
-      const shipWeaponId = actor.items.find((i) => i.system?.properties?.smw)
-        .flags?.wjmais?.swid;
+      const shipWeaponId = actor.items.find((i) =>
+        i.system?.properties.has("smw")
+      ).flags?.wjmais?.swid;
       if (shipWeaponId)
         roleChangeMessage += ship.items.get(shipWeaponId).name + " ";
     }
@@ -315,11 +316,11 @@ export default class WildjammerSheet extends dnd5e.applications.actor
   /** @override */
   async _onDropItemCreate(itemData) {
     if (itemData.type === "weapon") {
-      if (itemData.system.properties.smw) {
+      if (itemData.system.properties.has("smw")) {
         foundry.utils.setProperty(itemData, "flags.wjmais.location", "forward");
         foundry.utils.setProperty(itemData, "flags.wjmais.facing", 90);
       }
-      if (itemData.system.properties.ram) {
+      if (itemData.system.properties.has("ram")) {
         const ramDiceNum =
           CONFIG.WJMAIS.shipRamDice[this.actor.system.traits.size];
         if (itemData.system.damage.parts.length > 1) {
@@ -415,12 +416,11 @@ export default class WildjammerSheet extends dnd5e.applications.actor
    * Prepare items that are mounted to a vehicle and are equippable.
    * @private
    */
-  _prepareEquippableItem(item) {
-    const isEquipped = item.system.equipped;
-    item.toggleClass = isEquipped ? "active" : "";
-    item.toggleTitle = game.i18n.localize(
-      `DND5E.${isEquipped ? "Equipped" : "Unequipped"}`
-    );
+  _prepareEquippableItem(item, context) {
+    const isActive = !!item.system.equipped;
+    context.toggleClass = isActive ? "active" : "";
+    context.toggleTitle = game.i18n.localize(isActive ? "DND5E.Equipped" : "DND5E.Unequipped");
+    context.canToggle = "equipped" in item.system;
   }
 
   /**
@@ -451,7 +451,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     if (this._isNPC()) return true;
 
     if (
-      (item.system?.properties?.smw ||
+      (item.system?.properties.has("smw") ||
         item.system?.type.value === "foremantle") &&
       !game.settings.get("wjmais", "rollPcWeapons")
     )
@@ -465,12 +465,11 @@ export default class WildjammerSheet extends dnd5e.applications.actor
    * @private
    */
   _getCrewValue(item) {
-    let value = 0;
-    const crewProperty = Object.keys(CONFIG.WJMAIS.crewValues).find(
-      (prop) => item.system.properties[prop]
-    );
-    if (crewProperty) value = CONFIG.WJMAIS.crewValues[crewProperty];
-    return value;
+    const crewProperties = Object.keys(CONFIG.WJMAIS.crewValues);
+    const itemProperties = Array.from(item.system.properties);
+    const crewProperty = crewProperties.find(r => itemProperties.includes(r));
+
+    return crewProperty ? CONFIG.WJMAIS.crewValues[crewProperty] : 0;
   }
 
   /* -------------------------------------------- */
@@ -516,7 +515,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       {
         label: game.i18n.localize("WJMAIS.WeaponMountFacing"),
         css: "item-facing",
-        visible: "system.properties.fxd",
+        visible: "fxd",
         property: "flags.wjmais.facing",
         table: CONFIG.WJMAIS.weaponMountFacing,
         editable: true,
@@ -524,7 +523,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       {
         label: game.i18n.localize("WJMAIS.WeaponMountLocation"),
         css: "item-location",
-        visible: "system.properties.smw",
+        visible: "smw",
         property: "flags.wjmais.location",
         table: CONFIG.WJMAIS.weaponMountLocation,
         editable: true,
@@ -644,14 +643,9 @@ export default class WildjammerSheet extends dnd5e.applications.actor
             editable: "Number",
           },
           {
-            label: game.i18n.localize("WJMAIS.Denomination"),
-            css: "item-denomination",
-            property: "system.price.denomination",
-          },
-          {
             label: game.i18n.localize("DND5E.Weight"),
             css: "item-weight",
-            property: "system.weight",
+            property: "system.weight.value",
             editable: "Number",
           },
         ],
@@ -711,16 +705,18 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       this.actor.system.traits.size === "tiny" ? fighterRoles : shipRoles;
 
     for (const item of context.items) {
-      this._prepareEquippableItem(item);
+      // Item details
+      const ctx = context.itemContext[item.id] ??= {};
+      this._prepareEquippableItem(item, ctx);
       item["rollable"] = this._isRollable(item);
-      if (item.type === "weapon" && item.system?.properties.smw) {
+      if (item.type === "weapon" && item.system?.properties.has("smw")) {
         item["crewValue"] = this._getCrewValue(item);
         features.weapons.items.push(item);
       } else if (
         item.type === "equipment" &&
         ["foremantle", "module"].includes(item.system?.type.value)
       ) {
-        totalWeight += (item.system.weight || 0) * (item.system.quantity || 0);
+        totalWeight += item.system.totalWeight ?? 0;
         features.modules.items.push(item);
       } else if (
         item.type === "equipment" &&
@@ -733,7 +729,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       )
         features.hull.items.push(item);
       else if (CONFIG.WJMAIS.cargoTypes.includes(item.type)) {
-        totalWeight += (item.system.weight || 0) * (item.system.quantity || 0);
+        totalWeight += item.system.totalWeight ?? 0;
         cargo.cargo.items.push(item);
       } else if (item.type === "feat") {
         if (item?.flags?.wjmais?.role) {
@@ -752,7 +748,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     context.roles = Object.values(roles);
     context.features = Object.values(features);
     context.cargo = Object.values(cargo);
-    context.actor.system.attributes.encumbrance = this._computeEncumbrance(
+    context.encumbrance = this._computeEncumbrance(
       totalWeight,
       context
     );
@@ -770,7 +766,6 @@ export default class WildjammerSheet extends dnd5e.applications.actor
 
     if (!this.options.editable) return;
 
-    html.find(".item-toggle").click(this._onToggleItem.bind(this));
     html.find(".item-facing select").change(async (event) => {
       event.preventDefault();
       const itemID = event.currentTarget.closest(".item").dataset.itemId;
@@ -794,11 +789,9 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       .click((evt) => evt.target.select())
       .change(this._onHPChange.bind(this));
 
-    html
-      .find(".item:not(.cargo-row) input[data-property]")
-      .click((evt) => evt.target.select())
-      .change(this._onEditInSheet.bind(this));
-
+    html[0]
+      .querySelector('[data-tab="cargo"] dnd5e-inventory')
+      .addEventListener("inventory", this._onInventoryEvent.bind(this));
     html
       .find(".cargo-row input")
       .click((evt) => evt.target.select())
@@ -835,7 +828,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     if (!entry) return null;
 
     // Update the cargo value
-    const key = target.dataset.property || "name";
+    const key = target.dataset.property ?? "name";
     const type = target.dataset.dtype;
     let value = target.value;
     if (type === "Number") value = Number(value);
@@ -845,32 +838,31 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     return this.actor.update({ [`system.cargo.${property}`]: cargo });
   }
 
-  /* -------------------------------------------- */
-
   /**
-   * Handle editing certain values like quantity, price, and weight in-sheet.
-   * @param event {Event}
-   * @returns {Promise<Item>}
-   * @private
+   * Handle creating and deleting crew and passenger rows.
+   * @param {CustomEvent} event   Triggering inventory event.
+   * @returns {Promise}
    */
-  _onEditInSheet(event) {
-    event.preventDefault();
-    const itemID = event.currentTarget.closest(".item").dataset.itemId;
-    const item = this.actor.items.get(itemID);
-    const property = event.currentTarget.dataset.property;
-    const type = event.currentTarget.dataset.dtype;
-    let value = event.currentTarget.value;
-    switch (type) {
-      case "Number":
-        value = parseInt(value);
-        break;
-      case "Boolean":
-        value = value === "true";
-        break;
+  async _onInventoryEvent(event) {
+    if (event.detail === "create") {
+      const type = event.target.dataset.type;
+      if (!["crew", "passengers"].includes(type)) return;
+      event.preventDefault();
+      const cargoCollection = foundry.utils.deepClone(
+        this.actor.system.cargo[type]
+      );
+      cargoCollection.push(this.constructor.newCargo);
+      return this.actor.update({ [`system.cargo.${type}`]: cargoCollection });
+    } else if (event.detail === "delete") {
+      const row = event.target.closest(".item");
+      if (!row.classList.contains("cargo-row")) return;
+      event.preventDefault();
+      const idx = Number(row.dataset.itemIndex);
+      const type = row.classList.contains("crew") ? "crew" : "passengers";
+      const cargoCollection = foundry.utils.deepClone(this.actor.system.cargo[type]).filter((_, i) => i !== idx);
+      return this.actor.update({ [`system.cargo.${type}`]: cargoCollection });
     }
-    return item.update({ [`${property}`]: value });
   }
-
   /* -------------------------------------------- */
 
   /**
@@ -997,19 +989,5 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       allowCustom: false,
     };
     new dnd5e.applications.TraitSelector(this.actor, options).render(true);
-  }
-
-  /**
-   * Handle toggling an item's equipped status.
-   * @param event {Event}
-   * @returns {Promise<Item>}
-   * @private
-   */
-  _onToggleItem(event) {
-    event.preventDefault();
-    const itemID = event.currentTarget.closest(".item").dataset.itemId;
-    const item = this.actor.items.get(itemID);
-    const equipped = !!item.system.equipped;
-    return item.update({ "system.equipped": !equipped });
   }
 }
