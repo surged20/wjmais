@@ -51,7 +51,7 @@ function configProperties() {
     formula: "10 + @ship.ac.mod",
   };
 
-  mergeObject(
+  foundry.utils.mergeObject(
     globalThis.game.dnd5e.config.equipmentTypes,
     translateObject({
       foremantle: "WJMAIS.ForeMantleModule",
@@ -62,7 +62,7 @@ function configProperties() {
     })
   );
 
-  mergeObject(
+  foundry.utils.mergeObject(
     globalThis.game.dnd5e.config.miscEquipmentTypes,
     translateObject({
       foremantle: "WJMAIS.ForeMantleModule",
@@ -73,7 +73,7 @@ function configProperties() {
     })
   );
 
-  mergeObject(globalThis.game.dnd5e.config.spellTags, {
+  foundry.utils.mergeObject(globalThis.game.dnd5e.config.spellTags, {
     megascale: {
       label: localize("WJMAIS.Megascale"),
       abbr: localize("WJMAIS.MegascaleAbbr"),
@@ -109,7 +109,7 @@ function configProperties() {
     ram: { label: "WJMAIS.WeaponPropertyRam" },
   };
 
-  mergeObject(
+  foundry.utils.mergeObject(
     CONFIG.DND5E.itemProperties,
     translateProperties(wjWeaponProperties)
   );

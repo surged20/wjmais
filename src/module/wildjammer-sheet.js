@@ -182,7 +182,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
    * @returns {Object}
    */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["dnd5e", "sheet", "actor", "vehicle"],
       width: 680,
       height: 680,
@@ -216,7 +216,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
           .split(";")
           .forEach((c, i) => (trait.selected[`custom${i + 1}`] = c.trim()));
       }
-      trait.cssClass = !isEmpty(trait.selected) ? "" : "inactive";
+      trait.cssClass = !foundry.utils.isEmpty(trait.selected) ? "" : "inactive";
     }
   }
 
@@ -399,7 +399,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
 
     // Compute overall encumbrance
     const max = actorData.actor.flags?.wjmais?.cargo * 2000;
-    const pct = Math.clamped((totalWeight * 100) / max, 0, 100);
+    const pct = Math.clamp((totalWeight * 100) / max, 0, 100);
     return { value: totalWeight.toNearest(0.1), max, pct };
   }
 

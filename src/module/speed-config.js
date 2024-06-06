@@ -5,7 +5,7 @@
 export default class WildjammerSpeedConfig extends DocumentSheet {
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["dnd5e"],
       template: "modules/wjmais/templates/actors/speed-config.html",
       width: 300,
