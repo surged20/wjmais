@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.1] - 2024-06-06
+
+### Added
+
+- dnd5e 3.2.0 verified
+
+### Changed
+
+- Removed NPC ship proficiency modifier support
+
+### Fixed
+
+- Many dnd5e 3.x.x compatibility bugs
+
 ## [1.0.0] - 2024-02-01
 
 ### Added
@@ -327,8 +341,9 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.0.0...HEAD
-[0.9.4]: https://github.com/surged20/wjmais/compare/0.9.4...1.0.0
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/surged20/wjmais/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/surged20/wjmais/compare/0.9.4...1.0.0
 [0.9.4]: https://github.com/surged20/wjmais/compare/0.9.3...0.9.4
 [0.9.3]: https://github.com/surged20/wjmais/compare/0.9.2...0.9.3
 [0.9.2]: https://github.com/surged20/wjmais/compare/0.9.1...0.9.2
