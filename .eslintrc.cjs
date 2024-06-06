@@ -4,7 +4,9 @@
 // SPDX-License-Identifier: MIT
 
 module.exports = {
+  parser: "@babel/eslint-parser",
   parserOptions: {
+    requireConfigFile: false,
     ecmaVersion: 2020,
     extraFileExtensions: [".cjs", ".mjs"],
     sourceType: "module",
