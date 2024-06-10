@@ -171,13 +171,14 @@
               {{selectOptions config.actorSizes selected=system.traits.size localize=true}}
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group {{traits.traits.lt.cssClass}}">
             <label>{{localize "WJMAIS.LandingTypes"}}</label>
-            <a class="trait-selector" data-options="landingTypes" data-target="flags.wjmais.traits.lt">
+            <a class="trait-selector" data-trait="lt"
+            data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'WJMAIS.LandingTypes')}}" tabindex="0">
               <i class="fas fa-edit"></i>
             </a>
             <ul class="traits-list">
-              {{#each flags.wjmais.traits.lt.selected as |v k|}}
+              {{#each traits.traits.lt.selected as |v k|}}
                 <li class="tag {{k}}">{{v}}</li>
               {{/each}}
             </ul>

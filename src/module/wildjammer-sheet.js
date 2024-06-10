@@ -190,34 +190,38 @@ export default class WildjammerSheet extends dnd5e.applications.actor
   }
 
   /**
-   * Prepare the data structure for traits data like languages, resistances & vulnerabilities, and proficiencies
-   * @param {object} traits   The raw traits data object from the actor data
-   * @private
+   * Prepare the data structure for traits data like languages, resistances & vulnerabilities, and proficiencies.
+   * @param {object} systemData  System data for the Actor being prepared.
+   * @returns {object}           Prepared trait data.
+   * @protected
    */
-  _prepareTraits(traits) {
-    const map = {
-      lt: CONFIG.WJMAIS.landingTypes,
-    };
-    for (let [t, choices] of Object.entries(map)) {
-      if (!traits) break;
-      const trait = traits[t];
-      if (!trait) continue;
-      let values = [];
-      if (trait.value) {
-        values = trait.value instanceof Array ? trait.value : [trait.value];
-      }
-      trait.selected = values.reduce((obj, t) => {
-        obj[t] = choices[t];
-        return obj;
-      }, {});
-      // Add custom entry
-      if (trait.custom) {
-        trait.custom
-          .split(";")
-          .forEach((c, i) => (trait.selected[`custom${i + 1}`] = c.trim()));
-      }
-      trait.cssClass = !foundry.utils.isEmpty(trait.selected) ? "" : "inactive";
-    }
+  _prepareTraits(systemData) {
+    let traits = super._prepareTraits(systemData);
+    const flagData = this.actor.flags.wjmais;
+    const key = "traits.lt";
+    const data = foundry.utils.deepClone(
+      foundry.utils.getProperty(flagData, key)
+    );
+    foundry.utils.setProperty(traits, key, data);
+
+    let values = data.value;
+    if (!values) values = [];
+    else if (values instanceof Set) values = Array.from(values);
+    else if (!Array.isArray(values)) values = [values];
+
+    data.selected = values.reduce((obj, key) => {
+      obj[key] = CONFIG.WJMAIS.landingTypes[key];
+      return obj;
+    }, {});
+
+    // Add custom entries
+    if (data.custom)
+      data.custom
+        .split(";")
+        .forEach((c, i) => (data.selected[`custom${i + 1}`] = c.trim()));
+    data.cssClass = !foundry.utils.isEmpty(data.selected) ? "" : "inactive";
+
+    return traits;
   }
 
   async getData(options) {
@@ -989,6 +993,10 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       choices,
       allowCustom: false,
     };
-    new dnd5e.applications.TraitSelector(this.actor, options).render(true);
+    new dnd5e.applications.actor.TraitSelector(
+      this.actor,
+      "lt",
+      options
+    ).render(true);
   }
 }

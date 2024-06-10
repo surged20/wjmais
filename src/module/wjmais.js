@@ -51,6 +51,16 @@ function configProperties() {
     formula: "10 + @ship.ac.mod",
   };
 
+  CONFIG.DND5E.lt = CONFIG.WJMAIS.landingTypes;
+  CONFIG.DND5E.traits.lt = {
+    actorKeyPath: "flags.wjmais.traits.lt",
+    labels: {
+      title: "Landing Types",
+      localization: "WJMAIS.TraitLandingTypesPlural",
+    },
+    icon: "systems/dnd5e/icons/svg/trait-languages.svg",
+  };
+
   foundry.utils.mergeObject(
     globalThis.game.dnd5e.config.equipmentTypes,
     translateObject({

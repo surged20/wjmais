@@ -44,6 +44,7 @@
   "WJMAIS.Hardpoints": "Hardpoints",
 
   "WJMAIS.LandingTypes": "Landing Types",
+  "WJMAIS.TraitLandingTypesPlural.other": "Landing Types",
   "WJMAIS.LandingLand": "Land",
   "WJMAIS.LandingWater": "Water",
   "WJMAIS.LandingSpaceDock": "Space Dock",
