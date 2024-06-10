@@ -1,11 +1,17 @@
-2024/06/06-08:04:40.318925 7fc7a7ee46c0 Delete type=3 #1
-2024/06/06-08:06:12.918112 7fc7a55ff6c0 Level-0 table #12: started
-2024/06/06-08:06:12.918129 7fc7a55ff6c0 Level-0 table #12: 0 bytes OK
-2024/06/06-08:06:12.935951 7fc7a55ff6c0 Delete type=0 #10
-2024/06/06-08:06:12.981004 7fc7a55ff6c0 Manual compaction at level-0 from '!actors!05raCCvHZETiaSyv' @ 72057594037927935 : 1 .. '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 0 : 0; will stop at '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 141 : 1
-2024/06/06-08:06:12.981011 7fc7a55ff6c0 Compacting 1@0 + 0@1 files
-2024/06/06-08:06:12.994204 7fc7a55ff6c0 Generated table #13@0: 144 keys, 247980 bytes
-2024/06/06-08:06:12.994221 7fc7a55ff6c0 Compacted 1@0 + 0@1 files => 247980 bytes
-2024/06/06-08:06:13.011542 7fc7a55ff6c0 compacted to: files[ 0 1 0 0 0 0 0 ]
-2024/06/06-08:06:13.011610 7fc7a55ff6c0 Delete type=2 #5
-2024/06/06-08:06:13.039454 7fc7a55ff6c0 Manual compaction at level-0 from '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 141 : 1 .. '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 0 : 0; will stop at (end)
+2024/06/10-08:23:19.495852 7fe1277fe6c0 Recovering log #11
+2024/06/10-08:23:19.495883 7fe1277fe6c0 Recovering log #24
+2024/06/10-08:23:19.527569 7fe1277fe6c0 Delete type=2 #26
+2024/06/10-08:23:19.527654 7fe1277fe6c0 Delete type=3 #9
+2024/06/10-08:23:19.527687 7fe1277fe6c0 Delete type=0 #24
+2024/06/10-08:23:19.527708 7fe1277fe6c0 Delete type=0 #11
+2024/06/10-08:26:42.372940 7fe125bff6c0 Level-0 table #27: started
+2024/06/10-08:26:42.385067 7fe125bff6c0 Level-0 table #27: 206453 bytes OK
+2024/06/10-08:26:42.401953 7fe125bff6c0 Delete type=0 #25
+2024/06/10-08:26:42.436539 7fe125bff6c0 Manual compaction at level-0 from '!actors!05raCCvHZETiaSyv' @ 72057594037927935 : 1 .. '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 0 : 0; will stop at '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 319 : 0
+2024/06/10-08:26:42.436544 7fe125bff6c0 Compacting 1@0 + 1@1 files
+2024/06/10-08:26:42.449089 7fe125bff6c0 Generated table #28@0: 126 keys, 199967 bytes
+2024/06/10-08:26:42.449103 7fe125bff6c0 Compacted 1@0 + 1@1 files => 199967 bytes
+2024/06/10-08:26:42.465715 7fe125bff6c0 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/06/10-08:26:42.465780 7fe125bff6c0 Delete type=2 #13
+2024/06/10-08:26:42.465899 7fe125bff6c0 Delete type=2 #27
+2024/06/10-08:26:42.482956 7fe125bff6c0 Manual compaction at level-0 from '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 319 : 0 .. '!actors.items!zqc3Rl8r0hK2AlSQ.K2EqB4m6u6wd8ODT' @ 0 : 0; will stop at (end)
