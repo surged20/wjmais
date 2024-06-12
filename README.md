@@ -1,5 +1,6 @@
 ![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://github.com/surged20/wjmais/releases/latest/download/module.json)
 ![GitHub License](https://img.shields.io/github/license/surged20/wjmais)
+![Total Download Count](https://img.shields.io/github/downloads/surged20/wjmais/total)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/surged20/wjmais/latest/module.zip)
 [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%&url=https://forge-vtt.com/api/bazaar/package/wjmais&colorB=brightgreen)](https://forge-vtt.com/)
 [![Spelljammer Discord Server](https://img.shields.io/badge/-Discord-%232c2f33?style=flat-square&logo=discord)](https://discord.gg/TAsaxnm6Vx)
