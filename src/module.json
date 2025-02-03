@@ -11,9 +11,9 @@
       "email": "surged20@gmail.com"
     }
   ],
-  "minimumCoreVersion": "11",
+  "minimumCoreVersion": "12",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "12",
     "verified": "12"
   },
   "esmodules": ["module/wjmais.js"],
@@ -32,8 +32,8 @@
         "type": "system",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
-          "minimum": "3.0.0",
-          "verified": "3.2.0"
+          "minimum": "4.2.0",
+          "verified": "4.2.2"
         }
       }
     ],
@@ -96,13 +96,7 @@
       "name": "Wildjammer",
       "sorting": "m",
       "color": "#57534e",
-      "packs": [
-        "ships",
-        "features",
-        "items",
-        "spells",
-        "quickref"
-      ]
+      "packs": ["ships", "features", "items", "spells", "quickref"]
     }
   ],
   "media": [
