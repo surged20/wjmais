@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0] - 2025-02-03
+
+### Fixed
+
+- Bug due to move from spellTags to itemProperty
+- Bug on canvas actor drop or token rendering due to model change
+- Bug on drag and drop actor to ship when ship crew id is not present
+- dnd5e 4.x deprecation warnings addressed
+
 ## [1.0.2] - 2024-06-10
 
 ### Changed
@@ -352,7 +361,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/surged20/wjmais/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/surged20/wjmais/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/surged20/wjmais/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/surged20/wjmais/compare/0.9.4...1.0.0
