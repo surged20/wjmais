@@ -83,7 +83,7 @@ function configProperties() {
     })
   );
 
-  foundry.utils.mergeObject(globalThis.game.dnd5e.config.spellTags, {
+  foundry.utils.mergeObject(globalThis.game.dnd5e.config.itemProperties, {
     megascale: {
       label: localize("WJMAIS.Megascale"),
       abbr: localize("WJMAIS.MegascaleAbbr"),
