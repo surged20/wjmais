@@ -126,8 +126,10 @@ async function updateRole(creature, ship, role) {
   if (isFighterHelmsmanGunner(currentRole) || isHelmsman(currentRole)) {
     for (const item of creature.items.filter((i) => i.flags?.wjmais?.swid)) {
       const shipItem = await ship.items.get(item.flags?.wjmais?.swid);
-      await shipItem.unsetFlag("wjmais", "crewed");
-      await item.delete();
+      if (shipItem) {
+        await shipItem.unsetFlag("wjmais", "crewed");
+        await item.delete();
+      }
     }
   }
 
