@@ -35,7 +35,7 @@ function patchResourceBars() {
           this.actor.system,
           "attributes.hp.tempmax"
         );
-        const model = game.system.model.Actor[this.actor.type];
+        const model = game.model.Actor[this.actor.type];
         return {
           type: "bar",
           attribute: "Bulwark Points",
