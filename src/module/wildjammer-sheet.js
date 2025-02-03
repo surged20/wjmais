@@ -554,7 +554,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         label: game.i18n.localize("DND5E.ActionPl"),
         items: [],
         equippable: true,
-        dataset: { type: "feat", "activation.type": "crew" },
+        dataset: { type: "feat", "activities[0].type": "crew" },
       },
       passive: {
         label: game.i18n.localize("DND5E.Features"),
@@ -589,7 +589,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         label: game.i18n.localize("DND5E.ReactionPl"),
         items: [],
         equippable: true,
-        dataset: { type: "feat", "activation.type": "reaction" },
+        dataset: { type: "feat", "activities[0].type": "reaction" },
       },
       upgrades: {
         label: game.i18n.localize("WJMAIS.ItemTypeUpgrades"),
@@ -740,16 +740,16 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         totalWeight += item.system.totalWeight ?? 0;
         cargo.cargo.items.push(item);
       } else if (item.type === "feat") {
+        const act = item.system.activities[0];
         if (item?.flags?.wjmais?.role) {
           roles[item.flags.wjmais.role].items.push(item);
-        } else if (
-          !item.system.activation.type ||
-          item.system.activation.type === "none"
-        ) {
+        } else if (!act?.type || act?.type === "none") {
           features.passive.items.push(item);
-        } else if (item.system.activation.type === "reaction")
+        } else if (act?.type === "reaction") {
           features.reactions.items.push(item);
-        else features.actions.items.push(item);
+        } else {
+          features.actions.items.push(item);
+        }
       }
     }
 
