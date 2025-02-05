@@ -126,25 +126,8 @@ function patchRollData() {
   );
 }
 
-function patchPrepareData() {
-  libWrapper.register(
-    "wjmais",
-    "game.dnd5e.documents.Actor5e.prototype.prepareData",
-    function (wrapped, ...args) {
-      if (this.flags?.wjmais?.traits?.lt?.value)
-        this.flags.wjmais.traits.lt.value = new Set(
-          this.flags.wjmais.traits.lt.value
-        );
-
-      return wrapped(...args);
-    },
-    "MIXED"
-  );
-}
-
 export function applyPatches() {
   patchCompendiumImport();
   patchResourceBars();
   patchRollData();
-  patchPrepareData();
 }

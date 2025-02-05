@@ -238,6 +238,21 @@ Hooks.once("init", function () {
     });
   });
 
+  Hooks.on("preCreateActor", async (actor) => {
+    if (actor.type === "vehicle") {
+      await actor.updateSource({
+        flags: {
+          wjmais: {
+            traits: {
+              custom: "",
+              lt: { value: ["spacedock"] },
+            },
+          },
+        },
+      });
+    }
+  });
+
   Hooks.on("createActiveEffect", (effect) => {
     updateActorEffects(effect);
   });
