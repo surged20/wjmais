@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.1] - 2025-02-05
+
+### Changed
+
+- Manifest pinned to dnd5e 4.2.x. The planned TraitSelector deprecation in 4.3.x will break the module.
+
+### Fixed
+
+- Crash when creating a new vehicle actor
+- Fix source field label
+
 ## [1.1.0] - 2025-02-03
 
 ### Fixed
@@ -361,7 +372,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/surged20/wjmais/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/surged20/wjmais/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/surged20/wjmais/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/surged20/wjmais/compare/1.0.0...1.0.1
