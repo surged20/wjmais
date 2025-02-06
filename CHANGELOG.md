@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.2] - 2025-02-06
+
+### Fixed
+- Manifest maximum system really pinned to dnd5e 4.2.x now
+- Fix weapon section label
+- Fix ship size and class display
+- Fix bad migration of personal and ship weapons in compendium to restore all special properties which allow them to be equipped to ships now.
+- Fix unidentified items in compendium.
+
 ## [1.1.1] - 2025-02-05
 
 ### Changed
@@ -372,7 +381,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.2...HEAD
+[1.1.2]: https://github.com/surged20/wjmais/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/surged20/wjmais/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/surged20/wjmais/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/surged20/wjmais/compare/1.0.1...1.0.2
