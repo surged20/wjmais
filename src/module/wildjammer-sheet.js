@@ -238,7 +238,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
     this._prepareTraits(actorFlags.wjmais.traits);
 
     context.flags = actorFlags;
-    context.config = CONFIG.WJMAIS;
+    context["wjmais"] = CONFIG.WJMAIS;
     context.isNPC = actorFlags?.wjmais?.npc;
     context.isGM = game.user.isGM;
 
