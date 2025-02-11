@@ -93,7 +93,7 @@ async function notifyBridgeCrewRoleChange(ship, actor, role) {
       game.i18n.localize("WJMAIS.RoleIsAssigned") + ship.name + " ";
     if (isFighterHelmsmanGunner(role)) {
       const shipWeaponId = actor.items.find((i) =>
-        i.system?.properties.has("smw")
+        i.system?.properties?.has("smw")
       ).flags?.wjmais?.swid;
       if (shipWeaponId)
         roleChangeMessage += ship.items.get(shipWeaponId).name + " ";
@@ -794,6 +794,13 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       .click((evt) => evt.target.select())
       .change(this._onHPChange.bind(this));
 
+    html
+      .find('.attributes dnd5e-inventory [data-action="delete"]')
+      .click(async (event) => {
+        event.preventDefault();
+        this._onShipRoleWeaponDelete(event);
+      });
+
     html[0]
       .querySelector('[data-tab="cargo"] dnd5e-inventory')
       .addEventListener("inventory", this._onInventoryEvent.bind(this));
@@ -894,23 +901,17 @@ export default class WildjammerSheet extends dnd5e.applications.actor
   /* -------------------------------------------- */
 
   /**
-   * Handle deleting a crew/passenger row, roles, and ship weapons.
+   * Handle deleting roles and ship weapons.
+   * FIXME: move handling to InventoryElement's _onActionEvent
    * @param event {Event}
    * @returns {Promise<Actor|Item>}
    * @private
    */
-  async _onItemDelete(event) {
+  async _onShipRoleWeaponDelete(event) {
     event.preventDefault();
     const row = event.currentTarget.closest(".item");
     const item = this.actor.items.get(row.dataset.itemId);
-    if (row.classList.contains("cargo-row")) {
-      const idx = Number(row.dataset.itemIndex);
-      const type = row.classList.contains("crew") ? "crew" : "passengers";
-      const cargo = foundry.utils
-        .deepClone(this.actor.system.cargo[type])
-        .filter((_, i) => i !== idx);
-      return this.actor.update({ [`system.cargo.${type}`]: cargo });
-    } else if (item.flags?.wjmais?.role) {
+    if (item.flags?.wjmais?.role) {
       this._doRemoveRole(item);
     } else if (isGunnerWeapon(item)) {
       const creature = game.actors.get(item.flags?.wjmais?.crewed);
@@ -921,8 +922,6 @@ export default class WildjammerSheet extends dnd5e.applications.actor
         if (creatureShipWeapon) await creatureShipWeapon.delete();
       }
     }
-
-    return super._onItemDelete(event);
   }
 
   /* -------------------------------------------- */
