@@ -58,8 +58,8 @@ export default class SelectItemPrompt extends Dialog {
             label: game.i18n.localize("WJMAIS.Apply"),
             callback: (html) => {
               const fd = new FormDataExtended(
-                html[0].querySelector("form")
-              ).toObject();
+                html[0].querySelector("#ship-weapon-selector")
+              ).object;
               const selectedId = fd["shipWeapon"];
               resolve(selectedId);
             },
