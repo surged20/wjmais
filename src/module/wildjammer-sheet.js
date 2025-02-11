@@ -111,7 +111,7 @@ async function notifyBridgeCrewRoleChange(ship, actor, role) {
 }
 
 async function createCrewOwnedItem(item, ship, crewMember) {
-  const itemData = duplicate(item);
+  const itemData = foundry.utils.duplicate(item);
   itemData.name = itemData.name + " (" + ship.name + ")";
   itemData.system.equipped = true;
   itemData.flags["wjmais.swid"] = item.id;
@@ -266,7 +266,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       name: actor.name,
       type: "feat",
       img: actor.img,
-      data: duplicate({}),
+      data: foundry.utils.duplicate({}),
       flags: { wjmais: { role: "unassigned", actorId: actor.id } },
     };
     delete itemData.data["type"];
