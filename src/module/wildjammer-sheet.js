@@ -500,7 +500,7 @@ export default class WildjammerSheet extends dnd5e.applications.actor
       {
         label: game.i18n.localize("DND5E.Weight"),
         css: "item-weight",
-        property: "system.weight",
+        property: "system.weight.value",
         editable: "Number",
       },
       {
