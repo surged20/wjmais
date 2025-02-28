@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0] - 2025-02-28
+
+### Changed
+
+- Manifest supports dnd5e 4.2.x-4.3.x
+
+### Fixed
+
+- Armor class display on dnd5e 4.3.x
+
 ## [1.1.3] - 2025-02-11
 
 ### Fixed
@@ -391,7 +401,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.1.3...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/surged20/wjmais/compare/1.1.3...1.2.0
 [1.1.2]: https://github.com/surged20/wjmais/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/surged20/wjmais/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/surged20/wjmais/compare/1.1.0...1.1.1
