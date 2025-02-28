@@ -126,8 +126,24 @@ function patchRollData() {
   );
 }
 
+function patchVehicleData() {
+  libWrapper.register(
+    "wjmais",
+    "game.dnd5e.dataModels.actor.VehicleData.prototype.prepareBaseData",
+    function (wrapped, ...args) {
+      console.log(this);
+      const calc = this.attributes.ac.calc;
+      const ret = wrapped(...args);
+      this.attributes.ac.calc = calc;
+      return ret;
+    },
+    "MIXED"
+  );
+}
+
 export function applyPatches() {
   patchCompendiumImport();
   patchResourceBars();
   patchRollData();
+  patchVehicleData();
 }
