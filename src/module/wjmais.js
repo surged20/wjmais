@@ -199,7 +199,9 @@ Hooks.once("init", function () {
 
   preloadHandlebarsTemplates();
 
-  updateLogo();
+  if (!foundry.utils.isNewerVersion(game.version, "12")) {
+    updateLogo();
+  };
 
   /**
    * This function runs after game data has been requested and loaded from the servers, so entities exist
