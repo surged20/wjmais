@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.0] - 2025-04-09
+
+### Changed
+
+- Manifest has verified v13 support
+
+### Removed
+
+- Canvas foundry logo no longer applicable on v13
+- Stray debug logging
+
 ## [1.2.0] - 2025-02-28
 
 ### Changed
@@ -401,7 +412,8 @@
 - Additional wildjammer module/upgrade equipment types
 - WJ:MAiS 0.96.1 compendiums
 
-[Unreleased]: https://github.com/surged20/wjmais/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/surged20/wjmais/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/surged20/wjmais/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/surged20/wjmais/compare/1.1.3...1.2.0
 [1.1.2]: https://github.com/surged20/wjmais/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/surged20/wjmais/compare/1.1.1...1.1.2
