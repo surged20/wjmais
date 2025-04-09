@@ -14,7 +14,7 @@
   "minimumCoreVersion": "12",
   "compatibility": {
     "minimum": "12",
-    "verified": "12"
+    "verified": "13"
   },
   "esmodules": ["module/wjmais.js"],
   "styles": ["styles/wjmais.css"],
